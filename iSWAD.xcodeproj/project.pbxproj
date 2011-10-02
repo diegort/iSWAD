@@ -1,0 +1,288 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4584131D14391E41007637AF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4584131C14391E41007637AF /* UIKit.framework */; };
+		4584131F14391E41007637AF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4584131E14391E41007637AF /* Foundation.framework */; };
+		4584132114391E41007637AF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4584132014391E41007637AF /* CoreGraphics.framework */; };
+		4584132714391E41007637AF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4584132514391E41007637AF /* InfoPlist.strings */; };
+		4584132914391E41007637AF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4584132814391E41007637AF /* main.m */; };
+		4584132D14391E41007637AF /* iSWADAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4584132C14391E41007637AF /* iSWADAppDelegate.m */; };
+		4584133014391E41007637AF /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4584132E14391E41007637AF /* MainWindow.xib */; };
+		4584133314391E41007637AF /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4584133214391E41007637AF /* RootViewController.m */; };
+		4584133614391E41007637AF /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4584133414391E41007637AF /* RootViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		4584131814391E41007637AF /* iSWAD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iSWAD.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4584131C14391E41007637AF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		4584131E14391E41007637AF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		4584132014391E41007637AF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		4584132414391E41007637AF /* iSWAD-Info.plist */ = {isa = PBXFileReference; path = "iSWAD-Info.plist"; sourceTree = "<group>"; };
+		4584132614391E41007637AF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4584132814391E41007637AF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4584132A14391E41007637AF /* iSWAD-Prefix.pch */ = {isa = PBXFileReference; path = "iSWAD-Prefix.pch"; sourceTree = "<group>"; };
+		4584132B14391E41007637AF /* iSWADAppDelegate.h */ = {isa = PBXFileReference; path = iSWADAppDelegate.h; sourceTree = "<group>"; };
+		4584132C14391E41007637AF /* iSWADAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iSWADAppDelegate.m; sourceTree = "<group>"; };
+		4584132F14391E41007637AF /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		4584133114391E41007637AF /* RootViewController.h */ = {isa = PBXFileReference; path = RootViewController.h; sourceTree = "<group>"; };
+		4584133214391E41007637AF /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		4584133514391E41007637AF /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RootViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4584131514391E41007637AF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4584131D14391E41007637AF /* UIKit.framework in Frameworks */,
+				4584131F14391E41007637AF /* Foundation.framework in Frameworks */,
+				4584132114391E41007637AF /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4584130D14391E41007637AF = {
+			isa = PBXGroup;
+			children = (
+				4584132214391E41007637AF /* iSWAD */,
+				4584131B14391E41007637AF /* Frameworks */,
+				4584131914391E41007637AF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4584131914391E41007637AF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4584131814391E41007637AF /* iSWAD.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4584131B14391E41007637AF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4584131C14391E41007637AF /* UIKit.framework */,
+				4584131E14391E41007637AF /* Foundation.framework */,
+				4584132014391E41007637AF /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4584132214391E41007637AF /* iSWAD */ = {
+			isa = PBXGroup;
+			children = (
+				4584132B14391E41007637AF /* iSWADAppDelegate.h */,
+				4584132C14391E41007637AF /* iSWADAppDelegate.m */,
+				4584132E14391E41007637AF /* MainWindow.xib */,
+				4584133114391E41007637AF /* RootViewController.h */,
+				4584133214391E41007637AF /* RootViewController.m */,
+				4584133414391E41007637AF /* RootViewController.xib */,
+				4584132314391E41007637AF /* Supporting Files */,
+			);
+			path = iSWAD;
+			sourceTree = "<group>";
+		};
+		4584132314391E41007637AF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4584132414391E41007637AF /* iSWAD-Info.plist */,
+				4584132514391E41007637AF /* InfoPlist.strings */,
+				4584132814391E41007637AF /* main.m */,
+				4584132A14391E41007637AF /* iSWAD-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4584131714391E41007637AF /* iSWAD */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4584133914391E41007637AF /* Build configuration list for PBXNativeTarget "iSWAD" */;
+			buildPhases = (
+				4584131414391E41007637AF /* Sources */,
+				4584131514391E41007637AF /* Frameworks */,
+				4584131614391E41007637AF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iSWAD;
+			productName = iSWAD;
+			productReference = 4584131814391E41007637AF /* iSWAD.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4584130F14391E41007637AF /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 4584131214391E41007637AF /* Build configuration list for PBXProject "iSWAD" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 4584130D14391E41007637AF;
+			productRefGroup = 4584131914391E41007637AF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4584131714391E41007637AF /* iSWAD */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4584131614391E41007637AF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4584132714391E41007637AF /* InfoPlist.strings in Resources */,
+				4584133014391E41007637AF /* MainWindow.xib in Resources */,
+				4584133614391E41007637AF /* RootViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4584131414391E41007637AF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4584132914391E41007637AF /* main.m in Sources */,
+				4584132D14391E41007637AF /* iSWADAppDelegate.m in Sources */,
+				4584133314391E41007637AF /* RootViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		4584132514391E41007637AF /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4584132614391E41007637AF /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		4584132E14391E41007637AF /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4584132F14391E41007637AF /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		4584133414391E41007637AF /* RootViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4584133514391E41007637AF /* en */,
+			);
+			name = RootViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4584133714391E41007637AF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		4584133814391E41007637AF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4584133A14391E41007637AF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iSWAD/iSWAD-Prefix.pch";
+				INFOPLIST_FILE = "iSWAD/iSWAD-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		4584133B14391E41007637AF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iSWAD/iSWAD-Prefix.pch";
+				INFOPLIST_FILE = "iSWAD/iSWAD-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4584131214391E41007637AF /* Build configuration list for PBXProject "iSWAD" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4584133714391E41007637AF /* Debug */,
+				4584133814391E41007637AF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4584133914391E41007637AF /* Build configuration list for PBXNativeTarget "iSWAD" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4584133A14391E41007637AF /* Debug */,
+				4584133B14391E41007637AF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4584130F14391E41007637AF /* Project object */;
+}
