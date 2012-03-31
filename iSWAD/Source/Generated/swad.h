@@ -22,7 +22,6 @@
 #import "question.h"
 #import "answer.h"
 #import "user.h"
-
 /* Interface for the service */
 				
 @interface swad : SoapService
@@ -38,6 +37,8 @@
 	/* Returns int. Service definition of function swad__loginByUserPasswordKey */
 	- (SoapRequest*) loginByUserPasswordKey: (id <SoapDelegate>) handler userID: (NSString*) userID userPassword: (NSString*) userPassword appKey: (NSString*) appKey;
 	- (SoapRequest*) loginByUserPasswordKey: (id) target action: (SEL) action userID: (NSString*) userID userPassword: (NSString*) userPassword appKey: (NSString*) appKey;
+
+    - (id) loginByUserPasswordKeySync: (NSString*) userID userPassword: (NSString*) userPassword appKey: (NSString*) appKey;
 
 	/* Returns int. Service definition of function swad__getCourses */
 	- (SoapRequest*) getCourses: (id <SoapDelegate>) handler wsKey: (NSString*) wsKey;

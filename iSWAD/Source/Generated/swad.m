@@ -22,6 +22,9 @@
 #import "question.h"
 #import "answer.h"
 #import "user.h"
+#import "sendMessageOutput.h"
+#import "loginByUPOut.h"
+#import "getNotificationsOutput.h"
 
 /* Implementation of the service */
 				
@@ -103,10 +106,28 @@
 		[_params addObject: [[[SoapParameter alloc] initWithValue: userPassword forName: @"userPassword"] autorelease]];
 		[_params addObject: [[[SoapParameter alloc] initWithValue: appKey forName: @"appKey"] autorelease]];
 		NSString* _envelope = [Soap createEnvelope: @"loginByUserPasswordKey" forNamespace: self.namespace withParameters: _params withHeaders: self.headers];
-		SoapRequest* _request = [SoapRequest create: _target action: _action service: self soapAction: @"" postData: _envelope deserializeTo: @"int"];
+		SoapRequest* _request = [SoapRequest create: _target action: _action service: self soapAction: @"" postData: _envelope deserializeTo: [[loginByUserPasswordKeyOutput alloc] autorelease]];
+        
 		[_request send];
 		return _request;
 	}
+
+    - (id) loginByUserPasswordKeySync: (NSString*) userID userPassword: (NSString*) userPassword appKey: (NSString*) appKey
+    {
+        NSMutableArray* _params = [NSMutableArray array];
+    
+        [_params addObject: [[[SoapParameter alloc] initWithValue: userID forName: @"userID"] autorelease]];
+        [_params addObject: [[[SoapParameter alloc] initWithValue: userPassword forName: @"userPassword"] autorelease]];
+        [_params addObject: [[[SoapParameter alloc] initWithValue: appKey forName: @"appKey"] autorelease]];
+        
+        NSString* _envelope = [Soap createEnvelope: @"loginByUserPasswordKey" forNamespace: self.namespace withParameters: _params withHeaders: self.headers];
+        
+        SoapRequest* _request = [SoapRequest create: nil action: nil service: self soapAction: @"" postData: _envelope deserializeTo: [[loginByUserPasswordKeyOutput alloc] autorelease]];
+    
+        _request.synchronous = true;
+        [_request send];
+        return [_request result];
+    }
 
 	/* Returns int. Service definition of function swad__getCourses */
 	- (SoapRequest*) getCourses: (id <SoapDelegate>) handler wsKey: (NSString*) wsKey
@@ -158,7 +179,7 @@
 		[_params addObject: [[[SoapParameter alloc] initWithValue: wsKey forName: @"wsKey"] autorelease]];
 		[_params addObject: [[[SoapParameter alloc] initWithValue: [NSNumber numberWithLong: beginTime] forName: @"beginTime"] autorelease]];
 		NSString* _envelope = [Soap createEnvelope: @"getNotifications" forNamespace: self.namespace withParameters: _params withHeaders: self.headers];
-		SoapRequest* _request = [SoapRequest create: _target action: _action service: self soapAction: @"" postData: _envelope deserializeTo: @"int"];
+		SoapRequest* _request = [SoapRequest create: _target action: _action service: self soapAction: @"" postData: _envelope deserializeTo: [[getNotificationsOutput alloc] autorelease]];
 		[_request send];
 		return _request;
 	}
@@ -216,7 +237,8 @@
 		[_params addObject: [[[SoapParameter alloc] initWithValue: subject forName: @"subject"] autorelease]];
 		[_params addObject: [[[SoapParameter alloc] initWithValue: body forName: @"body"] autorelease]];
 		NSString* _envelope = [Soap createEnvelope: @"sendMessage" forNamespace: self.namespace withParameters: _params withHeaders: self.headers];
-		SoapRequest* _request = [SoapRequest create: _target action: _action service: self soapAction: @"" postData: _envelope deserializeTo: @"int"];
+		//SoapRequest* _request = [SoapRequest create: _target action: _action service: self soapAction: @"" postData: _envelope deserializeTo: @"int"];
+        SoapRequest* _request = [SoapRequest create: _target action: _action service: self soapAction: @"" postData: _envelope deserializeTo: [[sendMessageOutput alloc] autorelease]];
 		[_request send];
 		return _request;
 	}

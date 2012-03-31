@@ -11,7 +11,7 @@
 
 @implementation SoapRequest
 
-@synthesize handler, url, soapAction, postData, receivedData, username, password, deserializeTo, action, logging, defaultHandler;
+@synthesize handler, url, soapAction, postData, receivedData, username, password, deserializeTo, action, logging, defaultHandler, synchronous, result;
 
 // Creates a request to submit from discrete values.
 + (SoapRequest*) create: (SoapHandler*) handler urlString: (NSString*) urlString soapAction: (NSString*) soapAction postData: (NSString*) postData deserializeTo: (id) deserializeTo {
@@ -79,16 +79,23 @@
 	}
 	
 	// Create the connection
-	conn = [[NSURLConnection alloc] initWithRequest: request delegate: self];
-	if(conn) {
-		receivedData = [[NSMutableData data] retain];
-	} else {
-		// We will want to call the onerror method selector here...
-		if(self.handler != nil) {
-			NSError* error = [NSError errorWithDomain:@"SoapRequest" code:404 userInfo: [NSDictionary dictionaryWithObjectsAndKeys: @"Could not create connection", NSLocalizedDescriptionKey,nil]];
-			[self handleError: error];
-		}
-	}
+    if (synchronous){
+        NSError* err;
+        receivedData = [NSMutableData dataWithData:[NSURLConnection sendSynchronousRequest:request  returningResponse:nil error:&err]];
+        [self connectionDidFinishLoading:nil];
+    }else{
+        conn = [[NSURLConnection alloc] initWithRequest: request delegate: self];
+        
+        if(conn) {
+            receivedData = [[NSMutableData data] retain];
+        } else {
+            // We will want to call the onerror method selector here...
+            if(self.handler != nil) {
+                NSError* error = [NSError errorWithDomain:@"SoapRequest" code:404 userInfo: [NSDictionary dictionaryWithObjectsAndKeys: @"Could not create connection", NSLocalizedDescriptionKey,nil]];
+                [self handleError: error];
+            }
+        }
+    }
 }
 
 -(void)handleError:(NSError*)error{
@@ -169,7 +176,8 @@
 			output = [Soap deserialize:element];
 		} else {
 			if([deserializeTo respondsToSelector: @selector(initWithNode:)]) {
-				element = [element childAtIndex:0];
+                //Descomentar esta linea si no funcionan las siguientes respuestas desde SWAD
+				//element = [element childAtIndex:0];
 				output = [deserializeTo initWithNode: element];
 			} else {
 				NSString* value = [[[element childAtIndex:0] childAtIndex:0] stringValue];
@@ -177,12 +185,17 @@
 			}
 		}
 		
-		if(self.action == nil) { self.action = @selector(onload:); }
-		if(self.handler != nil && [self.handler respondsToSelector: self.action]) {
- 			[self.handler performSelector: self.action withObject: output];
-		} else if(self.defaultHandler != nil && [self.defaultHandler respondsToSelector:@selector(onload:)]) {
-			[self.defaultHandler onload:output];
-		}
+        if (synchronous){
+            result = output;
+        } else{
+            if(self.action == nil) { self.action = @selector(onload:); }
+        
+            if(self.handler != nil && [self.handler respondsToSelector: self.action]) {
+                [self.handler performSelector: self.action withObject: output];
+            } else if(self.defaultHandler != nil && [self.defaultHandler respondsToSelector:@selector(onload:)]) {
+                [self.defaultHandler onload:output];
+            }
+        }
 	}
 
 	[self.handler release];

@@ -6,8 +6,12 @@
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
-@interface UIView : UIView
+@interface UIView (FormScroll) 
+
+-(void)scrollToY:(float)y;
+-(void)scrollToView:(UIView *)view;
+-(void)scrollElement:(UIView *)view toPoint:(float)y;
 
 @end

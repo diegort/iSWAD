@@ -8,6 +8,20 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LoginViewController : UIViewController
+@interface LoginViewController : UIViewController {
+    UITextField *txtUser;
+    UITextField *txtPass;
+}
+
+@property (nonatomic, retain) IBOutlet UITextField *txtUser;
+
+@property (nonatomic, retain) IBOutlet UITextField *txtPass;
+
+
+- (IBAction)TextFielDidBeginEditing:(UITextField *)textField;
+
+- (IBAction)TextFieldDidEndEditing:(UITextField *)textField;
+
+- (IBAction)btnSave_Click:(id)sender;
 
 @end

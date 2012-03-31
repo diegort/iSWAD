@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface MyNavigationBar : NSObject
-
+@interface MyNavigationBar : UINavigationBar{
+    UIImage *myImage;
+}
+@property (nonatomic,retain) UIImage* myImage;
 @end

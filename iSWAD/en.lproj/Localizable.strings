@@ -5,3 +5,44 @@
   Created by Diego Montesinos on 06/11/11.
   Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 */
+"User" = "User";
+"Pass" = "Password";
+
+"Messages" = "Messages";
+"Notifications" = "Notifications";
+"Tests" = "Tests";
+"Notices" = "Notices";
+
+"Settings" = "Settings";
+"Back" = "Back";
+
+"initAlertTitle" = "There aren't login data";
+"initAlertMessage" = "Do you want to introduce them now?";
+
+"Yes" = "Yes";
+"No" = "No";
+"Accept" = "Accept";
+
+"loginErrorAlertTitle" = "Error";
+"loginErrorAlertMessage" = "User doesn't exist or wrong password.";
+
+"noConnectionAlertTitle" = "Error";
+"noConnectionAlertMessage" = "An internet connection is needed. Please, active data or connect to a Wifi network";
+
+"Send" = "Send";
+"sentMessageAlertTitle" = "Message successfully sent to";
+
+"Version" = "Version ";
+
+"Refresh" = "Refresh";
+
+"assignment" = "Activity";
+"examAnnouncement" = "Exam announcement";
+"marksFile" = "Marks File";
+"notice" = "Notice";
+"message" = "New message";
+"forumReply" = "Reply in forum";
+"survey" = "Survey";
+
+"noNotifications" = "There aren't notifications. Press Refresh to download them from SWAD";
+

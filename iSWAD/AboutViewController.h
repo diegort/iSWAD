@@ -10,4 +10,6 @@
 
 @interface AboutViewController : UIViewController
 
+@property (retain, nonatomic) IBOutlet UILabel *lblVersion;
+
 @end

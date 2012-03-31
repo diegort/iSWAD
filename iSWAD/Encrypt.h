@@ -10,4 +10,5 @@
 
 @interface Encrypt : NSObject
 
++ (NSData *)sha512:(NSData *)data;
 @end

@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface CustomUITextView : NSObject
+@interface CustomUITextView : UITextView
 
 @end

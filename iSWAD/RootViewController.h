@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "User.h"
 
-@interface RootViewController : UITableViewController
+@interface RootViewController : UITableViewController <UIAlertViewDelegate>{
+    UIActivityIndicatorView *activityIndicatorView;
+}
 
+//- (void) loadMenu;
+//-(void) loginHandler:(id)value;
 @end

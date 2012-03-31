@@ -25,5 +25,7 @@
 	</array>
 	<key>Title</key>
 	<string>iSWAD</string>
+	<key>StringsTable</key>
+	<string>Root</string>
 </dict>
 </plist>

@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface Login : NSObject
-
++(void) loginTarget:(id) target action:(SEL) action;
 @end

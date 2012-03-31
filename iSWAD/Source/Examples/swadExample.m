@@ -37,7 +37,7 @@
 	[service loginByUserPassword:self action:@selector(loginByUserPasswordHandler:) userID: @"" userPassword: @""];
 
 	// Returns int. Service definition of function swad__loginByUserPasswordKey
-	[service loginByUserPasswordKey:self action:@selector(loginByUserPasswordKeyHandler:) userID: @"diegort" userPassword: @"3ef7e160720d69dea5a5ec2aadad59ce01f5ef23972501b459041e80bf27b0d01bc2f0f080d8b4fae867882a1252cf5a9a2ba97440813d55f436423b91413375" appKey: @"HTCDesire"];
+	[service loginByUserPasswordKey:self action:@selector(loginByUserPasswordKeyHandler:) userID: @"diegort" userPassword: @"3ef7e160720d69dea5a5ec2aadad59ce01f5ef23972501b459041e80bf27b0d01bc2f0f080d8b4fae867882a1252cf5a9a2ba97440813d55f436423b91413375" appKey: @"HTC-Desire"];
 
 	// Returns int. Service definition of function swad__sendMessage
 	[service sendMessage:self action:@selector(sendMessageHandler:) wsKey: @"" messageCode: 0 to: @"" subject: @"" body: @""];

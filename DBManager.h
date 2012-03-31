@@ -7,7 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "iSWADAppDelegate.h"
+#import "User.h"
 
-@interface DBManager : NSObject
+@interface DBManager : NSObject{
+    iSWADAppDelegate *app;
+    NSManagedObjectContext *context;
+}
+
+- (NSArray *) getNotifications;
+- (BOOL) saveNotifications:(NSArray *)notifcations;
+- (BOOL) markNotificationAsRead:(int)notCode;
+
+- (int) getUserType;
+- (BOOL) saveUser;
 
 @end

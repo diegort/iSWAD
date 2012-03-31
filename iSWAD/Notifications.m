@@ -10,4 +10,7 @@
 
 @implementation Notifications
 
+-(NSArray *) readNotifications{
+    
+}
 @end

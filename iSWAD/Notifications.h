@@ -10,4 +10,5 @@
 
 @interface Notifications : NSObject
 
+-(NSArray *) readNotifications;
 @end

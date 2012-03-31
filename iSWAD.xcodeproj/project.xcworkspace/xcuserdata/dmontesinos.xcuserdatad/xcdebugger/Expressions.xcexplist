@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "+[Soap getNode:withName:]:Soap.m">
+      </ContextState>
+      <ContextState
+         contextName = "+[Soap getNodeValue:withName:]:Soap.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[loginByUserPasswordKeyOutput initWithNode:]:loginByUPOut.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[LoginViewController loginByUserPasswordKeyHandler:]:LoginViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "+[SoapRequest create:action:service:soapAction:postData:deserializeTo:]:SoapRequest.m">
+      </ContextState>
+      <ContextState
+         contextName = "+[Login login]:Login.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "result">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[SoapRequest send]:SoapRequest.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "receivedData">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

@@ -9,6 +9,7 @@
 #import "AboutViewController.h"
 
 @implementation AboutViewController
+@synthesize lblVersion;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,10 +34,14 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    NSMutableString *tmp = [[NSMutableString alloc] initWithString:NSLocalizedString(@"Version", nil)];
+    [tmp appendString:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]];
+     lblVersion.text = tmp;
 }
 
 - (void)viewDidUnload
 {
+    [self setLblVersion:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -48,4 +53,8 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (void)dealloc {
+    [lblVersion release];
+    [super dealloc];
+}
 @end

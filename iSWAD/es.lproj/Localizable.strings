@@ -5,3 +5,43 @@
   Created by Diego Montesinos on 06/11/11.
   Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 */
+"User" = "Usuario";
+"Pass" = "Contraseña";
+
+"Messages" = "Mensajes";
+"Notifications" = "Notificaciones";
+"Tests" = "Tests";
+"Notices" = "Avisos";
+
+"Settings" = "Ajustes";
+"Back" = "Volver";
+
+"initAlertTitle" = "No hay datos de login";
+"initAlertMessage" = "¿Desea introducirlos ahora?";
+
+"Yes" = "Sí";
+"No" = "No";
+"Accept" = "Aceptar";
+
+"loginErrorAlertTitle" = "Error";
+"loginErrorAlertMessage" = "El usuario no existe o la contraseña es incorrecta.";
+
+"noConnectionAlertTitle" = "Error";
+"noConnectionAlertMessage" = "Se necesita una conexión a internet. Por favor, active la conexión de datos o conéctese a una red Wifi.";
+
+"Send" = "Enviar";
+"sentMessageAlertTitle" = "Mensaje enviado a";
+
+"Version" = "Versión ";
+
+"Refresh" = "Actualizar";
+
+"assignment" = "Actividad";
+"examAnnouncement" = "Convocatoria de examen";
+"marksFile" = "Archivo de calificaciones";
+"notice" = "Aviso";
+"message" = "Nuevo mensaje";
+"forumReply" = "Respuesta en foro";
+"survey" = "Encuesta";
+
+"noNotifications" = "No hay notificaciones. Pulse Actualizar para descargarlas desde SWAD.";

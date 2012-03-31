@@ -7,7 +7,23 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CustomUITextView.h"
 
-@interface MessagesViewController : UIViewController
+@interface MessagesViewController : UIViewController{
+    int _messageCode;
+    NSString *_subject;
+}
+
+@property (retain, nonatomic) IBOutlet CustomUITextView *txtMessage;
+
+@property (retain, nonatomic) IBOutlet UITextField *txtTo;
+
+@property (retain, nonatomic) IBOutlet UITextField *txtSubject;
+
+- (IBAction)txtEditingDidBegin:(UITextField *)sender;
+
+- (IBAction)txtEditingDidEnd:(UITextField *)sender;
+
+- (void) setSubject:(NSString *) subject messageCode:(int)code;
 
 @end

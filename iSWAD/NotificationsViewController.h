@@ -7,7 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DBManager.h"
 
-@interface NotificationsViewController : UITableViewController
+@interface NotificationsViewController : UITableViewController{
+    UITableViewCell *tvCell;
+    NSArray *notifications;
+    DBManager *myDB;
+    UIActivityIndicatorView *activityIndicatorView;
+    UIApplication* app;
+    time_t currentTime;
+    UIView *noNotif;
+    
+    NSInteger selectedIndex;
+}
 
+@property (nonatomic, assign) IBOutlet UITableViewCell *tvCell;
 @end

@@ -6,26 +6,44 @@
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "UIView.h"
+#import "UIView+FormScroll.h"
 
-@implementation UIView
 
-- (id)initWithFrame:(CGRect)frame
+@implementation UIView (FormScroll)
+
+
+-(void)scrollToY:(float)y
 {
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
+    
+    [UIView beginAnimations:@"registerScroll" context:NULL];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+    [UIView setAnimationDuration:0.4];
+    self.transform = CGAffineTransformMakeTranslation(0, y);
+    [UIView commitAnimations];
+    
+}
+
+-(void)scrollToView:(UIView *)view
+{
+    CGRect theFrame = view.frame;
+    float y = theFrame.origin.y - 10;
+    y -= (y/3);
+    [self scrollToY:-y];
+}
+
+
+-(void)scrollElement:(UIView *)view toPoint:(float)y
+{
+    CGRect theFrame = view.frame;
+    float orig_y = theFrame.origin.y;
+    float diff = y - orig_y;
+    if (diff < 0) {
+        [self scrollToY:diff];
     }
-    return self;
+    else {
+        [self scrollToY:0];
+    }
+    
 }
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
 
 @end
