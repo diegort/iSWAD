@@ -9,7 +9,7 @@
 
 @interface notification : SoapObject
 {
-	int _notificationCode;
+	long long _notificationCode;
 	NSString* _eventType;
 	long _eventTime;
 	NSString* _userNickname;
@@ -23,7 +23,7 @@
 	
 }
 		
-	@property int notificationCode;
+	@property long long notificationCode;
 	@property (retain, nonatomic) NSString* eventType;
 	@property long eventTime;
 	@property (retain, nonatomic) NSString* userNickname;

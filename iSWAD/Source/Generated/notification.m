@@ -44,7 +44,7 @@
 	- (id) initWithNode: (CXMLNode*) node {
 		if(self = [super initWithNode: node])
 		{
-			self.notificationCode = [[Soap getNodeValue: node withName: @"notificationCode"] intValue];
+			self.notificationCode = [[Soap getNodeValue: node withName: @"notificationCode"] longLongValue];
 			self.eventType = [Soap getNodeValue: node withName: @"eventType"];
 			self.eventTime = [[Soap getNodeValue: node withName: @"eventTime"] longLongValue];
 			self.userNickname = [Soap getNodeValue: node withName: @"userNickname"];
@@ -78,7 +78,7 @@
 	- (NSMutableString*) serializeElements
 	{
 		NSMutableString* s = [super serializeElements];
-		[s appendFormat: @"<notificationCode>%@</notificationCode>", [NSString stringWithFormat: @"%i", self.notificationCode]];
+		[s appendFormat: @"<notificationCode>%@</notificationCode>", [NSString stringWithFormat: @"%l", self.notificationCode]];
 		if (self.eventType != nil) [s appendFormat: @"<eventType>%@</eventType>", [[self.eventType stringByReplacingOccurrencesOfString:@"\"" withString:@"&quot;"] stringByReplacingOccurrencesOfString:@"&" withString:@"&amp;"]];
 		[s appendFormat: @"<eventTime>%@</eventTime>", [NSString stringWithFormat: @"%ld", self.eventTime]];
 		if (self.userNickname != nil) [s appendFormat: @"<userNickname>%@</userNickname>", [[self.userNickname stringByReplacingOccurrencesOfString:@"\"" withString:@"&quot;"] stringByReplacingOccurrencesOfString:@"&" withString:@"&amp;"]];

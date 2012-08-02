@@ -156,7 +156,7 @@
 					<object class="IBUITextField" id="869404779">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">258</int>
-						<string key="NSFrame">{{92, 78}, {208, 31}}</string>
+						<string key="NSFrame">{{92, 77}, {208, 31}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="477301068"/>
@@ -244,19 +244,19 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">txtTo</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="869404779"/>
-					</object>
-					<int key="connectionID">31</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">view</string>
 						<reference key="source" ref="372490531"/>
 						<reference key="destination" ref="191373211"/>
 					</object>
 					<int key="connectionID">32</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">txtTo</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="945277361"/>
+					</object>
+					<int key="connectionID">34</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
@@ -271,9 +271,9 @@
 						<string key="label">txtEditingDidBegin:</string>
 						<reference key="source" ref="945277361"/>
 						<reference key="destination" ref="372490531"/>
-						<int key="IBEventType">19</int>
+						<int key="IBEventType">17</int>
 					</object>
-					<int key="connectionID">26</int>
+					<int key="connectionID">36</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
@@ -288,18 +288,9 @@
 						<string key="label">txtEditingDidBegin:</string>
 						<reference key="source" ref="869404779"/>
 						<reference key="destination" ref="372490531"/>
-						<int key="IBEventType">19</int>
+						<int key="IBEventType">17</int>
 					</object>
-					<int key="connectionID">27</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">txtEditingDidEnd:</string>
-						<reference key="source" ref="869404779"/>
-						<reference key="destination" ref="372490531"/>
-						<int key="IBEventType">19</int>
-					</object>
-					<int key="connectionID">28</int>
+					<int key="connectionID">35</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
@@ -307,7 +298,7 @@
 						<reference key="source" ref="253647806"/>
 						<reference key="destination" ref="372490531"/>
 					</object>
-					<int key="connectionID">25</int>
+					<int key="connectionID">33</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -324,10 +315,10 @@
 						<array class="NSMutableArray" key="children">
 							<reference ref="559456193"/>
 							<reference ref="477301068"/>
-							<reference ref="945277361"/>
 							<reference ref="250024500"/>
-							<reference ref="869404779"/>
 							<reference ref="253647806"/>
+							<reference ref="945277361"/>
+							<reference ref="869404779"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -391,7 +382,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">32</int>
+			<int key="maxID">36</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -406,20 +397,17 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">MessagesViewController</string>
 					<string key="superclassName">UIViewController</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="txtEditingDidBegin:">UITextField</string>
-						<string key="txtEditingDidEnd:">UITextField</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="txtEditingDidBegin:">
+					<object class="NSMutableDictionary" key="actions">
+						<string key="NS.key.0">txtEditingDidBegin:</string>
+						<string key="NS.object.0">UITextField</string>
+					</object>
+					<object class="NSMutableDictionary" key="actionInfosByName">
+						<string key="NS.key.0">txtEditingDidBegin:</string>
+						<object class="IBActionInfo" key="NS.object.0">
 							<string key="name">txtEditingDidBegin:</string>
 							<string key="candidateClassName">UITextField</string>
 						</object>
-						<object class="IBActionInfo" key="txtEditingDidEnd:">
-							<string key="name">txtEditingDidEnd:</string>
-							<string key="candidateClassName">UITextField</string>
-						</object>
-					</dictionary>
+					</object>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="txtMessage">CustomUITextView</string>
 						<string key="txtSubject">UITextField</string>

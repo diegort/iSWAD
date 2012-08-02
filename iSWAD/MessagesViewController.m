@@ -244,9 +244,10 @@ bool showError, showLoginError;
     [self.view scrollToView:sender];
 }
 
-- (IBAction)txtEditingDidEnd:(UITextField *)sender {
-    [self.view scrollToY:(-1 * txtMessage.frame.origin.y + 5)];
+-(void)textViewDidBeginEditing:(UITextView *)textView{
+    [self.view scrollToY:(-1 * textView.frame.origin.y + 5)];
 }
+
 - (void)dealloc {
     [txtMessage release];
     [txtTo release];

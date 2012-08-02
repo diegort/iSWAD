@@ -19,7 +19,4 @@
 - (BOOL) saveNotifications:(NSArray *)notifcations;
 - (BOOL) markNotificationAsRead:(int)notCode;
 
-- (int) getUserType;
-- (BOOL) saveUser;
-
 @end

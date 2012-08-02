@@ -12,12 +12,14 @@
 #import "MessagesViewController.h"
 #import "AboutViewController.h"
 #import "NotificationsViewController.h"
+#import "SubjectsViewController.h"
 
 #import "Login.h"
 #import "loginByUPOut.h"
 #import "User.h"
 
 #define NotificationsKey    @"Notifications"
+#define NoticesKey    @"Notices"
 
 NSMutableArray *elementsList;
 
@@ -74,11 +76,11 @@ bool showError;
                         /*[NSDictionary dictionaryWithObjectsAndKeys:
                          NSLocalizedString(@"Tests", nil),@"titleValue",
                          @"test.png",@"icon",
-                         nil],
-                        [NSDictionary dictionaryWithObjectsAndKeys:
-                         NSLocalizedString(@"Notices", nil),@"titleValue",
-                         @"note.png",@"icon",
                          nil],*/
+                        [NSDictionary dictionaryWithObjectsAndKeys:
+                         NoticesKey,@"key",
+                         @"note.png",@"icon",
+                         nil],
                         nil];
     }else{
         elementsList = [NSArray arrayWithObjects:
@@ -295,56 +297,6 @@ bool showError;
     }
 }
 
-/*- (void) loginHandler: (id) value { 
-    
-	if(showError){
-        showError = NO;
-        if ([value isKindOfClass:[NSError class]]) { // Handle errors
-		//NSLog(@"%@", value);
-            //NSError *err = (NSError *) value;
-        
-            UIAlertView *alert = [[UIAlertView alloc]
-                              initWithTitle: NSLocalizedString(@"noConnectionAlertTitle", nil)
-                              message: NSLocalizedString(@"noConnectionAlertMessage", nil)
-                              delegate: nil
-                              cancelButtonTitle:NSLocalizedString(@"Accept", nil)
-                              otherButtonTitles:nil];
-            [alert show];
-            [alert release];
-        } else if([value isKindOfClass:[SoapFault class]]) { // Handle faults
-            SoapFault *err = (SoapFault *) value;
-        
-            if ([[err faultString] hasPrefix:@"Bad l"]) {
-                UIAlertView *alert = [[UIAlertView alloc]
-                                  initWithTitle: NSLocalizedString(@"loginErrorAlertTitle", nil)
-                                  message: NSLocalizedString(@"loginErrorAlertMessage", nil)
-                                  delegate: nil
-                                  cancelButtonTitle:NSLocalizedString(@"Accept", nil)
-                                  otherButtonTitles:nil];
-                [alert show];
-                [alert release];
-            }
-        } else if ([value isKindOfClass:[loginByUserPasswordKeyOutput class]]){ //All went OK
-            loginByUserPasswordKeyOutput* tmp = (loginByUserPasswordKeyOutput*)value;
-        
-            [User setUserCode:tmp.userCode];
-            [User setUserTypeCode:tmp.userTypeCode];
-            [User setWsKey:tmp.wsKey];
-            [User setUserID:tmp.userID];
-            [User setUserSurname1:tmp.userSurname1];
-            [User setUserSurname2:tmp.userSurname2];
-            [User setUserFirstname:tmp.userFirstname];
-            [User setUserTypeName:tmp.userTypeName];
-
-            
-            [self loadMenu];
-            [self.tableView reloadData];
-        }
-        [self continueLoading];
-    }
-}*/
-
-
 - (void)viewWillDisappear:(BOOL)animated
 {
 	[super viewWillDisappear:animated];
@@ -377,7 +329,7 @@ bool showError;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 55.0;
+    return 45.0;
 }
 
 - (NSString *)tableView:(UITableView *)tableView
@@ -409,56 +361,8 @@ titleForHeaderInSection:(NSInteger)section {
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete)
-    {
-        // Delete the row from the data source.
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }
-    else if (editingStyle == UITableViewCellEditingStyleInsert)
-    {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {    
-    /*DetailViewController *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-    // ...
-    // Pass the selected object to the new view controller.
-    [self.navigationController pushViewController:detailViewController animated:YES];
-    [detailViewController release];
-	*/
-    
     NSDictionary *tmp = [elementsList objectAtIndex:(int)indexPath.section];
     
     NSString *key = [tmp objectForKey:@"key"];
@@ -467,34 +371,14 @@ titleForHeaderInSection:(NSInteger)section {
     
     if ([key isEqualToString:NotificationsKey]){
         view = [[NotificationsViewController alloc] initWithNibName:[NotificationsViewController description] bundle:nil];
+    } else if([key isEqualToString:NoticesKey]){
+        view = [[SubjectsViewController alloc] initWithNibName:[SubjectsViewController description] bundle:nil];
     }
     
     if (view != NULL) {
         [self.navigationController pushViewController:view animated:YES];
         [view release];
     }
-    
-    
-    /*int selection = (int)indexPath.section;
-    switch (selection) {
-        case 0:{
-            [self about];
-            break;
-        }
-        case 1:{
-            NotificationsViewController *notif = [[NotificationsViewController alloc] initWithNibName:@"NotificationsViewController" bundle:nil];
-            //lg.title = [[tableView cellForRowAtIndexPath:indexPath].textLabel text];
-            [self.navigationController pushViewController:notif animated:YES];
-            [notif release];
-            break;
-        }
-            
-        default:{
-            
-            [self about];
-            break;
-        }
-    }*/
 }
 
 - (void)didReceiveMemoryWarning

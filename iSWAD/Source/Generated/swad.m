@@ -222,17 +222,17 @@
 	}
 
 	/* Returns int. Service definition of function swad__sendMessage */
-	- (SoapRequest*) sendMessage: (id <SoapDelegate>) handler wsKey: (NSString*) wsKey messageCode: (int) messageCode to: (NSString*) to subject: (NSString*) subject body: (NSString*) body
+	- (SoapRequest*) sendMessage: (id <SoapDelegate>) handler wsKey: (NSString*) wsKey messageCode: (long) messageCode to: (NSString*) to subject: (NSString*) subject body: (NSString*) body
 	{
 		return [self sendMessage: handler action: nil wsKey: wsKey messageCode: messageCode to: to subject: subject body: body];
 	}
 
-	- (SoapRequest*) sendMessage: (id) _target action: (SEL) _action wsKey: (NSString*) wsKey messageCode: (int) messageCode to: (NSString*) to subject: (NSString*) subject body: (NSString*) body
+	- (SoapRequest*) sendMessage: (id) _target action: (SEL) _action wsKey: (NSString*) wsKey messageCode: (long) messageCode to: (NSString*) to subject: (NSString*) subject body: (NSString*) body
 		{
 		NSMutableArray* _params = [NSMutableArray array];
 		
 		[_params addObject: [[[SoapParameter alloc] initWithValue: wsKey forName: @"wsKey"] autorelease]];
-		[_params addObject: [[[SoapParameter alloc] initWithValue: [NSNumber numberWithInt: messageCode] forName: @"messageCode"] autorelease]];
+		[_params addObject: [[[SoapParameter alloc] initWithValue: [NSNumber numberWithLong: messageCode] forName: @"messageCode"] autorelease]];
 		[_params addObject: [[[SoapParameter alloc] initWithValue: to forName: @"to"] autorelease]];
 		[_params addObject: [[[SoapParameter alloc] initWithValue: subject forName: @"subject"] autorelease]];
 		[_params addObject: [[[SoapParameter alloc] initWithValue: body forName: @"body"] autorelease]];

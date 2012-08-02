@@ -7,13 +7,14 @@
 //
 
 #import "NotificationsViewController.h"
+#import "NotificationDetailViewController.h"
 #import "NotificationCell.h"
 #import "swad.h"
 #import "loginByUPOut.h"
 #import "getNotificationsOutput.h"
 #import "User.h"
 #import "Login.h"
-#import "NotificationDetailViewController.h"
+#import "WebCommunication.h"
 
 #define TITLELABEL_TAG  2
 #define DETAILTEXT_TAG  3
@@ -32,18 +33,6 @@ BOOL showError;
 @implementation NotificationsViewController
 @synthesize tvCell;
 
--(void)getNotifications{
-    swad* service = [swad service];
-    
-    NSNumber *tmp = [[NSUserDefaults standardUserDefaults] objectForKey:@"notificationsUpdateTime"];
-    long beginTime = [tmp longValue];
-    NSDate *now = [[NSDate alloc] initWithTimeIntervalSinceNow:0];
-    currentTime = (time_t) [now timeIntervalSince1970];
-    
-    showError = YES;
-    [service getNotifications:self action:@selector(notificationsHandler:) wsKey:User.wsKey beginTime:beginTime];
-}
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -54,23 +43,32 @@ BOOL showError;
     return self;
 }
 
--(void) reloadNotifications{
-    //Show activiy indicator in system bar
-    app.networkActivityIndicatorVisible = YES;
+-(void) updateNotificationsDone{
+    app.networkActivityIndicatorVisible = NO;
     
-    //[activityIndicatorView startAnimating];
-    NSDate *now = [[NSDate alloc] initWithTimeIntervalSinceNow:0];
-    //time_t time = (time_t) [now timeIntervalSince1970];
-    int timeDif = [now timeIntervalSinceDate:[NSDate dateWithTimeIntervalSince1970:[User loginTime]]];
-    if (![User loged] || timeDif > 3600) {
-        showLoginError = YES;
-        [Login loginTarget:self action:@selector(loginHandler:)];
-    } else {
-        [self getNotifications];
+    [notifications release];
+    notifications = nil;
+    notifications = [myDB getNotifications];
+    [notifications retain];
+    
+    if (notifications.count > 0) {
+        if(noNotif){
+            [noNotif removeFromSuperview];
+            self.tableView.bounces = YES;
+        }
     }
+    
+    [self.tableView reloadData];
 }
 
-- (void) notificationsHandler: (id) value { 
+-(void) reloadNotifications{
+    app.networkActivityIndicatorVisible = YES;
+    
+    WebCommunication *myWB = [[WebCommunication alloc] init];
+    [myWB updateNotifications];
+}
+
+/*- (void) notificationsHandler: (id) value { 
     
 	if(showError){
         showError = NO;
@@ -167,7 +165,7 @@ BOOL showError;
             [self getNotifications];
         }
     }
-}
+}*/
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -225,6 +223,8 @@ BOOL showError;
         [self.view addSubview:noNotif];
         self.tableView.bounces = NO;
     }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateNotificationsDone) name:@"updateNotificationsDone" object:nil];
     
     app = [UIApplication sharedApplication];
     
@@ -290,7 +290,8 @@ BOOL showError;
 - (NSString *)tableView:(UITableView *)tableView
 titleForHeaderInSection:(NSInteger)section {
     //return @"iSWAD";
-    return NSLocalizedString(@"Notifications", nil);
+    //return NSLocalizedString(@"Notifications", nil);
+    return @"";
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

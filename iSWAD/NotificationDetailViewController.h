@@ -11,7 +11,7 @@
 @interface NotificationDetailViewController : UIViewController
 
 @property (retain, nonatomic) NSString *Type;
-@property (nonatomic) int Code;
+@property (nonatomic) long Code;
 @property (retain, nonatomic) NSString *Subject;
 
 @property (retain, nonatomic) IBOutlet UIWebView *wvDetails;

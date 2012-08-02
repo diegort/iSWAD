@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "CustomUITextView.h"
 
-@interface MessagesViewController : UIViewController{
-    int _messageCode;
+@interface MessagesViewController : UIViewController<UITextViewDelegate>{
+    long _messageCode;
     NSString *_subject;
 }
 
@@ -22,8 +22,6 @@
 
 - (IBAction)txtEditingDidBegin:(UITextField *)sender;
 
-- (IBAction)txtEditingDidEnd:(UITextField *)sender;
-
-- (void) setSubject:(NSString *) subject messageCode:(int)code;
+- (void) setSubject:(NSString *) subject messageCode:(long)code;
 
 @end
