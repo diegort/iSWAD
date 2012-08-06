@@ -17,8 +17,15 @@
 @implementation WebCommunication
 
 bool showLoginError;
-bool showError;
+bool showNotifError;
+bool showMessageError;
 time_t currentTime;
+
+NSString *_messageBody;
+NSString *_messageSubject;
+NSString *_messageReceivers;
+long  _messageCode;
+
 
 id target;
 SEL act;
@@ -29,6 +36,14 @@ SEL act;
         myDB = [[DBManager alloc] init];
     }
     return self;
+}
+
+-(BOOL)loginNeeded{
+    NSDate *now = [[NSDate alloc] initWithTimeIntervalSinceNow:0];
+    //time_t time = (time_t) [now timeIntervalSince1970];
+    int timeDif = [now timeIntervalSinceDate:[NSDate dateWithTimeIntervalSince1970:[User loginTime]]];
+    
+    return (![User loged] || timeDif > 3600);
 }
 
 - (void) loginWithTarget: (id)object Action: (SEL)method{
@@ -86,21 +101,72 @@ SEL act;
     }
 }
 
-- (void) sendMessage: (NSString *)message subject: (NSString *)subject to: (NSString *)receivers code: (long) code{
-    NSDate *now = [[NSDate alloc] initWithTimeIntervalSinceNow:0];
-    //time_t time = (time_t) [now timeIntervalSince1970];
-    int timeDif = [now timeIntervalSinceDate:[NSDate dateWithTimeIntervalSince1970:[User loginTime]]];
-    if (![User loged] || timeDif > 3600) {
-        //[self loginWithTarget:self Action:@selector(updateNotifications)];
-    } else {
-        //[self getNotifications];
+//#section "Messages"
+
+- (void) sendMessageHandler: (id) value { 
+    id param;
+	if(showMessageError){
+        showMessageError = NO;
+        if ([value isKindOfClass:[NSError class]]) { // Handle errors
+            //NSLog(@"%@", value);
+            //NSError *err = (NSError *) value;
+            UIAlertView *alert = [[UIAlertView alloc]
+                                  initWithTitle: NSLocalizedString(@"noConnectionAlertTitle", nil)
+                                  message: NSLocalizedString(@"noConnectionAlertMessage", nil)
+                                  delegate: nil
+                                  cancelButtonTitle:NSLocalizedString(@"Accept", nil)
+                                  otherButtonTitles:nil];
+            [alert show];
+            [alert release];
+        } else if([value isKindOfClass:[SoapFault class]]) { // Handle faults
+            UIAlertView *alert = [[UIAlertView alloc]
+                                  initWithTitle: NSLocalizedString(@"sendMessageErrorAlertTitle", nil)
+                                  message: NSLocalizedString(@"sendMessageErrorAlertMessage", nil)
+                                  delegate: nil
+                                  cancelButtonTitle:NSLocalizedString(@"Accept", nil)
+                                  otherButtonTitles:nil];
+            [alert show];
+            [alert release];
+        } else if ([value isKindOfClass:[sendMessageOutput class]]){ //All went OK
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"messageSent" object:param];                                
+        }
+        
     }
+}
+
+
+-(void) sendMessageToUsers{
+    swad* service = [swad service];
+    
+    showMessageError = YES;
+    [service sendMessage:self action:@selector(sendMessageHandler:) wsKey:User.wsKey messageCode:_messageCode to:_messageReceivers subject:_messageSubject body:_messageBody];
+}
+
+- (void) sendMessage: (NSString *)message subject: (NSString *)subject to: (NSString *)receivers code: (long) code{
+    _messageCode = code;
+    _messageBody = message;
+    _messageSubject = subject;
+    _messageReceivers = receivers;
+    
+    [_messageBody retain];
+    [_messageReceivers retain];
+    [_messageSubject retain];
+    
+    if ([self loginNeeded]) {
+        [self loginWithTarget:self Action:@selector(sendMessageToUsers)];
+    } else {
+        [self sendMessageToUsers];
+    }
+}
+
+- (void) sendMessage: (NSString *)message subject: (NSString *)subject to: (NSString *)receivers{
+    [self sendMessage:message subject:subject to:receivers code:0];
 }
 
 - (void) notificationsHandler: (id) value { 
     
-	if(showError){
-        showError = NO;
+	if(showNotifError){
+        showNotifError = NO;
         if ([value isKindOfClass:[NSError class]]) { // Handle errors
             //NSLog(@"%@", value);
             //NSError *err = (NSError *) value;
@@ -114,18 +180,14 @@ SEL act;
             [alert show];
             [alert release];
         } else if([value isKindOfClass:[SoapFault class]]) { // Handle faults
-            SoapFault *err = (SoapFault *) value;
-            
-            if ([[err faultString] hasPrefix:@"Bad l"]) {
-                UIAlertView *alert = [[UIAlertView alloc]
-                                      initWithTitle: NSLocalizedString(@"getNotificationsErrorAlertTitle", nil)
-                                      message: NSLocalizedString(@"getNotificationsErrorAlertMessage", nil)
-                                      delegate: nil
-                                      cancelButtonTitle:NSLocalizedString(@"Accept", nil)
-                                      otherButtonTitles:nil];
-                [alert show];
-                [alert release];
-            }
+            UIAlertView *alert = [[UIAlertView alloc]
+                                  initWithTitle: NSLocalizedString(@"getNotificationsErrorAlertTitle", nil)
+                                  message: NSLocalizedString(@"getNotificationsErrorAlertMessage", nil)
+                                  delegate: nil
+                                  cancelButtonTitle:NSLocalizedString(@"Accept", nil)
+                                  otherButtonTitles:nil];
+            [alert show];
+            [alert release];
         } else if ([value isKindOfClass:[getNotificationsOutput class]]){ //All went OK
             getNotificationsOutput* tmp = (getNotificationsOutput*)value;
             //Esto a la función de retorno de
@@ -162,15 +224,12 @@ SEL act;
     NSDate *now = [[NSDate alloc] initWithTimeIntervalSinceNow:0];
     currentTime = (time_t) [now timeIntervalSince1970];
     
-    showError = YES;
+    showNotifError = YES;
     [service getNotifications:self action:@selector(notificationsHandler:) wsKey:User.wsKey beginTime:beginTime];
 }
 
 - (void) updateNotifications{
-    NSDate *now = [[NSDate alloc] initWithTimeIntervalSinceNow:0];
-    //time_t time = (time_t) [now timeIntervalSince1970];
-    int timeDif = [now timeIntervalSinceDate:[NSDate dateWithTimeIntervalSince1970:[User loginTime]]];
-    if (![User loged] || timeDif > 3600) {
+    if ([self loginNeeded]) {
         [self loginWithTarget:self Action:@selector(getNotifs)];
     } else {
         [self getNotifs];

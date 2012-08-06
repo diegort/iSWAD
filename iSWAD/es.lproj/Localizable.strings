@@ -32,6 +32,9 @@
 "Send" = "Enviar";
 "sentMessageAlertTitle" = "Mensaje enviado a";
 
+"getNotificationsErrorAlertTitle" = "Error";
+"getNotificationsErrorAlertMessage" = "Se ha producido un error al descargar las notificaciones. Inténtelo de nuevo y si persiste el error póngase en contacto con el administrador.";
+
 "Version" = "Versión ";
 
 "Refresh" = "Actualizar";

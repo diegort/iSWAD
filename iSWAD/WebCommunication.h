@@ -16,5 +16,6 @@
 - (void) login;
 - (void) updateNotifications;
 - (void) sendMessage: (NSString *)message subject: (NSString *)subject to: (NSString *)receivers code: (long) code;
+- (void) sendMessage: (NSString *)message subject: (NSString *)subject to: (NSString *)receivers;
 
 @end

@@ -11,9 +11,9 @@
 #import "swad.h"
 #import "User.h"
 #import "sendMessageOutput.h"
-#import "Login.h"
+#import "WebCommunication.h"
 
-bool showError, showLoginError;
+UIResponder *activeTextBox;
 
 @implementation MessagesViewController
 @synthesize txtMessage;
@@ -27,13 +27,17 @@ bool showError, showLoginError;
         // Custom initialization
         //self.navigationController.navigationBarHidden = YES;
         
-        UIBarButtonItem *rigthBtn = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Send",nil) style:UIBarButtonItemStyleDone target:self action:@selector(send)];
+        UIBarButtonItem *rigthBtn = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Send",nil) style:UIBarButtonItemStyleDone target:self action:@selector(sendMessage)];
         float r,g,b;
         r = 153./255;
         g = 204./255;
         b = 102./255;
         rigthBtn.tintColor = [UIColor colorWithRed:r green:g blue:b alpha:1];
         self.navigationItem.rightBarButtonItem = rigthBtn;
+        
+        app = [UIApplication sharedApplication];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendMessageDone:) name:@"messageSent" object:nil];
     }
     return self;
 }
@@ -45,6 +49,7 @@ bool showError, showLoginError;
     UIResponder* nextResponder = [textField.superview viewWithTag:nextTag];
     if (nextResponder) {
         // Found next responder, so set it.
+        activeTextBox = nextResponder;
         [nextResponder becomeFirstResponder];
         return NO;
     } else {
@@ -56,7 +61,31 @@ bool showError, showLoginError;
      // We do not want UITextField to insert line-breaks.
 }
 
-- (void) setSubject:(NSString *) subject messageCode:(int)code{
+-(void) sendMessageDone: (NSNotification *) notification{
+    app.networkActivityIndicatorVisible = NO;
+    
+    sendMessageOutput *tmp = (sendMessageOutput *)[notification object] ;
+    NSMutableString *msg = [[NSMutableString alloc] initWithString:@""];
+    
+    for (user *u in tmp.users){
+        [msg appendString:[[[[[u.userFirstname stringByAppendingString: @" "] stringByAppendingString: u.userSurname1] stringByAppendingString: @" ("] stringByAppendingString: u.userNickname] stringByAppendingString: @")\n"]];
+    }
+    UIAlertView *alert = [[UIAlertView alloc]
+                          initWithTitle: NSLocalizedString(@"sentMessageAlertTitle", nil)
+                          message: msg
+                          delegate: nil
+                          cancelButtonTitle:NSLocalizedString(@"Accept", nil)
+                          otherButtonTitles:nil];
+    [alert show];
+    [alert release];
+    
+    //usersArray *uA = (usersArray *)value;
+    txtTo.text = @"";
+    txtSubject.text = @"";
+    txtMessage.text = @"";
+}
+
+- (void) setSubject:(NSString *) subject messageCode:(long)code{
     _messageCode = code;
     NSString *tmp = [@"RE:" stringByAppendingString:subject];
     _subject = tmp;
@@ -68,7 +97,6 @@ bool showError, showLoginError;
 }
 
 -(void) sendMessage{
-    swad* service = [swad service];
     NSString *subject = txtSubject.text;
     NSString *receivers = txtTo.text;
     NSString *body = txtMessage.text;
@@ -76,29 +104,16 @@ bool showError, showLoginError;
     //Check receivers
     if (![self checkReceivers:receivers]){
     }else{
-        showError = YES;
-        UIApplication* app = [UIApplication sharedApplication];
-        //to show it, set it to YES
         app.networkActivityIndicatorVisible = YES;
-        [service sendMessage:self action:@selector(sendMessageHandler:) wsKey:User.wsKey messageCode:_messageCode to:receivers subject:subject body:body];
+        
+        WebCommunication *myWB = [[WebCommunication alloc] init];
+        [myWB sendMessage:body subject:subject to:receivers code:_messageCode];
+        [self.view scrollToY:0];
+        [activeTextBox resignFirstResponder];
     }
 }
 
--(void) send{
-    [txtMessage resignFirstResponder];
-    
-    //[activityIndicatorView startAnimating];
-    NSDate *now = [[NSDate alloc] initWithTimeIntervalSinceNow:0];
-    //time_t time = (time_t) [now timeIntervalSince1970];
-    int timeDif = [now timeIntervalSinceDate:[NSDate dateWithTimeIntervalSince1970:[User loginTime]]];
-    if (![User loged] || timeDif > 3600) {
-        showLoginError = YES;
-        [Login loginTarget:self action:@selector(loginHandler:)];
-    } else {
-        [self sendMessage];
-    }
-}
-
+/*
 - (void) sendMessageHandler: (id) value {   
     UIApplication* app = [UIApplication sharedApplication];
 	//to show it, set it to YES
@@ -141,8 +156,6 @@ bool showError, showLoginError;
             [msg appendString:[[[[[u.userFirstname stringByAppendingString: @" "] stringByAppendingString: u.userSurname1] stringByAppendingString: @" ("] stringByAppendingString: u.userNickname] stringByAppendingString: @")\n"]];
         }
         UIAlertView *alert = [[UIAlertView alloc]
-                              /*initWithTitle: NSLocalizedString(@"loginErrorAlertTitle", nil)
-                              message: NSLocalizedString(@"loginErrorAlertMessage", nil)*/
                               initWithTitle: NSLocalizedString(@"sentMessageAlertTitle", nil)
                               message: msg
                               delegate: nil
@@ -200,7 +213,7 @@ bool showError, showLoginError;
         }
     }
 }
-
+*/
 - (void)didReceiveMemoryWarning
 {
     // Releases the view if it doesn't have a superview.

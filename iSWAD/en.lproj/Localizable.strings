@@ -32,6 +32,9 @@
 "Send" = "Send";
 "sentMessageAlertTitle" = "Message successfully sent to";
 
+"getNotificationsErrorAlertTitle" = "Error";
+"getNotificationsErrorAlertMessage" = "An error has occurred while notifications download. Try again and if the error continues notify it to administrator.";
+
 "Version" = "Version ";
 
 "Refresh" = "Refresh";

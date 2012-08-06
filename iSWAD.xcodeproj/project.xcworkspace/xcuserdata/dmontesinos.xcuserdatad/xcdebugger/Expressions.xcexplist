@@ -15,6 +15,14 @@
          contextName = "-[LoginViewController loginByUserPasswordKeyHandler:]:LoginViewController.m">
       </ContextState>
       <ContextState
+         contextName = "-[WebCommunication sendMessageToUsers]:WebCommunication.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "_messageBody">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "+[SoapRequest create:action:service:soapAction:postData:deserializeTo:]:SoapRequest.m">
       </ContextState>
       <ContextState

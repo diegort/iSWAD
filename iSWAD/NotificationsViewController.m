@@ -37,7 +37,36 @@ BOOL showError;
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        selectedIndex = -1;
         
+        myDB = [[DBManager alloc] init];
+        notifications = [myDB getNotifications];
+        [notifications retain];
+        
+        /*activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+         
+         activityIndicatorView.center = CGPointMake(160, 180);
+         activityIndicatorView.hidesWhenStopped = YES;
+         
+         [self.view addSubview:activityIndicatorView];*/
+        
+        if(notifications.count == 0){
+            noNotif = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
+            UITextView *myLabel2 = [[UITextView alloc] initWithFrame:noNotif.frame];
+            myLabel2.text = NSLocalizedString(@"noNotifications", nil);
+            myLabel2.textAlignment = UITextAlignmentLeft;
+            myLabel2.font = [UIFont fontWithName:@"Helvetica" size:30];
+            myLabel2.userInteractionEnabled = NO;
+            
+            [noNotif addSubview:myLabel2];
+            [myLabel2 release];
+            [self.view addSubview:noNotif];
+            self.tableView.bounces = NO;
+        }
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateNotificationsDone) name:@"updateNotificationsDone" object:nil];
+        
+        app = [UIApplication sharedApplication];
     }
 
     return self;
@@ -196,38 +225,7 @@ BOOL showError;
     // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    selectedIndex = -1;
-    
-    myDB = [[DBManager alloc] init];
-    notifications = [myDB getNotifications];
-    [notifications retain];
-    
-    /*activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-     
-     activityIndicatorView.center = CGPointMake(160, 180);
-     activityIndicatorView.hidesWhenStopped = YES;
-     
-     [self.view addSubview:activityIndicatorView];*/
-    
-    if(notifications.count == 0){
-        noNotif = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
-        UITextView *myLabel2 = [[UITextView alloc] initWithFrame:noNotif.frame];
-        myLabel2.text = NSLocalizedString(@"noNotifications", nil);
-        myLabel2.textAlignment = UITextAlignmentLeft;
-        myLabel2.font = [UIFont fontWithName:@"Helvetica" size:30];
-        myLabel2.userInteractionEnabled = NO;
-        
-        [noNotif addSubview:myLabel2];
-        [myLabel2 release];
-        [self.view addSubview:noNotif];
-        self.tableView.bounces = NO;
-    }
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateNotificationsDone) name:@"updateNotificationsDone" object:nil];
-    
-    app = [UIApplication sharedApplication];
-    
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;    
 }
 
 - (void)viewDidUnload
@@ -422,13 +420,14 @@ titleForHeaderInSection:(NSInteger)section {
 */
 
 -(NSString *) cleanNotificationContent:(NSString *) content{
-    if ([content hasPrefix:@"<![CDATA["]){
-        NSString *res;
-        res = [content substringFromIndex:9];
-        res = [res substringToIndex:res.length - 3];
-        return res;
+    NSString *aux;
+    aux = [content stringByReplacingOccurrencesOfString:@"\n" withString:@"<br/>"];
+    
+    if ([aux    hasPrefix:@"<![CDATA["]){
+        aux = [content substringFromIndex:9];
+        aux = [aux substringToIndex:aux.length - 3];
     }
-    return content;
+    return aux;
 }
 
 #pragma mark - Table view delegate

@@ -12,6 +12,7 @@
 @interface MessagesViewController : UIViewController<UITextViewDelegate>{
     long _messageCode;
     NSString *_subject;
+    UIApplication* app;
 }
 
 @property (retain, nonatomic) IBOutlet CustomUITextView *txtMessage;
