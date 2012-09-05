@@ -1,14 +1,18 @@
 //
-//  SubjectsViewController.m
+//  NoticesViewController.m
 //  iSWAD
 //
-//  Created by Diego Montesinos on 03/04/12.
+//  Created by Diego Montesinos on 22/08/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "SubjectsViewController.h"
+#import "NoticesViewController.h"
 
-@implementation SubjectsViewController
+@interface NoticesViewController ()
+
+@end
+
+@implementation NoticesViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -18,16 +22,6 @@
     }
     return self;
 }
-
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
-}
-
-#pragma mark - View lifecycle
 
 - (void)viewDidLoad
 {
@@ -44,7 +38,6 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
