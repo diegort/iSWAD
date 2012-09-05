@@ -12,7 +12,7 @@
 #import "MessagesViewController.h"
 #import "AboutViewController.h"
 #import "NotificationsViewController.h"
-#import "SubjectsViewController.h"
+#import "NoticesViewController.h"
 
 #import "Login.h"
 #import "loginByUPOut.h"
@@ -255,11 +255,7 @@ bool showError;
 
 -(void) newMessage{
     MessagesViewController *msg = [[MessagesViewController alloc] initWithNibName:@"MessagesViewController" bundle:nil];
-    
-    //lg.title = @"Login";
-    //[msg setSubject:@"Prueba" messageCode:0];
-    //self.navigationController.navigationBarHidden = YES;
-    //self.navigationController.toolbarHidden = YES;
+
     [self.navigationController pushViewController:msg animated:YES];
     [msg release];
 }
@@ -372,7 +368,7 @@ titleForHeaderInSection:(NSInteger)section {
     if ([key isEqualToString:NotificationsKey]){
         view = [[NotificationsViewController alloc] initWithNibName:[NotificationsViewController description] bundle:nil];
     } else if([key isEqualToString:NoticesKey]){
-        view = [[SubjectsViewController alloc] initWithNibName:[SubjectsViewController description] bundle:nil];
+        view = [[NoticesViewController alloc] initWithNibName: @"NoticesViewController" bundle:nil];
     }
     
     if (view != NULL) {

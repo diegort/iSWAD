@@ -10,5 +10,5 @@
 @interface coursesArray : SoapArray
 {
 }
-
+//- (NSMutableString *) serialize;
 @end

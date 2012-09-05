@@ -35,4 +35,16 @@
 		}
 		return s;
 	}
+
+	- (NSMutableString*) serialize{
+		return [self serialize:@"coursesArray"];
+	}
+
+	- (NSMutableString*) serialize:(NSString *)nodeName{
+		NSMutableString* s = [NSMutableString string];
+		[s appendFormat:@"<%@>", nodeName];
+		[s appendString:[coursesArray serialize:self.items]];
+		[s appendFormat:@"</%@>", nodeName];
+		return s;
+	}
 @end

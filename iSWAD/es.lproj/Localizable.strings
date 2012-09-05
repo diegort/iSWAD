@@ -48,3 +48,21 @@
 "survey" = "Encuesta";
 
 "noNotifications" = "No hay notificaciones. Pulse Actualizar para descargarlas desde SWAD.";
+
+"getCoursesErrorAlertTitle" = "Error";
+"getCoursesErrorAlertMessage" = "Se ha producido un error al obtener la lista de asignaturas. Inténtelo de nuevo y si persiste el error póngase en contacto con el administrador.";
+
+"sentNoticeAlertTitle" = "Aviso publicado";
+"sentNoticeAlertMessage" = "El aviso se ha publicado correctamente en ";
+
+"sendNoticeConstraintAlertTitle" = "Faltan datos";
+"sendNoticeConstraintAlertMessage" = "Debe rellenar todos los campos.";
+
+"sendNoticeErrorAlertTitle" = "Error";
+"sendNoticeErrorAlertMessage" = "Se ha producido un error al enviar el aviso.";
+
+"badReceiversTitle" = "Destinatarios incorrectos";
+"badReceiversMessage" = "Revise la lista de destinatarios. La longitud mínima del apodo es de 3 caracteres.";
+
+"noReceiversTitle" = "Destinatarios incorrectos";
+"noReceiversMessage" = "Revise la lista de destinatarios. Introduzca al menos un destinatario.";

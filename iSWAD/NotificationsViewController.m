@@ -63,9 +63,10 @@ BOOL showError;
             [self.view addSubview:noNotif];
             self.tableView.bounces = NO;
         }
-        
+		
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:@"updateNotificationsDone" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateNotificationsDone) name:@"updateNotificationsDone" object:nil];
-        
+		
         app = [UIApplication sharedApplication];
     }
 

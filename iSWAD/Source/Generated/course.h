@@ -11,11 +11,14 @@
 {
 	int _courseCode;
 	NSString* _courseName;
-	
+	NSString* _courseShortName;
+	int _userRole;	
 }
 		
 	@property int courseCode;
+	@property int userRole;
 	@property (retain, nonatomic) NSString* courseName;
+	@property (retain, nonatomic) NSString* courseShortName;
 
 	+ (course*) newWithNode: (CXMLNode*) node;
 	- (id) initWithNode: (CXMLNode*) node;

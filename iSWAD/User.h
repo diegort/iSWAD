@@ -11,7 +11,7 @@
 
 @interface User : NSObject
 
-+(void)initWithUserCode:(int) userCode userTypeCode:(int) userTypeCode wsKey:(NSString *)wskey userID:(NSString *)userID userSurname1:(NSString *)userSurname1 userSurname2:(NSString *) userSurname2 userFirstname:(NSString *)userFirstname userTypeName:(NSString *)userTypeName;
++(void)initWithUserCode:(int) userCode userTypeCode:(int) userTypeCode wsKey:(NSString *)wskey userID:(NSString *)userID userSurname1:(NSString *)userSurname1 userSurname2:(NSString *) userSurname2 userFirstname:(NSString *)userFirstname ;
 
 +(void) initWithLoginOutput:(loginByUserPasswordKeyOutput *) value time:(time_t) tValue;
 
@@ -23,7 +23,6 @@
 +(NSString *) userSurname1;
 +(NSString *) userSurname2;
 +(NSString *) userFirstname;
-+(NSString *) userTypeName;
 +(BOOL) loged;
 +(time_t) loginTime;
 
@@ -35,7 +34,6 @@
 +(void) setUserSurname1:(NSString *) value;
 +(void) setUserSurname2:(NSString *) value;
 +(void) setUserFirstname:(NSString *) value;
-+(void) setUserTypeName:(NSString *) value;
 +(void) setLoged:(BOOL) value;
 +(void) setLoginTime: (time_t) value;
 @end

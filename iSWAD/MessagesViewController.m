@@ -37,6 +37,7 @@ UIResponder *activeTextBox;
         
         app = [UIApplication sharedApplication];
         
+		[[NSNotificationCenter defaultCenter] removeObserver:self name:@"messageSent" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendMessageDone:) name:@"messageSent" object:nil];
     }
     return self;
@@ -93,7 +94,15 @@ UIResponder *activeTextBox;
 }
 
 - (bool) checkReceivers:(NSString*) receivers{
-    return YES;
+    NSArray *tmp = [receivers componentsSeparatedByString: @","];
+	NSString *aux;
+	for (int i=0; i<tmp.count; i++) {
+		aux = [tmp objectAtIndex:i];
+		if ((aux.length < 3) && (aux.length > 0)){
+			return NO;
+		}
+	}
+	return YES;
 }
 
 -(void) sendMessage{
@@ -101,119 +110,40 @@ UIResponder *activeTextBox;
     NSString *receivers = txtTo.text;
     NSString *body = txtMessage.text;
     
-    //Check receivers
-    if (![self checkReceivers:receivers]){
-    }else{
-        app.networkActivityIndicatorVisible = YES;
+	[txtTo resignFirstResponder];
+	[txtSubject resignFirstResponder];
+	[txtMessage resignFirstResponder];
+	[self.view scrollToY:0];  
+	
+	if ((_messageCode == 0) && (receivers.length == 0)) {
+		UIAlertView *alert = [[UIAlertView alloc]
+							  initWithTitle: NSLocalizedString(@"noReceiversTitle", nil)
+							  message: NSLocalizedString(@"noReceiversMessage", nil)
+							  delegate: nil
+							  cancelButtonTitle:NSLocalizedString(@"Accept", nil)
+							  otherButtonTitles:nil];
+		[alert show];
+		[alert release];
+	} else{
+		//Check receivers
+		if (![self checkReceivers:receivers]){
+			UIAlertView *alert = [[UIAlertView alloc]
+								  initWithTitle: NSLocalizedString(@"badReceiversTitle", nil)
+								  message: NSLocalizedString(@"badReceiversMessage", nil)
+								  delegate: nil
+								  cancelButtonTitle:NSLocalizedString(@"Accept", nil)
+								  otherButtonTitles:nil];
+			[alert show];
+			[alert release];
+		}else{
+			app.networkActivityIndicatorVisible = YES;
         
-        WebCommunication *myWB = [[WebCommunication alloc] init];
-        [myWB sendMessage:body subject:subject to:receivers code:_messageCode];
-        [self.view scrollToY:0];
-        [activeTextBox resignFirstResponder];
-    }
+			WebCommunication *myWB = [[WebCommunication alloc] init];
+			[myWB sendMessage:body subject:subject to:receivers code:_messageCode];
+		}
+	}
 }
 
-/*
-- (void) sendMessageHandler: (id) value {   
-    UIApplication* app = [UIApplication sharedApplication];
-	//to show it, set it to YES
-	app.networkActivityIndicatorVisible = NO;
-    
-	if((showError)&&([value isKindOfClass:[NSError class]])) { // Handle errors
-		//NSLog(@"%@", value);
-        //NSError *err = (NSError *) value;
-        UIAlertView *alert = [[UIAlertView alloc]
-                              initWithTitle: NSLocalizedString(@"noConnectionAlertTitle", nil)
-                              message: NSLocalizedString(@"noConnectionAlertMessage", nil)
-                              delegate: nil
-                              cancelButtonTitle:NSLocalizedString(@"Accept", nil)
-                              otherButtonTitles:nil];
-        [alert show];
-        [alert release];
-        showError = NO;
-        
-	} else if([value isKindOfClass:[SoapFault class]]) { // Handle faults
-        SoapFault *err = (SoapFault *) value;
-        
-        if ([[err faultString] hasPrefix:@"Bad l"]) {
-            UIAlertView *alert = [[UIAlertView alloc]
-                                  initWithTitle: NSLocalizedString(@"loginErrorAlertTitle", nil)
-                                  message: NSLocalizedString(@"loginErrorAlertMessage", nil)
-                                  delegate: nil
-                                  cancelButtonTitle:NSLocalizedString(@"Accept", nil)
-                                  otherButtonTitles:nil];
-            [alert show];
-            [alert release];
-        }
-        
-	} else if ([value isKindOfClass:[sendMessageOutput class]]){ //All is OK
-        
-        //[self.navigationController popViewControllerAnimated:YES];
-        sendMessageOutput *tmp = (sendMessageOutput *)value;
-        NSMutableString *msg = [[NSMutableString alloc] initWithString:@""];
-        
-        for (user *u in tmp.users){
-            [msg appendString:[[[[[u.userFirstname stringByAppendingString: @" "] stringByAppendingString: u.userSurname1] stringByAppendingString: @" ("] stringByAppendingString: u.userNickname] stringByAppendingString: @")\n"]];
-        }
-        UIAlertView *alert = [[UIAlertView alloc]
-                              initWithTitle: NSLocalizedString(@"sentMessageAlertTitle", nil)
-                              message: msg
-                              delegate: nil
-                              cancelButtonTitle:NSLocalizedString(@"Accept", nil)
-                              otherButtonTitles:nil];
-        [alert show];
-        [alert release];
-        
-        //usersArray *uA = (usersArray *)value;
-        txtTo.text = @"";
-        txtSubject.text = @"";
-        txtMessage.text = @"";
-        
-    }
-    [self.view scrollToY:0];
-}
-
-- (void) loginHandler: (id) value { 
-    UIApplication* app = [UIApplication sharedApplication];
-	if(showLoginError){
-        showLoginError = NO;
-        if ([value isKindOfClass:[NSError class]]) { // Handle errors
-            //NSLog(@"%@", value);
-            //NSError *err = (NSError *) value;
-            
-            UIAlertView *alert = [[UIAlertView alloc]
-                                  initWithTitle: NSLocalizedString(@"noConnectionAlertTitle", nil)
-                                  message: NSLocalizedString(@"noConnectionAlertMessage", nil)
-                                  delegate: nil
-                                  cancelButtonTitle:NSLocalizedString(@"Accept", nil)
-                                  otherButtonTitles:nil];
-            [alert show];
-            [alert release];
-            app.networkActivityIndicatorVisible = NO;
-        } else if([value isKindOfClass:[SoapFault class]]) { // Handle faults
-            SoapFault *err = (SoapFault *) value;
-            
-            if ([[err faultString] hasPrefix:@"Bad l"]) {
-                UIAlertView *alert = [[UIAlertView alloc]
-                                      initWithTitle: NSLocalizedString(@"loginErrorAlertTitle", nil)
-                                      message: NSLocalizedString(@"loginErrorAlertMessage", nil)
-                                      delegate: nil
-                                      cancelButtonTitle:NSLocalizedString(@"Accept", nil)
-                                      otherButtonTitles:nil];
-                [alert show];
-                [alert release];
-                app.networkActivityIndicatorVisible = NO;
-            }
-        } else if ([value isKindOfClass:[loginByUserPasswordKeyOutput class]]){ //All went OK
-            loginByUserPasswordKeyOutput* tmp = (loginByUserPasswordKeyOutput*)value;
-            NSDate *now = [[NSDate alloc] initWithTimeIntervalSinceNow:0];
-            [User initWithLoginOutput:tmp time:[now timeIntervalSince1970]];
-            
-            [self sendMessage];
-        }
-    }
-}
-*/
 - (void)didReceiveMemoryWarning
 {
     // Releases the view if it doesn't have a superview.

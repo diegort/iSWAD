@@ -8,7 +8,7 @@
 @synthesize userSurname1 = _userSurname1;
 @synthesize userSurname2 = _userSurname2;
 @synthesize userFirstname = _userFirstname;
-@synthesize userTypeName = _userTypeName;
+//@synthesize userTypeName = _userTypeName;
 
 - (id) init
 {
@@ -30,13 +30,13 @@
     if(self = [super initWithNode: node])
     {
         self.userCode = [[Soap getNodeValue: node withName: @"userCode"] intValue];
-        self.userTypeCode = [[Soap getNodeValue: node withName: @"userTypeCode"] intValue];
+        self.userTypeCode = [[Soap getNodeValue: node withName: @"userRole"] intValue];
         self.wsKey = [Soap getNodeValue: node withName: @"wsKey"];
         self.userID = [Soap getNodeValue: node withName: @"userID"];
         self.userSurname1 = [Soap getNodeValue: node withName: @"userSurname1"];
         self.userSurname2 = [Soap getNodeValue: node withName: @"userSurname2"];
         self.userFirstname = [Soap getNodeValue: node withName: @"userFirstname"];
-        self.userTypeName = [Soap getNodeValue: node withName: @"userTypeName"];
+        //self.userTypeName = [Soap getNodeValue: node withName: @"userTypeName"];
     }
     
     return self;
@@ -74,8 +74,8 @@
         [s appendFormat: @"<userSurname2>%@</userSurname2>", [[self.userSurname2 stringByReplacingOccurrencesOfString:@"\"" withString:@"&quot;"] stringByReplacingOccurrencesOfString:@"&" withString:@"&amp;"]];
     if (self.userFirstname != nil) 
         [s appendFormat: @"<userFirstname>%@</userFirstname>", [[self.userFirstname stringByReplacingOccurrencesOfString:@"\"" withString:@"&quot;"] stringByReplacingOccurrencesOfString:@"&" withString:@"&amp;"]];
-    if (self.userTypeName != nil) 
-        [s appendFormat: @"<userFirstname>%@</userFirstname>", [[self.userFirstname stringByReplacingOccurrencesOfString:@"\"" withString:@"&quot;"] stringByReplacingOccurrencesOfString:@"&" withString:@"&amp;"]];
+    /*if (self.userTypeName != nil) 
+        [s appendFormat: @"<userFirstname>%@</userFirstname>", [[self.userFirstname stringByReplacingOccurrencesOfString:@"\"" withString:@"&quot;"] stringByReplacingOccurrencesOfString:@"&" withString:@"&amp;"]];*/
     
     return s;
 }

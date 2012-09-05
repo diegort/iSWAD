@@ -15,7 +15,7 @@ static NSString *_userID;
 static NSString *_userSurname1;
 static NSString *_userSurname2;
 static NSString *_userFirstname;
-static NSString *_userTypeName;
+//static NSString *_userTypeName;
 static BOOL _loged;
 static time_t _loginTime;
 
@@ -28,7 +28,7 @@ static time_t _loginTime;
     _userSurname1 = value.userSurname1;
     _userSurname2 = value.userSurname2;
     _userFirstname = value.userFirstname;
-    _userTypeName = value.userTypeName;
+    //_userTypeName = value.userTypeName;
     _loged = YES;
     _loginTime = tValue;
     
@@ -37,7 +37,7 @@ static time_t _loginTime;
     [tmp release];
 }
 
-+(void)initWithUserCode:(int) userCode userTypeCode:(int) userTypeCode wsKey:(NSString *)wskey userID:(NSString *)userID userSurname1:(NSString *)userSurname1 userSurname2:(NSString *) userSurname2 userFirstname:(NSString *)userFirstname userTypeName:(NSString *)userTypeName{
++(void)initWithUserCode:(int) userCode userTypeCode:(int) userTypeCode wsKey:(NSString *)wskey userID:(NSString *)userID userSurname1:(NSString *)userSurname1 userSurname2:(NSString *) userSurname2 userFirstname:(NSString *)userFirstname{
     
     _userCode = userCode;
     _userTypeCode = userTypeCode;
@@ -46,7 +46,7 @@ static time_t _loginTime;
     _userSurname1 = userSurname1;
     _userSurname2 = userSurname2;
     _userFirstname = userFirstname;
-    _userTypeName = userTypeName;
+    //_userTypeName = userTypeName;
     
     NSNumber *tmp = [[NSNumber alloc] initWithInt:_userTypeCode];
     [[NSUserDefaults standardUserDefaults] setValue:tmp forKey:@"userType"];
@@ -82,9 +82,9 @@ static time_t _loginTime;
     return _userFirstname;
 }
 
-+(NSString *) userTypeName{
+/*+(NSString *) userTypeName{
     return _userTypeName;
-}
+}*/
 
 +(BOOL) loged{
     return  _loged;
@@ -123,9 +123,9 @@ static time_t _loginTime;
     _userFirstname = value;
 }
 
-+(void) setUserTypeName:(NSString *) value{
+/*+(void) setUserTypeName:(NSString *) value{
     _userTypeName = value;
-}
+}*/
 
 
 @end

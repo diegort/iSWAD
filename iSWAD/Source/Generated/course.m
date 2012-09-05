@@ -8,6 +8,8 @@
 @implementation course
 	@synthesize courseCode = _courseCode;
 	@synthesize courseName = _courseName;
+	@synthesize courseShortName = _courseShortName;
+	@synthesize userRole = _userRole;
 
 	- (id) init
 	{
@@ -29,7 +31,9 @@
 		if(self = [super initWithNode: node])
 		{
 			self.courseCode = [[Soap getNodeValue: node withName: @"courseCode"] intValue];
-			self.courseName = [Soap getNodeValue: node withName: @"courseName"];
+			self.userRole = [[Soap getNodeValue: node withName: @"userRole"] intValue];
+			self.courseName = [Soap getNodeValue: node withName: @"courseFullName"];
+			self.courseShortName = [Soap getNodeValue: node withName: @"courseShortName"];
 		}
 		return self;
 	}

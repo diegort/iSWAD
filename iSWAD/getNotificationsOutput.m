@@ -57,6 +57,10 @@
 - (NSMutableString*) serializeElements
 {
     NSMutableString* s = [super serializeElements];
+	[s appendFormat: @"<numNotifications>%@</numNotifications>", [NSString stringWithFormat: @"%i", self.numNotifications]];
+	
+	[s appendString:[_notifications serializeElements]];
+	
     /*[s appendFormat: @"<userCode>%@</userCode>", [NSString stringWithFormat: @"%i", self.userCode]];
      [s appendFormat: @"<userTypeCode>%@</userTypeCode>", [NSString stringWithFormat: @"%i", self.userTypeCode]];
      

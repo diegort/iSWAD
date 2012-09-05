@@ -33,7 +33,7 @@
 "sentMessageAlertTitle" = "Message successfully sent to";
 
 "getNotificationsErrorAlertTitle" = "Error";
-"getNotificationsErrorAlertMessage" = "An error has occurred while notifications download. Try again and if the error continues notify it to administrator.";
+"getNotificationsErrorAlertMessage" = "An error has occurred while notifications download. Try it again and if the error continues notify it to administrator.";
 
 "Version" = "Version ";
 
@@ -49,3 +49,20 @@
 
 "noNotifications" = "There aren't notifications. Press Refresh to download them from SWAD";
 
+"getCoursesErrorAlertTitle" = "Error";
+"getCoursesErrorAlertMessage" = "An error has occurred while courses list download. Try it again and if the error continues notify it to administrator.";
+
+"sentNoticeAlertTitle" = "Notice posted";
+"sentNoticeAlertMessage" = "The notice has been posted in ";
+
+"sentNoticeConstraintAlertTitle" = "Missing data";
+"sentNoticeConstraintAlertMessage" = "You must fill all fields.";
+
+"sendNoticeErrorAlertTitle" = "Error";
+"sendNoticeErrorAlertMessage" = "An error has occurred sendind the notice.";
+
+"badReceiversTitle" = "Incorrect recipients";
+"badReceiversMessage" = "Check the recipients list. The minimun length of each nick is 3 characters.";
+
+"noReceiversTitle" = "Incorrect recipients";
+"noReceiversMessage" = "Check the recipients list. Give at least one nick.";

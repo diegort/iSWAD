@@ -9,7 +9,7 @@
 	NSString *_userSurname1;
 	NSString *_userSurname2;
 	NSString *_userFirstname;
-	NSString *_userTypeName;
+//	NSString *_userTypeName;
 }
 
 @property int userCode;
@@ -19,7 +19,7 @@
 @property (retain) NSString * userSurname1;
 @property (retain) NSString * userSurname2;
 @property (retain) NSString * userFirstname;
-@property (retain) NSString * userTypeName;
+//@property (retain) NSString * userTypeName;
 
 + (loginByUserPasswordKeyOutput*) newWithNode: (CXMLNode*) node;
 - (id) initWithNode: (CXMLNode*) node;

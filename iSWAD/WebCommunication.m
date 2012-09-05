@@ -11,14 +11,16 @@
 #import "swad.h"
 #import "User.h"
 #import "sendMessageOutput.h"
-#import "notificationsArray.h"
 #import "getNotificationsOutput.h"
+#import "getCoursesOutput.h"
 
 @implementation WebCommunication
 
 bool showLoginError;
 bool showNotifError;
 bool showMessageError;
+bool showCoursesError;
+bool showNoticeError;
 time_t currentTime;
 
 NSString *_messageBody;
@@ -26,6 +28,8 @@ NSString *_messageSubject;
 NSString *_messageReceivers;
 long  _messageCode;
 
+NSString *_noticeBody;
+long _courseCode;
 
 id target;
 SEL act;
@@ -58,7 +62,7 @@ SEL act;
 }
 
 - (void) loginHandler: (id) value { 
-    UIApplication* app = [UIApplication sharedApplication];
+    //UIApplication* app = [UIApplication sharedApplication];
 	if(showLoginError){
         showLoginError = NO;
         if ([value isKindOfClass:[NSError class]]) { // Handle errors
@@ -73,7 +77,7 @@ SEL act;
                                   otherButtonTitles:nil];
             [alert show];
             [alert release];
-            app.networkActivityIndicatorVisible = NO;
+            //app.networkActivityIndicatorVisible = NO;
         } else if([value isKindOfClass:[SoapFault class]]) { // Handle faults
             SoapFault *err = (SoapFault *) value;
             
@@ -86,7 +90,7 @@ SEL act;
                                       otherButtonTitles:nil];
                 [alert show];
                 [alert release];
-                app.networkActivityIndicatorVisible = NO;
+                //app.networkActivityIndicatorVisible = NO;
             }
         } else if ([value isKindOfClass:[loginByUserPasswordKeyOutput class]]){ //All went OK
             loginByUserPasswordKeyOutput* tmp = (loginByUserPasswordKeyOutput*)value;
@@ -101,10 +105,10 @@ SEL act;
     }
 }
 
-//#section "Messages"
-
+/****************************
+ ********* Messages *********
+ ****************************/
 - (void) sendMessageHandler: (id) value { 
-    id param;
 	if(showMessageError){
         showMessageError = NO;
         if ([value isKindOfClass:[NSError class]]) { // Handle errors
@@ -128,7 +132,8 @@ SEL act;
             [alert show];
             [alert release];
         } else if ([value isKindOfClass:[sendMessageOutput class]]){ //All went OK
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"messageSent" object:param];                                
+			
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"messageSent" object:value];                                
         }
         
     }
@@ -162,6 +167,10 @@ SEL act;
 - (void) sendMessage: (NSString *)message subject: (NSString *)subject to: (NSString *)receivers{
     [self sendMessage:message subject:subject to:receivers code:0];
 }
+
+/****************************
+ ****** Notifications *******
+ ****************************/
 
 - (void) notificationsHandler: (id) value { 
     
@@ -233,6 +242,110 @@ SEL act;
         [self loginWithTarget:self Action:@selector(getNotifs)];
     } else {
         [self getNotifs];
+    }
+}
+
+/****************************
+ ********* Courses **********
+ ****************************/
+
+-(void) getSubjectsHandler: (id) value{
+	if(showCoursesError){
+        showCoursesError = NO;
+        if ([value isKindOfClass:[NSError class]]) { // Handle errors
+            //NSLog(@"%@", value);
+            //NSError *err = (NSError *) value;
+            
+            UIAlertView *alert = [[UIAlertView alloc]
+                                  initWithTitle: NSLocalizedString(@"noConnectionAlertTitle", nil)
+                                  message: NSLocalizedString(@"noConnectionAlertMessage", nil)
+                                  delegate: nil
+                                  cancelButtonTitle:NSLocalizedString(@"Accept", nil)
+                                  otherButtonTitles:nil];
+            [alert show];
+            [alert release];
+        } else if([value isKindOfClass:[SoapFault class]]) { // Handle faults
+            UIAlertView *alert = [[UIAlertView alloc]
+                                  initWithTitle: NSLocalizedString(@"getCoursesErrorAlertTitle", nil)
+                                  message: NSLocalizedString(@"getCoursesErrorAlertMessage", nil)
+                                  delegate: nil
+                                  cancelButtonTitle:NSLocalizedString(@"Accept", nil)
+                                  otherButtonTitles:nil];
+            [alert show];
+            [alert release];
+        } else if ([value isKindOfClass:[getCoursesOutput class]]){ //All went OK
+            getCoursesOutput* tmp = (getCoursesOutput*)value;
+            //NSLog(@"%@",[tmp serialize]);
+			[[NSNotificationCenter defaultCenter] postNotificationName:@"coursesListReady" object:tmp];            
+        }
+    }
+}
+
+-(void) getCoursesList{
+	swad* service = [swad service];
+    
+    showCoursesError = YES;
+    [service getCourses:self action:@selector(getSubjectsHandler:) wsKey:User.wsKey];
+}
+
+-(void) getSubjects{
+	if ([self loginNeeded]) {
+        [self loginWithTarget:self Action:@selector(getCoursesList)];
+    } else {
+        [self getCoursesList];
+    }
+}
+
+/****************************
+ ********** Notices *********
+ ****************************/
+- (void) sendNoticeHandler: (id) value { 
+	if(showNoticeError){
+        showNoticeError = NO;
+        if ([value isKindOfClass:[NSError class]]) { // Handle errors
+            //NSLog(@"%@", value);
+            //NSError *err = (NSError *) value;
+            UIAlertView *alert = [[UIAlertView alloc]
+                                  initWithTitle: NSLocalizedString(@"noConnectionAlertTitle", nil)
+                                  message: NSLocalizedString(@"noConnectionAlertMessage", nil)
+                                  delegate: nil
+                                  cancelButtonTitle:NSLocalizedString(@"Accept", nil)
+                                  otherButtonTitles:nil];
+            [alert show];
+            [alert release];
+        } else if([value isKindOfClass:[SoapFault class]]) { // Handle faults
+            UIAlertView *alert = [[UIAlertView alloc]
+                                  initWithTitle: NSLocalizedString(@"sendNoticeErrorAlertTitle", nil)
+                                  message: NSLocalizedString(@"sendNoticeErrorAlertMessage", nil)
+                                  delegate: nil
+                                  cancelButtonTitle:NSLocalizedString(@"Accept", nil)
+                                  otherButtonTitles:nil];
+            [alert show];
+            [alert release];
+        } else { //All went OK
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"noticePosted" object:nil];                                
+        }        
+    }
+}
+
+
+-(void) postNotice{
+    swad* service = [swad service];
+    
+    showNoticeError = YES;
+	[service sendNotice:self action:@selector(sendNoticeHandler:) wsKey:User.wsKey courseCode:_courseCode body:_noticeBody];
+}
+
+- (void) sendNotice:(NSString *)body courseCode:(int)course{
+    _noticeBody = body;
+    _courseCode = course;
+    
+    [_noticeBody retain];
+    
+    if ([self loginNeeded]) {
+        [self loginWithTarget:self Action:@selector(postNotice)];
+    } else {
+        [self postNotice];
     }
 }
 
