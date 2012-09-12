@@ -30,7 +30,7 @@
 	+ (user*) newWithNode: (CXMLNode*) node
 	{
 		if(node == nil) { return nil; }
-		return (user*)[[[user alloc] initWithNode: node] autorelease];
+		return (user*)[[user alloc] initWithNode: node];
 	}
 
 	- (id) initWithNode: (CXMLNode*) node {
@@ -96,11 +96,11 @@
 	
 	- (void) dealloc
 	{
-		if(self.userID != nil) { [self.userID release]; }
-		if(self.userNickname != nil) { [self.userNickname release]; }
-		if(self.userSurname1 != nil) { [self.userSurname1 release]; }
-		if(self.userSurname2 != nil) { [self.userSurname2 release]; }
-		if(self.userFirstname != nil) { [self.userFirstname release]; }
+		if(self.userID != nil) { [_userID release]; }
+		if(self.userNickname != nil) { [_userNickname release]; }
+		if(self.userSurname1 != nil) { [_userSurname1 release]; }
+		if(self.userSurname2 != nil) { [_userSurname2 release]; }
+		if(self.userFirstname != nil) { [_userFirstname release]; }
 		[super dealloc];
 	}
 

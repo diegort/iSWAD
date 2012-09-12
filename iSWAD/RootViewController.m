@@ -1,11 +1,3 @@
-//
-//  RootViewController.m
-//  iSWAD
-//
-//  Created by Diego Montesinos on 03/10/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
-//
-
 #import "RootViewController.h"
 #import "iSWADAppDelegate.h"
 #import "LoginViewController.h"
@@ -13,13 +5,13 @@
 #import "AboutViewController.h"
 #import "NotificationsViewController.h"
 #import "NoticesViewController.h"
-
-#import "Login.h"
-#import "loginByUPOut.h"
+#import "ConfigureTestViewController.h"
+#import "Literals.h"
 #import "User.h"
 
 #define NotificationsKey    @"Notifications"
-#define NoticesKey    @"Notices"
+#define NoticesKey			@"Notices"
+#define TestsKey			@"Tests"
 
 NSMutableArray *elementsList;
 
@@ -28,53 +20,15 @@ bool showError;
 @implementation RootViewController
 
 -(void) loadMenu{
-    /*iSWADAppDelegate *app = [[UIApplication sharedApplication] delegate];
-     
-     NSManagedObjectContext *context = [app managedObjectContext];
-     NSError *error;
-     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-     NSEntityDescription *entity = [NSEntityDescription 
-     entityForName:@"Menu" inManagedObjectContext:context];
-     
-     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(privilegeLevel <= %@)",
-     [NSNumber numberWithInt:[User userTypeCode]]];
-     
-     [fetchRequest setEntity:entity];
-     [fetchRequest setPredicate:predicate];
-     
-     NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
-     if (elementsList == nil){
-     elementsList = [[NSMutableArray alloc] init];
-     }
-     
-     for (NSManagedObject *info in fetchedObjects) {
-     //NSLog(@"Entrada: %@", NSLocalizedString([info valueForKey:@"titleKey"],nil));
-     //NSLog(@"Nivel: %@", [info valueForKey:@"privilegeLevel"]);
-     //NSLog(@"Icono: %@", [info valueForKey:@"icon"]);
-     NSDictionary *tmp = [NSDictionary dictionaryWithObjectsAndKeys:
-     NSLocalizedString([info valueForKey:@"titleKey"],nil),@"titleValue",
-     //[info valueForKey:@"icon"], @"icon", 
-     nil];
-     
-     [elementsList addObject:tmp];
-     [tmp release];
-     }  
-     
-     [fetchRequest release];
-     */
-    int userType = [[NSUserDefaults standardUserDefaults] integerForKey:@"userType"];
-    if (userType == 3){
+    int userType = [[NSUserDefaults standardUserDefaults] integerForKey:UserTypeKey];
+    if (userType > 2){
         elementsList = [NSArray arrayWithObjects:
-                        /*[NSDictionary dictionaryWithObjectsAndKeys:
-                         NSLocalizedString(@"Messages", nil),@"titleValue",
-                         @"msg.png",@"icon",
-                         nil],*/
                         [NSDictionary dictionaryWithObjectsAndKeys:
                          NotificationsKey,@"key",
                          @"notif.png",@"icon",
                          nil],
                         /*[NSDictionary dictionaryWithObjectsAndKeys:
-                         NSLocalizedString(@"Tests", nil),@"titleValue",
+                         TestsKey,@"key",
                          @"test.png",@"icon",
                          nil],*/
                         [NSDictionary dictionaryWithObjectsAndKeys:
@@ -84,16 +38,12 @@ bool showError;
                         nil];
     }else{
         elementsList = [NSArray arrayWithObjects:
-                        /*[NSDictionary dictionaryWithObjectsAndKeys:
-                         NSLocalizedString(@"Messages", nil),@"titleValue",
-                         @"msg.png",@"icon",
-                         nil],*/
                         [NSDictionary dictionaryWithObjectsAndKeys:
                          NotificationsKey,@"key",
                          @"notif.png",@"icon",
                          nil],
                         /*[NSDictionary dictionaryWithObjectsAndKeys:
-                         NSLocalizedString(@"Tests", nil),@"titleValue",
+                         TestsKey,@"key",
                          @"test.png",@"icon",
                          nil],*/
                         nil];
@@ -103,7 +53,7 @@ bool showError;
 
 -(void) loadData{
     
-    [self loadMenu];
+    //[self loadMenu];
     
     self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.opaque = NO;
@@ -138,10 +88,6 @@ bool showError;
                               target:self 
                               action:@selector(newMessage)];
     
-    /*UIBarButtonItem *item2 = [[UIBarButtonItem alloc] 
-     initWithBarButtonSystemItem:UIBarButtonSystemItemCompose 
-     target:self 
-     action:nil];*/
     // Initialize the UIButton
     UIImage *buttonImage = [UIImage imageNamed:@"info.png"];
     UIButton *aButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -157,21 +103,17 @@ bool showError;
     
     self.toolbarItems = items;
     
-    [buttonImage release];
-    [aButton release];
     [flexibleSpace release];
     [item1 release];
     [item2 release];
-    [items release];
     
-    double lastVersion = [[NSUserDefaults standardUserDefaults] doubleForKey:@"appVersion"];
+    double lastVersion = [[NSUserDefaults standardUserDefaults] doubleForKey:AppVersionKEy];
     double currentVersion = [(NSString *)[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"] doubleValue];
+	NSString *user = [[NSUserDefaults standardUserDefaults] stringForKey:UserKey];
     
-    [[NSUserDefaults standardUserDefaults] setDouble:currentVersion forKey:@"appVersion"];
+    [[NSUserDefaults standardUserDefaults] setDouble:currentVersion forKey:AppVersionKEy];
     
-    /*NSString *s = @"";
-     s = [[NSUserDefaults standardUserDefaults] stringForKey:@"user"];*/
-    if (lastVersion == 0){
+    if ((lastVersion == 0) || ([user isEqualToString:@""])){
         UIAlertView *alert = [[UIAlertView alloc] 
                               initWithTitle:NSLocalizedString(@"initAlertTitle", nil) 
                               message:NSLocalizedString(@"initAlertMessage", nil) 
@@ -191,36 +133,23 @@ bool showError;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    UIApplication* app = [UIApplication sharedApplication];
     
     //Show activiy indicator in system bar
-    app.networkActivityIndicatorVisible = YES;
+    //app.networkActivityIndicatorVisible = YES;
     
-    activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-    
+    /*activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+	
 	activityIndicatorView.center = CGPointMake(160, 180);
 	activityIndicatorView.hidesWhenStopped = YES;
     
     [self.view addSubview:activityIndicatorView];
     
-    [activityIndicatorView startAnimating];
-    
-    /*elementsList = [[NSMutableArray alloc] init];
-    [elementsList retain];*/
-    
-    
-    /*NSString *s = @"";
-    s = [[NSUserDefaults standardUserDefaults] stringForKey:@"user"];
-    if (s != NULL){
-        //showError = YES;
-        //[Login loginTarget:self action:@selector(loginHandler:)];
-    }*/
-    
-    [self loadData];
-    
-    app.networkActivityIndicatorVisible = NO;
-    [activityIndicatorView stopAnimating];
+    [activityIndicatorView startAnimating];  */
+ 
+    //[self loadData];
+	
+	//app.networkActivityIndicatorVisible = NO;
+    //[activityIndicatorView stopAnimating];
 }
 
 /*
@@ -228,7 +157,7 @@ bool showError;
  */
 -(void)login
 {
-    LoginViewController *lg = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+    LoginViewController *lg = [[LoginViewController alloc] initWithNibName:[LoginViewController description] bundle:nil];
     //lg.title = @"Login";
     
     self.navigationController.navigationBarHidden = YES;
@@ -244,7 +173,7 @@ bool showError;
 }
 
 -(void) about{
-    AboutViewController *info = [[AboutViewController alloc] initWithNibName:@"AboutViewController" bundle:nil];
+    AboutViewController *info = [[AboutViewController alloc] initWithNibName:[AboutViewController description] bundle:nil];
     //lg.title = @"Login";
     
     //self.navigationController.navigationBarHidden = YES;
@@ -254,7 +183,7 @@ bool showError;
 }
 
 -(void) newMessage{
-    MessagesViewController *msg = [[MessagesViewController alloc] initWithNibName:@"MessagesViewController" bundle:nil];
+    MessagesViewController *msg = [[MessagesViewController alloc] initWithNibName:[MessagesViewController description] bundle:nil];
 
     [self.navigationController pushViewController:msg animated:YES];
     [msg release];
@@ -271,6 +200,8 @@ bool showError;
     self.navigationController.navigationBarHidden = NO;
     self.navigationController.toolbarHidden = NO;
     
+	[rigthBtn release];
+	[self loadData];
     [self loadMenu];
     [self.tableView reloadData];
 }
@@ -368,8 +299,10 @@ titleForHeaderInSection:(NSInteger)section {
     if ([key isEqualToString:NotificationsKey]){
         view = [[NotificationsViewController alloc] initWithNibName:[NotificationsViewController description] bundle:nil];
     } else if([key isEqualToString:NoticesKey]){
-        view = [[NoticesViewController alloc] initWithNibName: @"NoticesViewController" bundle:nil];
-    }
+        view = [[NoticesViewController alloc] initWithNibName: [NoticesViewController description] bundle:nil];
+    } else if([key isEqualToString:TestsKey]){
+		view = [[ConfigureTestViewController alloc] initWithNibName: [ConfigureTestViewController description] bundle:nil];
+	}
     
     if (view != NULL) {
         [self.navigationController pushViewController:view animated:YES];

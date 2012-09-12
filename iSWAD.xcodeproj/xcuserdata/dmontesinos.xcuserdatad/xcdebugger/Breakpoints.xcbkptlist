@@ -79,11 +79,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "iSWAD/User.m"
-         timestampString = "344881705.099824"
+         timestampString = "368982314.978782"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "24"
-         endingLineNumber = "24"
+         startingLineNumber = "25"
+         endingLineNumber = "25"
          landmarkName = "+initWithLoginOutput:time:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -126,7 +126,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "34"
          endingLineNumber = "34"
-         landmarkName = "-initWithNode:"
+         landmarkName = "-serialize"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -140,7 +140,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "43"
          endingLineNumber = "43"
-         landmarkName = "-serialize"
+         landmarkName = "-serialize:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -149,11 +149,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "iSWAD/MessagesViewController.m"
-         timestampString = "368484134.892217"
+         timestampString = "368915544.952873"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "48"
-         endingLineNumber = "48"
+         startingLineNumber = "49"
+         endingLineNumber = "49"
          landmarkName = "-textFieldShouldReturn:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -177,11 +177,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "iSWAD/Login.m"
-         timestampString = "344479279.132025"
+         timestampString = "368982314.978782"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "17"
-         endingLineNumber = "17"
+         startingLineNumber = "18"
+         endingLineNumber = "18"
          landmarkName = "+loginTarget:action:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -260,14 +260,14 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "iSWAD/Source/Generated/swad.m"
-         timestampString = "366199218.115784"
+         filePath = "iSWAD/RootViewController.m"
+         timestampString = "368987542.982844"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "112"
-         endingLineNumber = "112"
-         landmarkName = "-loginByUserPasswordKey:action:userID:userPassword:appKey:"
-         landmarkType = "5">
+         startingLineNumber = "261"
+         endingLineNumber = "261"
+         landmarkName = "@implementation RootViewController"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -275,25 +275,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "iSWAD/RootViewController.m"
-         timestampString = "367355708.525739"
+         timestampString = "368987542.982844"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "323"
-         endingLineNumber = "323"
-         landmarkName = "-tableView:numberOfRowsInSection:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "iSWAD/RootViewController.m"
-         timestampString = "367355708.525739"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "340"
-         endingLineNumber = "340"
+         startingLineNumber = "278"
+         endingLineNumber = "278"
          landmarkName = "-tableView:cellForRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -303,13 +289,13 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "iSWAD/RootViewController.m"
-         timestampString = "367355767.287453"
+         timestampString = "368987542.982844"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "382"
-         endingLineNumber = "382"
-         landmarkName = "-didReceiveMemoryWarning"
-         landmarkType = "5">
+         startingLineNumber = "320"
+         endingLineNumber = "320"
+         landmarkName = "@implementation RootViewController"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "Yes"
@@ -317,11 +303,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "iSWAD/RootViewController.m"
-         timestampString = "367355767.287453"
+         timestampString = "368987542.982844"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "389"
-         endingLineNumber = "389"
+         startingLineNumber = "327"
+         endingLineNumber = "327"
          landmarkName = "-viewDidUnload"
          landmarkType = "5">
       </FileBreakpoint>
@@ -331,13 +317,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "iSWAD/RootViewController.m"
-         timestampString = "367355767.287453"
+         timestampString = "368987542.982844"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "397"
-         endingLineNumber = "397"
-         landmarkName = "-dealloc"
-         landmarkType = "5">
+         startingLineNumber = "335"
+         endingLineNumber = "335">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -345,11 +329,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "iSWAD/RootViewController.m"
-         timestampString = "355098955.544238"
+         timestampString = "368987259.340073"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "216"
-         endingLineNumber = "216"
+         startingLineNumber = "152"
+         endingLineNumber = "152"
          landmarkName = "-viewDidLoad"
          landmarkType = "5">
       </FileBreakpoint>
@@ -359,11 +343,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "iSWAD/Login.m"
-         timestampString = "344479279.132025"
+         timestampString = "368982314.978782"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "30"
-         endingLineNumber = "30"
+         startingLineNumber = "31"
+         endingLineNumber = "31"
          landmarkName = "+loginTarget:action:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -373,11 +357,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "iSWAD/Source/Generated/swad.m"
-         timestampString = "366199218.115784"
+         timestampString = "368798266.424685"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "243"
-         endingLineNumber = "243"
+         startingLineNumber = "244"
+         endingLineNumber = "244"
          landmarkName = "-sendMessage:action:wsKey:messageCode:to:subject:body:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -415,12 +399,26 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "iSWAD/RootViewController.m"
-         timestampString = "355098955.544238"
+         timestampString = "368987259.340073"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "218"
-         endingLineNumber = "218"
-         landmarkName = "-viewDidLoad"
+         startingLineNumber = "154"
+         endingLineNumber = "154"
+         landmarkName = "@implementation RootViewController"
+         landmarkType = "3">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "iSWAD/RootViewController.m"
+         timestampString = "368987542.982844"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "291"
+         endingLineNumber = "291"
+         landmarkName = "-tableView:didSelectRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -429,26 +427,12 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "iSWAD/RootViewController.m"
-         timestampString = "367355708.525739"
+         timestampString = "368987542.982844"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "353"
-         endingLineNumber = "353"
-         landmarkName = "-tableView:cellForRowAtIndexPath:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "iSWAD/RootViewController.m"
-         timestampString = "367355708.525739"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "298"
-         endingLineNumber = "298"
-         landmarkName = "-viewWillDisappear:"
+         startingLineNumber = "236"
+         endingLineNumber = "236"
+         landmarkName = "-viewDidDisappear:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -471,26 +455,12 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "iSWAD/NotificationsViewController.m"
-         timestampString = "368484134.892217"
+         timestampString = "368989629.605958"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "272"
-         endingLineNumber = "272"
-         landmarkName = "@implementation NotificationsViewController"
-         landmarkType = "3">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "iSWAD/RootViewController.m"
-         timestampString = "355098955.544238"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "195"
-         endingLineNumber = "195"
-         landmarkName = "-viewDidLoad"
+         startingLineNumber = "205"
+         endingLineNumber = "205"
+         landmarkName = "-shouldAutorotateToInterfaceOrientation:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -513,11 +483,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "DBManager.m"
-         timestampString = "344858633.701988"
+         timestampString = "368905220.235186"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "71"
-         endingLineNumber = "71"
+         startingLineNumber = "81"
+         endingLineNumber = "81"
          landmarkName = "-saveNotifications:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -541,11 +511,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "DBManager.m"
-         timestampString = "344858633.701988"
+         timestampString = "368905220.235186"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "90"
-         endingLineNumber = "90"
+         startingLineNumber = "100"
+         endingLineNumber = "100"
          landmarkName = "-saveNotifications:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -555,25 +525,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "iSWAD/NotificationsViewController.m"
-         timestampString = "368484134.892217"
+         timestampString = "368989629.605958"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "356"
-         endingLineNumber = "356"
-         landmarkName = "-tableView:cellForRowAtIndexPath:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "iSWAD/NotificationsViewController.m"
-         timestampString = "368484134.892217"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "496"
-         endingLineNumber = "496"
+         startingLineNumber = "315"
+         endingLineNumber = "315"
          landmarkName = "-dealloc"
          landmarkType = "5">
       </FileBreakpoint>
@@ -583,11 +539,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "iSWAD/NotificationsViewController.m"
-         timestampString = "368484134.892217"
+         timestampString = "368989629.605958"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "205"
-         endingLineNumber = "205"
+         startingLineNumber = "138"
+         endingLineNumber = "138"
          landmarkName = "-initWithStyle:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -639,11 +595,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "DBManager.m"
-         timestampString = "344858633.701988"
+         timestampString = "368905220.235186"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "94"
-         endingLineNumber = "94"
+         startingLineNumber = "104"
+         endingLineNumber = "104"
          landmarkName = "-markNotificationAsRead:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -653,11 +609,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "iSWAD/NotificationsViewController.m"
-         timestampString = "368484134.892217"
+         timestampString = "368989629.605958"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "290"
-         endingLineNumber = "290"
+         startingLineNumber = "223"
+         endingLineNumber = "223"
          landmarkName = "-tableView:titleForHeaderInSection:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -709,11 +665,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "iSWAD/MessagesViewController.m"
-         timestampString = "365944322.317371"
+         timestampString = "368915544.952873"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "25"
-         endingLineNumber = "25"
+         startingLineNumber = "26"
+         endingLineNumber = "26"
          landmarkName = "-initWithNibName:bundle:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -723,11 +679,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "iSWAD/NotificationsViewController.m"
-         timestampString = "368484134.892217"
+         timestampString = "368989629.605958"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "337"
-         endingLineNumber = "337"
+         startingLineNumber = "260"
+         endingLineNumber = "260"
          landmarkName = "-tableView:cellForRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -737,53 +693,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "iSWAD/NotificationsViewController.m"
-         timestampString = "368484134.892217"
+         timestampString = "368989629.605958"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "324"
-         endingLineNumber = "324"
-         landmarkName = "-tableView:cellForRowAtIndexPath:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "iSWAD/NotificationsViewController.m"
-         timestampString = "368484134.892217"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "351"
-         endingLineNumber = "351"
-         landmarkName = "-tableView:cellForRowAtIndexPath:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "iSWAD/NotificationsViewController.m"
-         timestampString = "368484134.892217"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "450"
-         endingLineNumber = "450"
-         landmarkName = "-tableView:didSelectRowAtIndexPath:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "iSWAD/NotificationsViewController.m"
-         timestampString = "368484134.892217"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "279"
-         endingLineNumber = "279"
+         startingLineNumber = "212"
+         endingLineNumber = "212"
          landmarkName = "-getLabelHeightForIndex:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -806,20 +720,6 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "iSWAD/NotificationsViewController.m"
-         timestampString = "368484134.892217"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "352"
-         endingLineNumber = "352"
-         landmarkName = "-tableView:cellForRowAtIndexPath:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
          filePath = "iSWAD/NotificationCell.m"
          timestampString = "353073440.14911"
          startingColumnNumber = "9223372036854775807"
@@ -827,48 +727,6 @@
          startingLineNumber = "43"
          endingLineNumber = "43"
          landmarkName = "-setData:selected:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "iSWAD/NotificationsViewController.m"
-         timestampString = "368484134.892217"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "353"
-         endingLineNumber = "353"
-         landmarkName = "-tableView:cellForRowAtIndexPath:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "iSWAD/NotificationsViewController.m"
-         timestampString = "368484134.892217"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "477"
-         endingLineNumber = "477"
-         landmarkName = "-tableView:didSelectRowAtIndexPath:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "iSWAD/NotificationsViewController.m"
-         timestampString = "368484134.892217"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "490"
-         endingLineNumber = "490"
-         landmarkName = "-tableView:didSelectRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -891,25 +749,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "iSWAD/NotificationsViewController.m"
-         timestampString = "368484134.892217"
+         timestampString = "368989629.605958"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "457"
-         endingLineNumber = "457"
-         landmarkName = "-tableView:didSelectRowAtIndexPath:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "iSWAD/NotificationsViewController.m"
-         timestampString = "368484134.892217"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "465"
-         endingLineNumber = "465"
+         startingLineNumber = "304"
+         endingLineNumber = "304"
          landmarkName = "-tableView:didSelectRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -933,11 +777,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "iSWAD/MessagesViewController.m"
-         timestampString = "368484134.892217"
+         timestampString = "368915544.952873"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "90"
-         endingLineNumber = "90"
+         startingLineNumber = "91"
+         endingLineNumber = "91"
          landmarkName = "-setSubject:messageCode:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -946,26 +790,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "iSWAD/RootViewController.m"
-         timestampString = "355098955.544238"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "65"
-         endingLineNumber = "65"
-         landmarkName = "-loadMenu"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
          filePath = "iSWAD/MessagesViewController.m"
-         timestampString = "368548552.024505"
+         timestampString = "368915544.952873"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "191"
-         endingLineNumber = "191"
+         startingLineNumber = "192"
+         endingLineNumber = "192"
          landmarkName = "-textViewDidBeginEditing:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -975,11 +805,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "iSWAD/MessagesViewController.m"
-         timestampString = "368548552.024505"
+         timestampString = "368915544.952873"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "192"
-         endingLineNumber = "192"
+         startingLineNumber = "193"
+         endingLineNumber = "193"
          landmarkName = "-textViewDidBeginEditing:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1003,25 +833,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "iSWAD/WebCommunication.m"
-         timestampString = "368487395.888652"
+         timestampString = "368988133.327803"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "222"
-         endingLineNumber = "222"
-         landmarkName = "-notificationsHandler:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "iSWAD/WebCommunication.m"
-         timestampString = "368487395.888652"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "229"
-         endingLineNumber = "229"
+         startingLineNumber = "337"
+         endingLineNumber = "337"
          landmarkName = "-getNotifs"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1031,11 +847,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "iSWAD/WebCommunication.m"
-         timestampString = "368487395.888652"
+         timestampString = "368984898.370024"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "54"
-         endingLineNumber = "54"
+         startingLineNumber = "143"
+         endingLineNumber = "143"
          landmarkName = "-loginWithTarget:Action:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1045,11 +861,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "iSWAD/WebCommunication.m"
-         timestampString = "368487395.888652"
+         timestampString = "368984629.446836"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "65"
-         endingLineNumber = "65"
+         startingLineNumber = "157"
+         endingLineNumber = "157"
          landmarkName = "-loginHandler:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1059,11 +875,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "iSWAD/WebCommunication.m"
-         timestampString = "368487395.888652"
+         timestampString = "368988133.327803"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "177"
-         endingLineNumber = "177"
+         startingLineNumber = "292"
+         endingLineNumber = "292"
          landmarkName = "-notificationsHandler:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1101,12 +917,12 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "iSWAD/NotificationsViewController.m"
-         timestampString = "368484134.892217"
+         timestampString = "368989629.605958"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "79"
-         endingLineNumber = "79"
-         landmarkName = "-updateNotificationsDone"
+         startingLineNumber = "119"
+         endingLineNumber = "119"
+         landmarkName = "-updateNotificationsDone:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1142,24 +958,24 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "iSWAD/MessagesViewController.m"
-         timestampString = "368484134.892217"
+         timestampString = "368915544.952873"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "66"
-         endingLineNumber = "66"
+         startingLineNumber = "67"
+         endingLineNumber = "67"
          landmarkName = "-sendMessageDone:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "iSWAD/WebCommunication.m"
-         timestampString = "368487395.888652"
+         timestampString = "368988133.327803"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "168"
-         endingLineNumber = "168"
+         startingLineNumber = "283"
+         endingLineNumber = "283"
          landmarkName = "-sendMessage:subject:to:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1168,11 +984,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "iSWAD/WebCommunication.m"
-         timestampString = "368487395.888652"
+         timestampString = "368988133.327803"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "151"
-         endingLineNumber = "151"
+         startingLineNumber = "266"
+         endingLineNumber = "266"
          landmarkName = "-sendMessage:subject:to:code:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1181,11 +997,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "iSWAD/WebCommunication.m"
-         timestampString = "368487395.888652"
+         timestampString = "368988133.327803"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "144"
-         endingLineNumber = "144"
+         startingLineNumber = "259"
+         endingLineNumber = "259"
          landmarkName = "-sendMessageToUsers"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1194,11 +1010,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "iSWAD/WebCommunication.m"
-         timestampString = "368488995.630728"
+         timestampString = "368988133.327803"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "113"
-         endingLineNumber = "113"
+         startingLineNumber = "226"
+         endingLineNumber = "226"
          landmarkName = "-sendMessageHandler:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1207,11 +1023,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "iSWAD/WebCommunication.m"
-         timestampString = "368488995.630728"
+         timestampString = "368988133.327803"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "112"
-         endingLineNumber = "112"
+         startingLineNumber = "225"
+         endingLineNumber = "225"
          landmarkName = "-sendMessageHandler:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1220,11 +1036,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "iSWAD/Source/Generated/swad.m"
-         timestampString = "366199218.115784"
+         timestampString = "368798266.424685"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "239"
-         endingLineNumber = "239"
+         startingLineNumber = "240"
+         endingLineNumber = "240"
          landmarkName = "-sendMessage:action:wsKey:messageCode:to:subject:body:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1233,11 +1049,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "iSWAD/WebCommunication.m"
-         timestampString = "368487395.888652"
+         timestampString = "368988133.327803"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "277"
-         endingLineNumber = "277"
+         startingLineNumber = "390"
+         endingLineNumber = "390"
          landmarkName = "-getSubjectsHandler:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1264,7 +1080,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "34"
          endingLineNumber = "34"
-         landmarkName = "-initWithNode:"
+         landmarkName = "-serialize"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1277,7 +1093,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "35"
          endingLineNumber = "35"
-         landmarkName = "-initWithNode:"
+         landmarkName = "-serialize"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1290,7 +1106,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "63"
          endingLineNumber = "63"
-         landmarkName = "-serializeElements"
+         landmarkName = "-serializeAttributes"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1329,7 +1145,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "43"
          endingLineNumber = "43"
-         landmarkName = "-serialize"
+         landmarkName = "-serialize:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1342,7 +1158,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "54"
          endingLineNumber = "54"
-         landmarkName = "-serialize:"
+         landmarkName = "-serializeElements"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1363,11 +1179,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "iSWAD/CourseSelector.m"
-         timestampString = "368484134.892217"
+         timestampString = "368915544.952873"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "97"
-         endingLineNumber = "97"
+         startingLineNumber = "98"
+         endingLineNumber = "98"
          landmarkName = "-showSelector:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1376,11 +1192,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "iSWAD/NoticesViewController.m"
-         timestampString = "368485935.860206"
+         timestampString = "368987152.101934"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "36"
-         endingLineNumber = "36"
+         startingLineNumber = "38"
+         endingLineNumber = "38"
          landmarkName = "-initWithNibName:bundle:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1389,11 +1205,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "iSWAD/RootViewController.m"
-         timestampString = "367355708.525739"
+         timestampString = "368987542.982844"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "370"
-         endingLineNumber = "370"
+         startingLineNumber = "308"
+         endingLineNumber = "308"
          landmarkName = "-tableView:didSelectRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1402,11 +1218,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "iSWAD/RootViewController.m"
-         timestampString = "367355708.525739"
+         timestampString = "368987542.982844"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "362"
-         endingLineNumber = "362"
+         startingLineNumber = "300"
+         endingLineNumber = "300"
          landmarkName = "-tableView:didSelectRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1415,24 +1231,24 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "iSWAD/RootViewController.m"
-         timestampString = "367355767.287453"
+         timestampString = "368987542.982844"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "374"
-         endingLineNumber = "374"
-         landmarkName = "-tableView:didSelectRowAtIndexPath:"
-         landmarkType = "5">
+         startingLineNumber = "312"
+         endingLineNumber = "312"
+         landmarkName = "@implementation RootViewController"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "iSWAD/NoticesViewController.m"
-         timestampString = "368484134.892217"
+         timestampString = "368915544.952873"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "18"
-         endingLineNumber = "18"
+         startingLineNumber = "19"
+         endingLineNumber = "19"
          landmarkName = "-initWithNibName:bundle:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1441,11 +1257,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "iSWAD/NoticesViewController.m"
-         timestampString = "368488343.6676"
+         timestampString = "368987152.101934"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "94"
-         endingLineNumber = "94"
+         startingLineNumber = "97"
+         endingLineNumber = "97"
          landmarkName = "-txtEditingDidBegin:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1454,7 +1270,46 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "iSWAD/CourseSelector.m"
-         timestampString = "368484134.892217"
+         timestampString = "368915544.952873"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "73"
+         endingLineNumber = "73"
+         landmarkName = "-dismissActionSheet:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "iSWAD/CourseSelector.m"
+         timestampString = "368915544.952873"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "60"
+         endingLineNumber = "60"
+         landmarkName = "-pickerView:didSelectRow:inComponent:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "iSWAD/CourseSelector.m"
+         timestampString = "368915544.952873"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "66"
+         endingLineNumber = "66"
+         landmarkName = "-pickerView:didSelectRow:inComponent:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "iSWAD/CourseSelector.m"
+         timestampString = "368915544.952873"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "72"
@@ -1467,50 +1322,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "iSWAD/CourseSelector.m"
-         timestampString = "368484134.892217"
+         timestampString = "368915544.952873"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "59"
-         endingLineNumber = "59"
-         landmarkName = "-pickerView:didSelectRow:inComponent:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "iSWAD/CourseSelector.m"
-         timestampString = "368484134.892217"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "65"
-         endingLineNumber = "65"
-         landmarkName = "-pickerView:didSelectRow:inComponent:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "iSWAD/CourseSelector.m"
-         timestampString = "368484134.892217"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "71"
-         endingLineNumber = "71"
-         landmarkName = "-dismissActionSheet:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "iSWAD/CourseSelector.m"
-         timestampString = "368484134.892217"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "132"
-         endingLineNumber = "132"
+         startingLineNumber = "133"
+         endingLineNumber = "133"
          landmarkName = "-showSelector:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1519,11 +1335,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "iSWAD/Source/Generated/swad.m"
-         timestampString = "368487140.101507"
+         timestampString = "368798266.424685"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "252"
-         endingLineNumber = "252"
+         startingLineNumber = "253"
+         endingLineNumber = "253"
          landmarkName = "-sendNotice:action:wsKey:courseCode:body:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1532,11 +1348,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "iSWAD/WebCommunication.m"
-         timestampString = "368487752.64435"
+         timestampString = "368988133.327803"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "326"
-         endingLineNumber = "326"
+         startingLineNumber = "441"
+         endingLineNumber = "441"
          landmarkName = "-sendNoticeHandler:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1545,11 +1361,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "iSWAD/WebCommunication.m"
-         timestampString = "368487752.64435"
+         timestampString = "368988133.327803"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "340"
-         endingLineNumber = "340"
+         startingLineNumber = "455"
+         endingLineNumber = "455"
          landmarkName = "-sendNotice:courseCode:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1558,11 +1374,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "iSWAD/WebCommunication.m"
-         timestampString = "368487752.64435"
+         timestampString = "368988133.327803"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "333"
-         endingLineNumber = "333"
+         startingLineNumber = "448"
+         endingLineNumber = "448"
          landmarkName = "-postNotice"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1571,11 +1387,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "iSWAD/WebCommunication.m"
-         timestampString = "368487896.304498"
+         timestampString = "368988133.327803"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "303"
-         endingLineNumber = "303"
+         startingLineNumber = "416"
+         endingLineNumber = "416"
          landmarkName = "-sendNoticeHandler:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1584,11 +1400,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "iSWAD/NoticesViewController.m"
-         timestampString = "368487948.929543"
+         timestampString = "368987152.101934"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "41"
-         endingLineNumber = "41"
+         startingLineNumber = "44"
+         endingLineNumber = "44"
          landmarkName = "-sendNoticeDone"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1597,11 +1413,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "iSWAD/MessagesViewController.m"
-         timestampString = "368488825.776196"
+         timestampString = "368915544.952873"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "40"
-         endingLineNumber = "40"
+         startingLineNumber = "41"
+         endingLineNumber = "41"
          landmarkName = "-initWithNibName:bundle:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1610,11 +1426,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "iSWAD/MessagesViewController.m"
-         timestampString = "368489178.953084"
+         timestampString = "368915544.952873"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "53"
-         endingLineNumber = "53"
+         startingLineNumber = "54"
+         endingLineNumber = "54"
          landmarkName = "-textFieldShouldReturn:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1623,12 +1439,337 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "iSWAD/MessagesViewController.m"
-         timestampString = "368546473.776781"
+         timestampString = "368915544.952873"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "99"
-         endingLineNumber = "99"
+         startingLineNumber = "100"
+         endingLineNumber = "100"
          landmarkName = "-checkReceivers:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "iSWAD/WebCommunication.m"
+         timestampString = "368988133.327803"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "471"
+         endingLineNumber = "471"
+         landmarkName = "-testConfigHandler:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "iSWAD/RootViewController.m"
+         timestampString = "368987259.340073"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "195"
+         endingLineNumber = "195"
+         landmarkName = "-viewWillAppear:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "iSWAD/RootViewController.m"
+         timestampString = "368987259.340073"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "135"
+         endingLineNumber = "135"
+         landmarkName = "-viewDidLoad"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "iSWAD/getTestConfigOutput.m"
+         timestampString = "368787856.921932"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "28"
+         endingLineNumber = "28"
+         landmarkName = "-initWithNode:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "iSWAD/WebCommunication.m"
+         timestampString = "368988133.327803"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "547"
+         endingLineNumber = "547"
+         landmarkName = "-testsHandler:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "iSWAD/WebCommunication.m"
+         timestampString = "368988133.327803"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "520"
+         endingLineNumber = "520"
+         landmarkName = "-testsHandler:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "iSWAD/getTestOutput.m"
+         timestampString = "368798418.371875"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "36"
+         endingLineNumber = "36"
+         landmarkName = "-initWithNode:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "iSWAD/NotificationsViewController.m"
+         timestampString = "368989629.605958"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "296"
+         endingLineNumber = "296"
+         landmarkName = "-tableView:didSelectRowAtIndexPath:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "iSWAD/NotificationsViewController.m"
+         timestampString = "368989629.605958"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "297"
+         endingLineNumber = "297"
+         landmarkName = "-tableView:didSelectRowAtIndexPath:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "iSWAD/NotificationsViewController.m"
+         timestampString = "368989629.605958"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "41"
+         endingLineNumber = "41"
+         landmarkName = "-initWithNibName:bundle:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "iSWAD/NotificationsViewController.m"
+         timestampString = "368989629.605958"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "62"
+         endingLineNumber = "62"
+         landmarkName = "-initWithNibName:bundle:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "iSWAD/WebCommunication.m"
+         timestampString = "368988133.327803"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "323"
+         endingLineNumber = "323"
+         landmarkName = "-notificationsHandler:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "iSWAD/WebCommunication.m"
+         timestampString = "368988133.327803"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "352"
+         endingLineNumber = "352"
+         landmarkName = "-updateNotifications"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "iSWAD/WebCommunication.m"
+         timestampString = "368988133.327803"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "321"
+         endingLineNumber = "321"
+         landmarkName = "-notificationsHandler:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "iSWAD/RootViewController.m"
+         timestampString = "368987259.340073"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "116"
+         endingLineNumber = "116"
+         landmarkName = "-loadData"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "iSWAD/NotificationsViewController.m"
+         timestampString = "368989629.605958"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "125"
+         endingLineNumber = "125"
+         landmarkName = "-reloadNotifications"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "iSWAD/WebCommunication.m"
+         timestampString = "368984215.665524"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "56"
+         endingLineNumber = "56"
+         landmarkName = "@implementation WebCommunication"
+         landmarkType = "3">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "iSWAD/NotificationsViewController.m"
+         timestampString = "368989629.605958"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "86"
+         endingLineNumber = "86"
+         landmarkName = "-updateNotificationsDone:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "iSWAD/WebCommunication.m"
+         timestampString = "368985611.086219"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "162"
+         endingLineNumber = "162"
+         landmarkName = "-loginHandler:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "iSWAD/Source/TouchXML/CXMLDocument.m"
+         timestampString = "368985929.941304"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "106"
+         endingLineNumber = "106"
+         landmarkName = "-initWithData:options:error:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "iSWAD/Source/TouchXML/CXMLDocument.m"
+         timestampString = "368985948.120332"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "87"
+         endingLineNumber = "87"
+         landmarkName = "-initWithContentsOfURL:options:error:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "iSWAD/Source/TouchXML/CXMLDocument.m"
+         timestampString = "368985950.809445"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "36"
+         endingLineNumber = "36"
+         landmarkName = "-initWithXMLString:options:error:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "iSWAD/Source/Generated/swad.m"
+         timestampString = "368986490.308526"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "114"
+         endingLineNumber = "114"
+         landmarkName = "-loginByUserPasswordKey:action:userID:userPassword:appKey:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "iSWAD/Source/Generated/swad.m"
+         timestampString = "368986654.901526"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "106"
+         endingLineNumber = "106"
+         landmarkName = "-loginByUserPasswordKey:action:userID:userPassword:appKey:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "iSWAD/Source/Generated/swad.m"
+         timestampString = "368986848.247802"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "115"
+         endingLineNumber = "115"
+         landmarkName = "-loginByUserPasswordKey:action:userID:userPassword:appKey:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

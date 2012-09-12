@@ -24,7 +24,7 @@
 	+ (course*) newWithNode: (CXMLNode*) node
 	{
 		if(node == nil) { return nil; }
-		return (course*)[[[course alloc] initWithNode: node] autorelease];
+		return (course*)[[course alloc] initWithNode: node];
 	}
 
 	- (id) initWithNode: (CXMLNode*) node {
@@ -84,7 +84,7 @@
 	
 	- (void) dealloc
 	{
-		if(self.courseName != nil) { [self.courseName release]; }
+		//if(self.courseName != nil) { [self.courseName release]; }
 		[super dealloc];
 	}
 

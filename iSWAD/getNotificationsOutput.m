@@ -17,7 +17,7 @@
 + (getNotificationsOutput*) newWithNode: (CXMLNode*) node
 {
     if(node == nil) { return nil; }
-    return (getNotificationsOutput*)[[[getNotificationsOutput alloc] initWithNode: node] autorelease];
+    return (getNotificationsOutput*)[[getNotificationsOutput alloc] initWithNode: node];
 }
 
 - (id) initWithNode: (CXMLNode*) node {
@@ -51,24 +51,8 @@
     NSMutableString* s = [super serializeElements];
 	[s appendFormat: @"<numNotifications>%@</numNotifications>", [NSString stringWithFormat: @"%i", self.numNotifications]];
 	
-	[s appendString:[_notifications serializeElements]];
+	[s appendString:[_notifications serialize]];
 	
-    /*[s appendFormat: @"<userCode>%@</userCode>", [NSString stringWithFormat: @"%i", self.userCode]];
-     [s appendFormat: @"<userTypeCode>%@</userTypeCode>", [NSString stringWithFormat: @"%i", self.userTypeCode]];
-     
-     if (self.wsKey != nil) 
-     [s appendFormat: @"<wsKey>%@</wsKey>", [[self.wsKey stringByReplacingOccurrencesOfString:@"\"" withString:@"&quot;"] stringByReplacingOccurrencesOfString:@"&" withString:@"&amp;"]];
-     if (self.userID != nil) 
-     [s appendFormat: @"<userID>%@</userID>", [[self.userID stringByReplacingOccurrencesOfString:@"\"" withString:@"&quot;"] stringByReplacingOccurrencesOfString:@"&" withString:@"&amp;"]];
-     if (self.userSurname1 != nil) 
-     [s appendFormat: @"<userSurname1>%@</userSurname1>", [[self.userSurname1 stringByReplacingOccurrencesOfString:@"\"" withString:@"&quot;"] stringByReplacingOccurrencesOfString:@"&" withString:@"&amp;"]];
-     if (self.userSurname2 != nil) 
-     [s appendFormat: @"<userSurname2>%@</userSurname2>", [[self.userSurname2 stringByReplacingOccurrencesOfString:@"\"" withString:@"&quot;"] stringByReplacingOccurrencesOfString:@"&" withString:@"&amp;"]];
-     if (self.userFirstname != nil) 
-     [s appendFormat: @"<userFirstname>%@</userFirstname>", [[self.userFirstname stringByReplacingOccurrencesOfString:@"\"" withString:@"&quot;"] stringByReplacingOccurrencesOfString:@"&" withString:@"&amp;"]];
-     if (self.userTypeName != nil) 
-     [s appendFormat: @"<userFirstname>%@</userFirstname>", [[self.userFirstname stringByReplacingOccurrencesOfString:@"\"" withString:@"&quot;"] stringByReplacingOccurrencesOfString:@"&" withString:@"&amp;"]];
-     */
     return s;
 }
 

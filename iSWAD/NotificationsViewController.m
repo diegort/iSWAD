@@ -15,6 +15,9 @@
 #import "User.h"
 #import "Login.h"
 #import "WebCommunication.h"
+#import "Literals.h"
+
+#import <QuartzCore/QuartzCore.h>
 
 #define TITLELABEL_TAG  2
 #define DETAILTEXT_TAG  3
@@ -36,20 +39,11 @@ BOOL showError;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        selectedIndex = -1;
-        
+    if (self) {        
         myDB = [[DBManager alloc] init];
         notifications = [myDB getNotifications];
         [notifications retain];
-        
-        /*activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-         
-         activityIndicatorView.center = CGPointMake(160, 180);
-         activityIndicatorView.hidesWhenStopped = YES;
-         
-         [self.view addSubview:activityIndicatorView];*/
-        
+          
         if(notifications.count == 0){
             noNotif = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
             UITextView *myLabel2 = [[UITextView alloc] initWithFrame:noNotif.frame];
@@ -64,138 +58,77 @@ BOOL showError;
             self.tableView.bounces = NO;
         }
 		
-        [[NSNotificationCenter defaultCenter] removeObserver:self name:@"updateNotificationsDone" object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateNotificationsDone) name:@"updateNotificationsDone" object:nil];
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:NotificationsDone object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateNotificationsDone:) name:NotificationsDone object:nil];
 		
         app = [UIApplication sharedApplication];
+		
+		activityIndicatorView = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 100.0f, 100.0f)];
+		[activityIndicatorView setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleWhiteLarge];
+		
+		activityIndicatorView.alpha = 0.7;
+		activityIndicatorView.backgroundColor = [UIColor lightGrayColor];
+		activityIndicatorView.center = CGPointMake(160, 180);
+		//activityIndicatorView.center = self.view.center;
+		activityIndicatorView.hidesWhenStopped = YES;
+		activityIndicatorView.layer.cornerRadius = 10.0;		
+		activityIndicatorView.layer.masksToBounds = YES;
+		
+		[self.view addSubview:activityIndicatorView];
     }
 
     return self;
 }
 
--(void) updateNotificationsDone{
-    app.networkActivityIndicatorVisible = NO;
+-(void) updateNotificationsDone: (NSNotification *) value{
     
-    [notifications release];
-    notifications = nil;
-    notifications = [myDB getNotifications];
-    [notifications retain];
+    NSNumber* result = [value object];
+	switch ([result intValue]) {
+		case 0:
+			[notifications release];
+			notifications = nil;
+			notifications = [myDB getNotifications];
+			[notifications retain];
+			
+			if (notifications.count > 0) {
+				if(noNotif){
+					[noNotif removeFromSuperview];
+					self.tableView.bounces = YES;
+				}
+			}
+			
+			[self.tableView reloadData];
+			break;
+		case -1:
+		{
+			UIAlertView *alert = [[UIAlertView alloc]
+                                  initWithTitle: NSLocalizedString(@"getNotificationsErrorAlertTitle", nil)
+                                  message: NSLocalizedString(@"getNotificationsErrorAlertMessage", nil)
+                                  delegate: nil
+                                  cancelButtonTitle:NSLocalizedString(@"Accept", nil)
+                                  otherButtonTitles:nil];
+            [alert show];
+            [alert release];
+		}
+			break;
+			
+		default:
+			break;
+	}
     
-    if (notifications.count > 0) {
-        if(noNotif){
-            [noNotif removeFromSuperview];
-            self.tableView.bounces = YES;
-        }
-    }
-    
-    [self.tableView reloadData];
+	app.networkActivityIndicatorVisible = NO;
+	[activityIndicatorView stopAnimating];
 }
 
 -(void) reloadNotifications{
     app.networkActivityIndicatorVisible = YES;
     
+    [activityIndicatorView startAnimating];
+	
     WebCommunication *myWB = [[WebCommunication alloc] init];
     [myWB updateNotifications];
+	[myWB release];
 }
-
-/*- (void) notificationsHandler: (id) value { 
-    
-	if(showError){
-        showError = NO;
-        if ([value isKindOfClass:[NSError class]]) { // Handle errors
-            //NSLog(@"%@", value);
-            //NSError *err = (NSError *) value;
-            
-            UIAlertView *alert = [[UIAlertView alloc]
-                                  initWithTitle: NSLocalizedString(@"noConnectionAlertTitle", nil)
-                                  message: NSLocalizedString(@"noConnectionAlertMessage", nil)
-                                  delegate: nil
-                                  cancelButtonTitle:NSLocalizedString(@"Accept", nil)
-                                  otherButtonTitles:nil];
-            [alert show];
-            [alert release];
-        } else if([value isKindOfClass:[SoapFault class]]) { // Handle faults
-            SoapFault *err = (SoapFault *) value;
-            
-            if ([[err faultString] hasPrefix:@"Bad l"]) {
-                UIAlertView *alert = [[UIAlertView alloc]
-                                      initWithTitle: NSLocalizedString(@"getNotificationsErrorAlertTitle", nil)
-                                      message: NSLocalizedString(@"getNotificationsErrorAlertMessage", nil)
-                                      delegate: nil
-                                      cancelButtonTitle:NSLocalizedString(@"Accept", nil)
-                                      otherButtonTitles:nil];
-                [alert show];
-                [alert release];
-            }
-        } else if ([value isKindOfClass:[getNotificationsOutput class]]){ //All went OK
-            getNotificationsOutput* tmp = (getNotificationsOutput*)value;
-            if ([myDB saveNotifications:tmp.notifications.items]){
-                
-                //currentTime = ((notification*)[notifications objectAtIndex:0]).eventTime;
-                NSNumber *temp = [NSNumber numberWithLong:currentTime];
-                [[NSUserDefaults standardUserDefaults] setObject:temp forKey:@"notificationsUpdateTime"];
-
-                if(noNotif){
-                    [noNotif removeFromSuperview];
-                    self.tableView.bounces = YES;
-                }
-                
-                [notifications release];
-                notifications = nil;
-                notifications = [myDB getNotifications];
-                [notifications retain];
-                [self.tableView reloadData];
-            }else{
-                //Error
-            }
-            
-        }
-        app.networkActivityIndicatorVisible = NO;
-        
-        //[activityIndicatorView stopAnimating];
-    }
-}
-
-- (void) loginHandler: (id) value { 
-    
-	if(showLoginError){
-        showLoginError = NO;
-        if ([value isKindOfClass:[NSError class]]) { // Handle errors
-            //NSLog(@"%@", value);
-            //NSError *err = (NSError *) value;
-            
-            UIAlertView *alert = [[UIAlertView alloc]
-                                  initWithTitle: NSLocalizedString(@"noConnectionAlertTitle", nil)
-                                  message: NSLocalizedString(@"noConnectionAlertMessage", nil)
-                                  delegate: nil
-                                  cancelButtonTitle:NSLocalizedString(@"Accept", nil)
-                                  otherButtonTitles:nil];
-            [alert show];
-            [alert release];
-            app.networkActivityIndicatorVisible = NO;
-        } else if([value isKindOfClass:[SoapFault class]]) { // Handle faults
-            SoapFault *err = (SoapFault *) value;
-            
-            if ([[err faultString] hasPrefix:@"Bad l"]) {
-                UIAlertView *alert = [[UIAlertView alloc]
-                                      initWithTitle: NSLocalizedString(@"loginErrorAlertTitle", nil)
-                                      message: NSLocalizedString(@"loginErrorAlertMessage", nil)
-                                      delegate: nil
-                                      cancelButtonTitle:NSLocalizedString(@"Accept", nil)
-                                      otherButtonTitles:nil];
-                [alert show];
-                [alert release];
-                app.networkActivityIndicatorVisible = NO;
-            }
-        } else if ([value isKindOfClass:[loginByUserPasswordKeyOutput class]]){ //All went OK
-            loginByUserPasswordKeyOutput* tmp = (loginByUserPasswordKeyOutput*)value;
-            NSDate *now = [[NSDate alloc] initWithTimeIntervalSinceNow:0];
-            [User initWithLoginOutput:tmp time:[now timeIntervalSince1970]];
-            
-            [self getNotifications];
-        }
-    }
-}*/
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -319,22 +252,12 @@ titleForHeaderInSection:(NSInteger)section {
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    /*static NSString *MyIdentifier = @"NotificationCell";
-    
-    NotificationCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifier];
-    
-    if (cell == nil) {
-        [[NSBundle mainBundle] loadNibNamed:@"NotificationCell" owner:self options:nil];
-        cell = (NotificationCell *)tvCell;
-        self.tvCell = nil;
-    }*/
-    
     static NSString *CellIdentifier = @"NotificationCell";
     
     NotificationCell *cell = (NotificationCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         
-        NSArray * topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"NotificationCell" owner:self options:nil];
+        NSArray * topLevelObjects = [[NSBundle mainBundle] loadNibNamed:[NotificationCell description] owner:self options:nil];
         
         for(id currentObject in topLevelObjects)
         {
@@ -347,78 +270,12 @@ titleForHeaderInSection:(NSInteger)section {
         
     }
     
-    //If this is the selected index then calculate the height of the cell based on the amount of text we have
-    /*if(selectedIndex == indexPath.row){
-        CGFloat labelHeight = [self getLabelHeightForIndex:indexPath.row];
-        labelHeight = MAX(labelHeight, COMMENT_LABEL_MIN_HEIGHT);
-        cell.detailText.frame = CGRectMake(cell.detailText.frame.origin.x, 
-                                                 cell.detailText.frame.origin.y, 
-                                                 cell.detailText.frame.size.width, 
-                                                 labelHeight);
-        
-        cell.frame = CGRectMake(cell.frame.origin.x, 
-                                cell.frame.origin.y, 
-                                cell.frame.size.width, 
-                                NOTIFICATION_CELL_HEIGHT + labelHeight);
-    }
-    else {
-        //Otherwise just return the minimum height for the label.
-        cell.detailText.frame = CGRectMake(cell.detailText.frame.origin.x, 
-                                                 cell.detailText.frame.origin.y, 
-                                                 cell.detailText.frame.size.width, 
-                                                 COMMENT_LABEL_MIN_HEIGHT);
-        cell.frame = CGRectMake(cell.frame.origin.x, 
-                                cell.frame.origin.y, 
-                                cell.frame.size.width, 
-                                130);
-    }*/
-    
-    //cell.detailText.font = [UIFont fontWithName:@"Helvetica" size:14.0f];
-    //cell.commentTextLabel.text = [textArray objectAtIndex:indexPath.row];
-    notification *notif = [notifications objectAtIndex:indexPath.row];
+       notification *notif = [notifications objectAtIndex:indexPath.row];
     
     [cell setData:notif selected:(selectedIndex == indexPath.row)];
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 -(NSString *) cleanNotificationContent:(NSString *) content{
     NSString *aux;
@@ -428,6 +285,7 @@ titleForHeaderInSection:(NSInteger)section {
         aux = [content substringFromIndex:9];
         aux = [aux substringToIndex:aux.length - 3];
     }
+	[aux retain];
     return aux;
 }
 
@@ -435,31 +293,12 @@ titleForHeaderInSection:(NSInteger)section {
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-    */
-    
-    //The user is selecting the cell which is currently expanded
-    //we want to minimize it back
-    
-    /*if(selectedIndex == indexPath.row)
-    {
-        selectedIndex = -1;
-        [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-        
-        return;
-    }*/
     NotificationCell *cell;
     cell = (NotificationCell *)[self.tableView cellForRowAtIndexPath:indexPath];
     cell.selected = NO;
     [cell userTouched];
     
-    NotificationDetailViewController *notif = [[NotificationDetailViewController alloc] initWithNibName:@"NotificationDetailViewController" bundle:nil];
+    NotificationDetailViewController *notif = [[NotificationDetailViewController alloc] initWithNibName:[NotificationDetailViewController description] bundle:nil];
     notification *tmp = [notifications objectAtIndex:indexPath.row];
     //lg.title = [[tableView cellForRowAtIndexPath:indexPath].textLabel text];
     NSString *text = [self cleanNotificationContent:tmp.content];
@@ -468,27 +307,7 @@ titleForHeaderInSection:(NSInteger)section {
     notif.Subject = tmp.summary;
     [self.navigationController pushViewController:notif animated:YES];
     [notif.wvDetails loadHTMLString:text baseURL:nil];
-    [notif release];
-    
-    //First we check if a cell is already expanded.
-    //If it is we want to minimize make sure it is reloaded to minimize it back
-    /*if(selectedIndex >= 0)
-    {
-        NSIndexPath *previousPath = [NSIndexPath indexPathForRow:selectedIndex inSection:0];
-        selectedIndex = indexPath.row;
-        
-        cell = (NotificationCell *)[self.tableView cellForRowAtIndexPath:previousPath];
-        cell.selected = NO;
-        [cell userTouched];
-        
-        [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:previousPath] withRowAnimation:UITableViewRowAnimationFade];        
-    }
-    
-    //Finally set the selected index to the new selection and reload it to expand
-    selectedIndex = indexPath.row;
-    
-    [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-     */
+    //[notif release];
 }
 
 - (void)dealloc {

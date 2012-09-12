@@ -10,7 +10,7 @@
 
 	+ (id) newWithNode: (CXMLNode*) node
 	{
-		return [[[usersArray alloc] initWithNode: node] autorelease];
+		return [[usersArray alloc] initWithNode: node];
 	}
 
 	- (id) initWithNode: (CXMLNode*) node
@@ -21,6 +21,7 @@
 				user* value = [[user newWithNode: child] object];
 				if(value != nil) {
 					[self addObject: value];
+					[value release];
 				}
 			}
 		}

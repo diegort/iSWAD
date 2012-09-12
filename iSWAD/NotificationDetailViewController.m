@@ -41,7 +41,7 @@
 }
 
 - (void) answerMessage{
-    MessagesViewController *msg = [[MessagesViewController alloc] initWithNibName:@"MessagesViewController" bundle:nil];
+    MessagesViewController *msg = [[MessagesViewController alloc] initWithNibName:[MessagesViewController description] bundle:nil];
     
     //lg.title = @"Login";
     [msg setSubject:Subject messageCode:Code];
@@ -56,13 +56,14 @@
     [super viewWillAppear:animated];
     
     if ([Type isEqualToString:@"message"]) {
-        UIBarButtonItem *rigthBtn = [[UIBarButtonItem alloc] initWithTitle:@"Responder" style:UIBarButtonItemStyleDone target:self action:@selector(answerMessage)];
+        UIBarButtonItem *rigthBtn = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Reply", nil) style:UIBarButtonItemStyleDone target:self action:@selector(answerMessage)];
     /*float r,g,b;
      r = 153./255;
      g = 204./255;
      b = 102./255;
      rigthBtn.tintColor = [UIColor colorWithRed:r green:g blue:b alpha:1];*/
         self.navigationItem.rightBarButtonItem = rigthBtn;
+		[rigthBtn release];
     }
 }
 

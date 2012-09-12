@@ -14,11 +14,11 @@
 
 @property int userCode;
 @property int userTypeCode;
-@property (retain) NSString * wsKey;
-@property (retain) NSString * userID;
-@property (retain) NSString * userSurname1;
-@property (retain) NSString * userSurname2;
-@property (retain) NSString * userFirstname;
+@property (retain, nonatomic) NSString * wsKey;
+@property (retain, nonatomic) NSString * userID;
+@property (retain, nonatomic) NSString * userSurname1;
+@property (retain, nonatomic) NSString * userSurname2;
+@property (retain, nonatomic) NSString * userFirstname;
 //@property (retain) NSString * userTypeName;
 
 + (loginByUserPasswordKeyOutput*) newWithNode: (CXMLNode*) node;

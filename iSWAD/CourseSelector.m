@@ -10,6 +10,7 @@
 #import "WebCommunication.h"
 #import "getCoursesOutput.h"
 #import "course.h"
+#import "Literals.h"
 
 static int _courseCode;
 static NSString* _courseName;
@@ -115,7 +116,7 @@ static coursesArray* courses;
 		tmpPV = pickerView;
 		[pickerView release];
 		
-		UISegmentedControl *closeButton = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObject:@"Cerrar"]];
+		UISegmentedControl *closeButton = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObject:NSLocalizedString(@"Close",nil)]];
 		closeButton.momentary = YES; 
 		closeButton.frame = CGRectMake(260, 7.0f, 50.0f, 30.0f);
 		closeButton.segmentedControlStyle = UISegmentedControlStyleBar;
@@ -131,10 +132,11 @@ static coursesArray* courses;
 	}else{
 		app.networkActivityIndicatorVisible = YES;
 		
-		[[NSNotificationCenter defaultCenter] removeObserver:self name:@"coursesListReady" object:nil];
-		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(coursesListDone:) name:@"coursesListReady" object:nil];
+		[[NSNotificationCenter defaultCenter] removeObserver:self name:CoursesListReady object:nil];
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(coursesListDone:) name:CoursesListReady object:nil];
 		WebCommunication * myWb = [[WebCommunication alloc] init];
 		[myWb getSubjects];
+		[myWb release];
 	}
 }
 

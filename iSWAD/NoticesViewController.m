@@ -9,6 +9,7 @@
 #import "NoticesViewController.h"
 #import "UIView+FormScroll.h"
 #import "WebCommunication.h"
+#import "Literals.h"
 
 @implementation NoticesViewController
 @synthesize txtCourse;
@@ -25,15 +26,17 @@
         g = 204./255;
         b = 102./255;
         rigthBtn.tintColor = [UIColor colorWithRed:r green:g blue:b alpha:1];
+		
         self.navigationItem.rightBarButtonItem = rigthBtn;
         
         app = [UIApplication sharedApplication];
 		
-        [[NSNotificationCenter defaultCenter] removeObserver:self name:@"noticePosted" object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendNoticeDone) name:@"noticePosted" object:nil];
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:NoticePosted object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendNoticeDone) name:NoticePosted object:nil];
 		
 		_courseCode = -1;
     }
+	
     return self;
 }
 
@@ -75,10 +78,11 @@
 		[self.view scrollToY:0];
 		
 		[txtMessage resignFirstResponder];	
+		[myWB release];
 	}
 }
 
-- (void) courseSelectoCallback{
+- (void) courseSelectorCallback{
 	_courseCode = [cs getSelectedCode];
 	_courseName = [cs getSelectedName];
 	
@@ -92,7 +96,7 @@
     //[self.view scrollToView:sender];
 	sender.userInteractionEnabled = NO;
 	[sender resignFirstResponder];
-	cs = [[CourseSelector alloc] initWithTarget:self selector:@selector(courseSelectoCallback)];
+	cs = [[CourseSelector alloc] initWithTarget:self selector:@selector(courseSelectorCallback)];
 	
 	[cs showSelector:3];
 }

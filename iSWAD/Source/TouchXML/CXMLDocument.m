@@ -106,7 +106,6 @@ return(self);
 if ((self = [super init]) != NULL)
 	{
 	xmlDocPtr theDoc = NULL;
-
 	if (inData && inData.length > 0)
 		{
 		theDoc = xmlParseMemory([inData bytes], [inData length]);

@@ -18,7 +18,7 @@
 
 // Static method for initializing from a node.
 + (id) newWithNode: (CXMLNode*) node {
-	return (id)[[[SoapObject alloc] initWithNode: node] autorelease];
+	return (id)[[SoapObject alloc] initWithNode: node];
 }
 
 // Called when initializing the object from a node

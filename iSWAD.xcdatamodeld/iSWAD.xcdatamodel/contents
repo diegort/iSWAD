@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="872" systemVersion="11C74" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1171" systemVersion="11E53" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Answers" syncable="YES">
+        <attribute name="answerIndex" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="answerText" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="correct" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="questionCode" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+    </entity>
     <entity name="Menu" syncable="YES">
         <attribute name="displayOrder" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="icon" optional="YES" attributeType="String" syncable="YES"/>
@@ -19,17 +25,40 @@
         <attribute name="userSurname1" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userSurname2" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="User" syncable="YES">
-        <attribute name="code" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="firstname" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="surname1" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="surname2" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    <entity name="Questions" syncable="YES">
+        <attribute name="answerType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="courseCode" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="questionCode" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="shuffle" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="stem" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="QuestionTags" syncable="YES">
+        <attribute name="questionCode" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="tagCode" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="tagIndex" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="Tags" syncable="YES">
+        <attribute name="courseCode" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="tagCode" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="tagText" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="TestsConfig" syncable="YES">
+        <attribute name="beginTime" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="courseCode" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="defQuestions" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="feedback" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="maxQuestions" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="minQuestions" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="numQuestions" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="pluggable" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Menu" positionX="160" positionY="192" width="128" height="105"/>
-        <element name="User" positionX="160" positionY="192" width="128" height="135"/>
-        <element name="Notifications" positionX="160" positionY="192" width="128" height="210"/>
+        <element name="Answers" positionX="-983" positionY="252" width="128" height="105"/>
+        <element name="Menu" positionX="-1422" positionY="-162" width="128" height="105"/>
+        <element name="Notifications" positionX="-990" positionY="-108" width="128" height="210"/>
+        <element name="Questions" positionX="-1179" positionY="252" width="128" height="120"/>
+        <element name="QuestionTags" positionX="-1406" positionY="252" width="128" height="90"/>
+        <element name="Tags" positionX="-1413" positionY="54" width="128" height="90"/>
+        <element name="TestsConfig" positionX="-1179" positionY="-3" width="128" height="165"/>
     </elements>
 </model>

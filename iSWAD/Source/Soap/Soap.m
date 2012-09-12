@@ -50,7 +50,7 @@
 	
 	// If its a literal, just output it
 	if([value isKindOfClass:[SoapLiteral class]]) {
-		return [value value];
+		return [(SoapLiteral *)value value];
 	}
 	
 	// If it's a dictionary, then serialize and look for attributes

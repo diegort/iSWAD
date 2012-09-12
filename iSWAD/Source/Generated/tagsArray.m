@@ -10,7 +10,7 @@
 
 	+ (id) newWithNode: (CXMLNode*) node
 	{
-		return [[[tagsArray alloc] initWithNode: node] autorelease];
+		return [[tagsArray alloc] initWithNode: node];
 	}
 
 	- (id) initWithNode: (CXMLNode*) node
@@ -21,6 +21,7 @@
 				tag* value = [[tag newWithNode: child] object];
 				if(value != nil) {
 					[self addObject: value];
+					[value release];
 				}
 			}
 		}

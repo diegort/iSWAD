@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		45016D38152A5FE40099D6B7 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45016D3A152A5FE40099D6B7 /* AboutViewController.xib */; };
+		4509B4FE15FE55560058805D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4509B4FD15FE55550058805D /* QuartzCore.framework */; };
 		450ADAFF15C92B8F00CFB5B7 /* info@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 450ADAFE15C92B8F00CFB5B7 /* info@2x.png */; };
 		450ADB0B15C92BFD00CFB5B7 /* announce.png in Resources */ = {isa = PBXBuildFile; fileRef = 450ADB0115C92BFD00CFB5B7 /* announce.png */; };
 		450ADB0C15C92BFD00CFB5B7 /* desk.png in Resources */ = {isa = PBXBuildFile; fileRef = 450ADB0215C92BFD00CFB5B7 /* desk.png */; };
@@ -32,6 +33,10 @@
 		4526F5A815C96D06007083CC /* logoswad.png in Resources */ = {isa = PBXBuildFile; fileRef = 4526F5A615C96D06007083CC /* logoswad.png */; };
 		4526F5A915C96D06007083CC /* logougr.png in Resources */ = {isa = PBXBuildFile; fileRef = 4526F5A715C96D06007083CC /* logougr.png */; };
 		452CFCE2148E4514000C7565 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 452CFCE1148E4514000C7565 /* MessageUI.framework */; };
+		4536379115FF20E6004BD702 /* Icon-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 4536378D15FF20E6004BD702 /* Icon-small.png */; };
+		4536379215FF20E6004BD702 /* Icon-small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4536378E15FF20E6004BD702 /* Icon-small@2x.png */; };
+		4536379315FF20E6004BD702 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4536378F15FF20E6004BD702 /* Icon.png */; };
+		4536379415FF20E6004BD702 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4536379015FF20E6004BD702 /* Icon@2x.png */; };
 		453E30E414675BDD00FC4FA5 /* cabecera.png in Resources */ = {isa = PBXBuildFile; fileRef = 453E30E314675BDD00FC4FA5 /* cabecera.png */; };
 		453F991214838240002C6F02 /* Login.m in Sources */ = {isa = PBXBuildFile; fileRef = 453F991114838240002C6F02 /* Login.m */; };
 		453F99151483A5B9002C6F02 /* sendMessageOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = 453F99141483A5B8002C6F02 /* sendMessageOutput.m */; };
@@ -82,21 +87,25 @@
 		454E7DD6145612DA0052A2F7 /* Encrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 454E7DD5145612DA0052A2F7 /* Encrypt.m */; };
 		454E7DD914561B010052A2F7 /* loginByUPOut.m in Sources */ = {isa = PBXBuildFile; fileRef = 454E7DD814561B010052A2F7 /* loginByUPOut.m */; };
 		4561C10E15E56B6F0088F86F /* NoticesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4561C10C15E56B6F0088F86F /* NoticesViewController.m */; };
-		4561C10F15E56B6F0088F86F /* NoticesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4561C10D15E56B6F0088F86F /* NoticesViewController.xib */; };
 		45643119143BA41B00218575 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45643117143BA41B00218575 /* LoginViewController.m */; };
 		456D3B5B145476E70051D404 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 456D3B5A145476E70051D404 /* SystemConfiguration.framework */; };
+		4578A35015FD341800336C47 /* NoticesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4578A35215FD341800336C47 /* NoticesViewController.xib */; };
 		4584131D14391E41007637AF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4584131C14391E41007637AF /* UIKit.framework */; };
 		4584131F14391E41007637AF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4584131E14391E41007637AF /* Foundation.framework */; };
 		4584132114391E41007637AF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4584132014391E41007637AF /* CoreGraphics.framework */; };
 		4584132914391E41007637AF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4584132814391E41007637AF /* main.m */; };
 		4584132D14391E41007637AF /* iSWADAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4584132C14391E41007637AF /* iSWADAppDelegate.m */; };
 		4584133314391E41007637AF /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4584133214391E41007637AF /* RootViewController.m */; };
-		458426A7145E1A35004ABE3B /* iswad57.png in Resources */ = {isa = PBXBuildFile; fileRef = 458426A6145E1A35004ABE3B /* iswad57.png */; };
-		458426AA145E1A3E004ABE3B /* iswad114.png in Resources */ = {isa = PBXBuildFile; fileRef = 458426A9145E1A3E004ABE3B /* iswad114.png */; };
 		458711AB148A803C006F4CE3 /* getNotificationsOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = 458711AA148A803C006F4CE3 /* getNotificationsOutput.m */; };
 		458711B7148A82B0006F4CE3 /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 458711B6148A82B0006F4CE3 /* DBManager.m */; };
+		45878E5515FB43FA0072C7C6 /* TestsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45878E5315FB43FA0072C7C6 /* TestsViewController.m */; };
+		45878E5615FB43FA0072C7C6 /* TestsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45878E5415FB43FA0072C7C6 /* TestsViewController.xib */; };
+		45878E5A15FB54470072C7C6 /* getTestOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = 45878E5915FB54470072C7C6 /* getTestOutput.m */; };
+		45878E5E15FCEC010072C7C6 /* ConfigureTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45878E5C15FCEC010072C7C6 /* ConfigureTestViewController.m */; };
+		45878E5F15FCEC010072C7C6 /* ConfigureTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45878E5D15FCEC010072C7C6 /* ConfigureTestViewController.xib */; };
 		459C6A1E147087C500456B49 /* MessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 459C6A1C147087C500456B49 /* MessagesViewController.m */; };
 		45A214311527198A00C90B38 /* cabecera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 45A214301527198A00C90B38 /* cabecera@2x.png */; };
+		45A8AB8015F7EE89009C0DDB /* getTestConfigOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = 45A8AB7F15F7EE89009C0DDB /* getTestConfigOutput.m */; };
 		45AD737314668436009533FC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 45AD736D14668436009533FC /* InfoPlist.strings */; };
 		45AD737414668436009533FC /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45AD736F14668436009533FC /* MainWindow.xib */; };
 		45AD737514668436009533FC /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45AD737114668436009533FC /* RootViewController.xib */; };
@@ -108,7 +117,6 @@
 		45BDD212150B554D00F7F0D6 /* NotificationDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45BDD210150B554D00F7F0D6 /* NotificationDetailViewController.xib */; };
 		45BFEFF1146B52DA0067C7CA /* MyNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 45BFEFF0146B52DA0067C7CA /* MyNavigationBar.m */; };
 		45C277D31482E2C5005004C4 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 45C277D21482E2C5005004C4 /* User.m */; };
-		45C59F95148854C600149A44 /* Notifications.m in Sources */ = {isa = PBXBuildFile; fileRef = 45C59F94148854C600149A44 /* Notifications.m */; };
 		45C6E90F147088E30013AEF6 /* MessagesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45C6E911147088E30013AEF6 /* MessagesViewController.xib */; };
 		45C6E91714708FE20013AEF6 /* CustomUITextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45C6E91614708FE20013AEF6 /* CustomUITextView.m */; };
 		45C9C3A0148971EC0015D5CF /* logougr@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 45C9C39F148971EC0015D5CF /* logougr@2x.png */; };
@@ -128,6 +136,7 @@
 /* Begin PBXFileReference section */
 		45016D3B152A5FF20099D6B7 /* es */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = es; path = es.lproj/AboutViewController.xib; sourceTree = "<group>"; };
 		45016D3C152A60070099D6B7 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/AboutViewController.xib; sourceTree = "<group>"; };
+		4509B4FD15FE55550058805D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		450ADAFE15C92B8F00CFB5B7 /* info@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "info@2x.png"; sourceTree = "<group>"; };
 		450ADB0115C92BFD00CFB5B7 /* announce.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = announce.png; sourceTree = "<group>"; };
 		450ADB0215C92BFD00CFB5B7 /* desk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = desk.png; sourceTree = "<group>"; };
@@ -154,6 +163,10 @@
 		4526F5A715C96D06007083CC /* logougr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logougr.png; sourceTree = "<group>"; };
 		452CFCE1148E4514000C7565 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		452CFCE7148E765B000C7565 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MessagesViewController.xib; sourceTree = "<group>"; };
+		4536378D15FF20E6004BD702 /* Icon-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-small.png"; sourceTree = "<group>"; };
+		4536378E15FF20E6004BD702 /* Icon-small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-small@2x.png"; sourceTree = "<group>"; };
+		4536378F15FF20E6004BD702 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		4536379015FF20E6004BD702 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		453E30E314675BDD00FC4FA5 /* cabecera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cabecera.png; sourceTree = "<group>"; };
 		453F991014838240002C6F02 /* Login.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Login.h; sourceTree = "<group>"; };
 		453F991114838240002C6F02 /* Login.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Login.m; sourceTree = "<group>"; };
@@ -254,10 +267,11 @@
 		454E7DD814561B010052A2F7 /* loginByUPOut.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = loginByUPOut.m; path = Source/Generated/loginByUPOut.m; sourceTree = "<group>"; };
 		4561C10B15E56B6F0088F86F /* NoticesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoticesViewController.h; sourceTree = "<group>"; };
 		4561C10C15E56B6F0088F86F /* NoticesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoticesViewController.m; sourceTree = "<group>"; };
-		4561C10D15E56B6F0088F86F /* NoticesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoticesViewController.xib; sourceTree = "<group>"; };
 		45643116143BA41B00218575 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		45643117143BA41B00218575 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		456D3B5A145476E70051D404 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		4578A35115FD341800336C47 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/NoticesViewController.xib; sourceTree = "<group>"; };
+		4578A35315FD343300336C47 /* es */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = es; path = es.lproj/NoticesViewController.xib; sourceTree = "<group>"; };
 		4584131814391E41007637AF /* iSWAD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iSWAD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4584131C14391E41007637AF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4584131E14391E41007637AF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -268,17 +282,26 @@
 		4584132C14391E41007637AF /* iSWADAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iSWADAppDelegate.m; sourceTree = "<group>"; };
 		4584133114391E41007637AF /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		4584133214391E41007637AF /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
-		458426A6145E1A35004ABE3B /* iswad57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iswad57.png; sourceTree = "<group>"; };
-		458426A9145E1A3E004ABE3B /* iswad114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iswad114.png; sourceTree = "<group>"; };
 		458711A9148A803C006F4CE3 /* getNotificationsOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = getNotificationsOutput.h; sourceTree = "<group>"; };
 		458711AA148A803C006F4CE3 /* getNotificationsOutput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = getNotificationsOutput.m; sourceTree = "<group>"; };
 		458711B5148A82B0006F4CE3 /* DBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBManager.h; sourceTree = "<group>"; };
 		458711B6148A82B0006F4CE3 /* DBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBManager.m; sourceTree = "<group>"; };
+		45878E5215FB43FA0072C7C6 /* TestsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestsViewController.h; sourceTree = "<group>"; };
+		45878E5315FB43FA0072C7C6 /* TestsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestsViewController.m; sourceTree = "<group>"; };
+		45878E5415FB43FA0072C7C6 /* TestsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestsViewController.xib; sourceTree = "<group>"; };
+		45878E5715FB48DC0072C7C6 /* Literals.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Literals.h; sourceTree = "<group>"; };
+		45878E5815FB54470072C7C6 /* getTestOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = getTestOutput.h; sourceTree = "<group>"; };
+		45878E5915FB54470072C7C6 /* getTestOutput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = getTestOutput.m; sourceTree = "<group>"; };
+		45878E5B15FCEC010072C7C6 /* ConfigureTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigureTestViewController.h; sourceTree = "<group>"; };
+		45878E5C15FCEC010072C7C6 /* ConfigureTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigureTestViewController.m; sourceTree = "<group>"; };
+		45878E5D15FCEC010072C7C6 /* ConfigureTestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConfigureTestViewController.xib; sourceTree = "<group>"; };
 		459C6A1B147087C500456B49 /* MessagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessagesViewController.h; sourceTree = "<group>"; };
 		459C6A1C147087C500456B49 /* MessagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessagesViewController.m; sourceTree = "<group>"; };
 		45A2142B152717B800C90B38 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		45A2142E152717BF00C90B38 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		45A214301527198A00C90B38 /* cabecera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cabecera@2x.png"; sourceTree = "<group>"; };
+		45A8AB7E15F7EE89009C0DDB /* getTestConfigOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = getTestConfigOutput.h; sourceTree = "<group>"; };
+		45A8AB7F15F7EE89009C0DDB /* getTestConfigOutput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = getTestConfigOutput.m; sourceTree = "<group>"; };
 		45AD736E14668436009533FC /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = iSWAD/es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		45AD737014668436009533FC /* es */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = es; path = iSWAD/es.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		45AD737214668436009533FC /* es */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = es; path = iSWAD/es.lproj/RootViewController.xib; sourceTree = "<group>"; };
@@ -298,8 +321,6 @@
 		45BFEFF2146B541C0067C7CA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		45C277D11482E2C5005004C4 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		45C277D21482E2C5005004C4 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
-		45C59F93148854C600149A44 /* Notifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Notifications.h; sourceTree = "<group>"; };
-		45C59F94148854C600149A44 /* Notifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Notifications.m; sourceTree = "<group>"; };
 		45C6E913147088EC0013AEF6 /* es */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = es; path = es.lproj/MessagesViewController.xib; sourceTree = "<group>"; };
 		45C6E91514708FE20013AEF6 /* CustomUITextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomUITextView.h; sourceTree = "<group>"; };
 		45C6E91614708FE20013AEF6 /* CustomUITextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomUITextView.m; sourceTree = "<group>"; };
@@ -323,6 +344,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4509B4FE15FE55560058805D /* QuartzCore.framework in Frameworks */,
 				452CFCE2148E4514000C7565 /* MessageUI.framework in Frameworks */,
 				45BCF176148549A6005B3F1E /* CoreData.framework in Frameworks */,
 				456D3B5B145476E70051D404 /* SystemConfiguration.framework in Frameworks */,
@@ -340,7 +362,7 @@
 			children = (
 				4561C10B15E56B6F0088F86F /* NoticesViewController.h */,
 				4561C10C15E56B6F0088F86F /* NoticesViewController.m */,
-				4561C10D15E56B6F0088F86F /* NoticesViewController.xib */,
+				4578A35215FD341800336C47 /* NoticesViewController.xib */,
 			);
 			name = Notices;
 			sourceTree = "<group>";
@@ -369,8 +391,6 @@
 			children = (
 				453F991014838240002C6F02 /* Login.h */,
 				453F991114838240002C6F02 /* Login.m */,
-				45C59F93148854C600149A44 /* Notifications.h */,
-				45C59F94148854C600149A44 /* Notifications.m */,
 			);
 			name = Modules;
 			sourceTree = "<group>";
@@ -386,6 +406,10 @@
 				458711AA148A803C006F4CE3 /* getNotificationsOutput.m */,
 				4544D82B15D27E95007050CB /* getCoursesOutput.h */,
 				4544D82C15D27E96007050CB /* getCoursesOutput.m */,
+				45A8AB7E15F7EE89009C0DDB /* getTestConfigOutput.h */,
+				45A8AB7F15F7EE89009C0DDB /* getTestConfigOutput.m */,
+				45878E5815FB54470072C7C6 /* getTestOutput.h */,
+				45878E5915FB54470072C7C6 /* getTestOutput.m */,
 			);
 			name = Response;
 			sourceTree = "<group>";
@@ -578,6 +602,7 @@
 		4584131B14391E41007637AF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4509B4FD15FE55550058805D /* QuartzCore.framework */,
 				452CFCE1148E4514000C7565 /* MessageUI.framework */,
 				45BCF175148549A6005B3F1E /* CoreData.framework */,
 				456D3B5A145476E70051D404 /* SystemConfiguration.framework */,
@@ -591,6 +616,7 @@
 		4584132214391E41007637AF /* iSWAD */ = {
 			isa = PBXGroup;
 			children = (
+				45878E5115FB41A40072C7C6 /* Tests */,
 				45016D31152A5F2F0099D6B7 /* Notices */,
 				45C157D114F1088E00810C35 /* Common */,
 				4545DFE31487D86400DF6C74 /* Notifications */,
@@ -637,6 +663,10 @@
 		458426AB145E1A43004ABE3B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4536378D15FF20E6004BD702 /* Icon-small.png */,
+				4536378E15FF20E6004BD702 /* Icon-small@2x.png */,
+				4536378F15FF20E6004BD702 /* Icon.png */,
+				4536379015FF20E6004BD702 /* Icon@2x.png */,
 				453E30DF1467588A00FC4FA5 /* Images */,
 				458426AC145E1A4F004ABE3B /* Icons */,
 			);
@@ -666,10 +696,21 @@
 				450ADB1D15C92CDA00CFB5B7 /* survey@2x.png */,
 				450ADB0A15C92BFD00CFB5B7 /* test.png */,
 				450ADB1E15C92CDA00CFB5B7 /* test@2x.png */,
-				458426A6145E1A35004ABE3B /* iswad57.png */,
-				458426A9145E1A3E004ABE3B /* iswad114.png */,
 			);
 			name = Icons;
+			sourceTree = "<group>";
+		};
+		45878E5115FB41A40072C7C6 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				45878E5215FB43FA0072C7C6 /* TestsViewController.h */,
+				45878E5315FB43FA0072C7C6 /* TestsViewController.m */,
+				45878E5415FB43FA0072C7C6 /* TestsViewController.xib */,
+				45878E5B15FCEC010072C7C6 /* ConfigureTestViewController.h */,
+				45878E5C15FCEC010072C7C6 /* ConfigureTestViewController.m */,
+				45878E5D15FCEC010072C7C6 /* ConfigureTestViewController.xib */,
+			);
+			name = Tests;
 			sourceTree = "<group>";
 		};
 		45A9922814672F4D00B4E71F /* Extras */ = {
@@ -705,6 +746,7 @@
 				45F34F641542A2C30099D27A /* WebCommunication.m */,
 				4544D83415D5135A007050CB /* CourseSelector.h */,
 				4544D83515D5135A007050CB /* CourseSelector.m */,
+				45878E5715FB48DC0072C7C6 /* Literals.h */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -779,8 +821,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				458426A7145E1A35004ABE3B /* iswad57.png in Resources */,
-				458426AA145E1A3E004ABE3B /* iswad114.png in Resources */,
 				45AD737E146686D7009533FC /* LoginViewController.xib in Resources */,
 				45AD737314668436009533FC /* InfoPlist.strings in Resources */,
 				45AD737414668436009533FC /* MainWindow.xib in Resources */,
@@ -824,7 +864,13 @@
 				45D1D14915E4192E000C15DF /* Default@2x.png in Resources */,
 				45D1D14D15E432D0000C15DF /* Fondo1.png in Resources */,
 				45D1D14E15E432D0000C15DF /* Fondo1@2x.png in Resources */,
-				4561C10F15E56B6F0088F86F /* NoticesViewController.xib in Resources */,
+				4578A35015FD341800336C47 /* NoticesViewController.xib in Resources */,
+				45878E5615FB43FA0072C7C6 /* TestsViewController.xib in Resources */,
+				45878E5F15FCEC010072C7C6 /* ConfigureTestViewController.xib in Resources */,
+				4536379115FF20E6004BD702 /* Icon-small.png in Resources */,
+				4536379215FF20E6004BD702 /* Icon-small@2x.png in Resources */,
+				4536379315FF20E6004BD702 /* Icon.png in Resources */,
+				4536379415FF20E6004BD702 /* Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -890,7 +936,6 @@
 				453F99A41483EED1002C6F02 /* AboutViewController.m in Sources */,
 				45F0A26C1485A39900066BEA /* iSWAD.xcdatamodeld in Sources */,
 				4545DFE71487D89A00DF6C74 /* NotificationsViewController.m in Sources */,
-				45C59F95148854C600149A44 /* Notifications.m in Sources */,
 				45F9D90914898ED100FEE0C3 /* NotificationCell.m in Sources */,
 				458711AB148A803C006F4CE3 /* getNotificationsOutput.m in Sources */,
 				458711B7148A82B0006F4CE3 /* DBManager.m in Sources */,
@@ -899,6 +944,10 @@
 				4544D82D15D27E96007050CB /* getCoursesOutput.m in Sources */,
 				4544D83615D5135A007050CB /* CourseSelector.m in Sources */,
 				4561C10E15E56B6F0088F86F /* NoticesViewController.m in Sources */,
+				45A8AB8015F7EE89009C0DDB /* getTestConfigOutput.m in Sources */,
+				45878E5515FB43FA0072C7C6 /* TestsViewController.m in Sources */,
+				45878E5A15FB54470072C7C6 /* getTestOutput.m in Sources */,
+				45878E5E15FCEC010072C7C6 /* ConfigureTestViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -912,6 +961,15 @@
 				45016D3C152A60070099D6B7 /* en */,
 			);
 			name = AboutViewController.xib;
+			sourceTree = "<group>";
+		};
+		4578A35215FD341800336C47 /* NoticesViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4578A35115FD341800336C47 /* en */,
+				4578A35315FD343300336C47 /* es */,
+			);
+			name = NoticesViewController.xib;
 			sourceTree = "<group>";
 		};
 		45AD736D14668436009533FC /* InfoPlist.strings */ = {
@@ -996,7 +1054,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "\"/usr/include/libxml2\"";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_LDFLAGS = "\"-lxml2\"";
 				PROVISIONING_PROFILE = "0E6F6797-DE04-4FDB-81F7-E6DE05AB0964";
 				"PROVISIONING_PROFILE[sdk=iphoneos5.0]" = "";
@@ -1010,8 +1068,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Jesus Chamorro Martinez (754L78YJ96)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos5.0]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
@@ -1019,11 +1077,11 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "\"/usr/include/libxml2\"";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "\"-lxml2\"";
-				PROVISIONING_PROFILE = "0E6F6797-DE04-4FDB-81F7-E6DE05AB0964";
-				"PROVISIONING_PROFILE[sdk=iphoneos5.0]" = "";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=*]" = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1038,7 +1096,7 @@
 				GCC_PREFIX_HEADER = "iSWAD/iSWAD-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "iSWAD/iSWAD-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "0E6F6797-DE04-4FDB-81F7-E6DE05AB0964";
@@ -1052,17 +1110,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer: Jesus Chamorro Martinez (754L78YJ96)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos5.0]" = "iPhone Developer: Jesus Chamorro Martinez (754L78YJ96)";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer: Jesus Chamorro Martinez (754L78YJ96)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iSWAD/iSWAD-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "iSWAD/iSWAD-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_CPLUSPLUSFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "0E6F6797-DE04-4FDB-81F7-E6DE05AB0964";
-				"PROVISIONING_PROFILE[sdk=iphoneos5.0]" = "0E6F6797-DE04-4FDB-81F7-E6DE05AB0964";
+				"PROVISIONING_PROFILE[sdk=*]" = "0E6F6797-DE04-4FDB-81F7-E6DE05AB0964";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

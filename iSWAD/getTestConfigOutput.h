@@ -14,7 +14,7 @@
 @property int minQuestions;
 @property int defQuestions;
 @property int maxQuestions;
-@property (retain) NSString* feedback;
+@property (retain, nonatomic) NSString* feedback;
 
 + (getTestConfigOutput*) newWithNode: (CXMLNode*) node;
 - (id) initWithNode: (CXMLNode*) node;

@@ -21,5 +21,5 @@
     NSInteger selectedIndex;
 }
 
-@property (nonatomic, assign) IBOutlet UITableViewCell *tvCell;
+@property (retain, nonatomic) IBOutlet UITableViewCell *tvCell;
 @end

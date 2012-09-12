@@ -10,7 +10,7 @@
 
 	+ (id) newWithNode: (CXMLNode*) node
 	{
-		return [[[questionsArray alloc] initWithNode: node] autorelease];
+		return [[questionsArray alloc] initWithNode: node];
 	}
 
 	- (id) initWithNode: (CXMLNode*) node
@@ -21,6 +21,7 @@
 				question* value = [[question newWithNode: child] object];
 				if(value != nil) {
 					[self addObject: value];
+					[value release];
 				}
 			}
 		}

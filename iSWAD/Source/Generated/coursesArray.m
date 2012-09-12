@@ -10,7 +10,7 @@
 
 	+ (id) newWithNode: (CXMLNode*) node
 	{
-		return [[[coursesArray alloc] initWithNode: node] autorelease];
+		return [[coursesArray alloc] initWithNode: node];
 	}
 
 	- (id) initWithNode: (CXMLNode*) node
@@ -21,6 +21,7 @@
 				course* value = [[course newWithNode: child] object];
 				if(value != nil) {
 					[self addObject: value];
+					[value release];
 				}
 			}
 		}

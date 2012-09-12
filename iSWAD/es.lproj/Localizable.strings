@@ -17,7 +17,7 @@
 "Back" = "Volver";
 
 "initAlertTitle" = "No hay datos de login";
-"initAlertMessage" = "¿Desea introducirlos ahora?";
+"initAlertMessage" = "¿Desea introducirlos ahora? Sin esta información la aplicación no funcionará.";
 
 "Yes" = "Sí";
 "No" = "No";
@@ -28,6 +28,9 @@
 
 "noConnectionAlertTitle" = "Error";
 "noConnectionAlertMessage" = "Se necesita una conexión a internet. Por favor, active la conexión de datos o conéctese a una red Wifi.";
+
+"badPetitionAlertTitle" = "Error";
+"badPetitionAlertMessage" = "Se ha producido un error en la comunicación con SWAD. Revise sus datos de configuración.";
 
 "Send" = "Enviar";
 "sentMessageAlertTitle" = "Mensaje enviado a";
@@ -66,3 +69,12 @@
 
 "noReceiversTitle" = "Destinatarios incorrectos";
 "noReceiversMessage" = "Revise la lista de destinatarios. Introduzca al menos un destinatario.";
+
+"testConfigErrorAlertTitle" = "Error";
+"testConfigErrorAlertMessage" = "Se ha producido un error al descargar la información de los tests de la asignatura. Inténtelo de nuevo y si persiste el error póngase en contacto con el administrador.";
+
+"testErrorAlertTitle" = "Error";
+"testErrorAlertMessage" = "Se ha producido un error al descargar los tests de la asignatura. Inténtelo de nuevo y si persiste el error póngase en contacto con el administrador.";
+
+"Reply" = "Responder";
+"Close" = "Cerrar";

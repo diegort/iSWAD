@@ -21,7 +21,7 @@
 + (getTestConfigOutput*) newWithNode: (CXMLNode*) node
 {
     if(node == nil) { return nil; }
-    return (getTestConfigOutput*)[[[getTestConfigOutput alloc] initWithNode: node] autorelease];
+    return (getTestConfigOutput*)[[getTestConfigOutput alloc] initWithNode: node];
 }
 
 - (id) initWithNode: (CXMLNode*) node {

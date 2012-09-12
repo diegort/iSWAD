@@ -10,7 +10,7 @@
 
 	+ (id) newWithNode: (CXMLNode*) node
 	{
-		return [[[notificationsArray alloc] initWithNode: node] autorelease];
+		return [[notificationsArray alloc] initWithNode: node] ;
 	}
 
 	- (id) initWithNode: (CXMLNode*) node
@@ -21,6 +21,7 @@
 				notification* value = [[notification newWithNode: child] object];
 				if(value != nil) {
 					[self addObject: value];
+					[value release];
 				}
 			}
 		}

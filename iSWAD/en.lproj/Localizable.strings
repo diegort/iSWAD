@@ -17,7 +17,7 @@
 "Back" = "Back";
 
 "initAlertTitle" = "There aren't login data";
-"initAlertMessage" = "Do you want to introduce them now?";
+"initAlertMessage" = "Do you want to introduce them now? Without this data the application won't work.";
 
 "Yes" = "Yes";
 "No" = "No";
@@ -28,6 +28,9 @@
 
 "noConnectionAlertTitle" = "Error";
 "noConnectionAlertMessage" = "An internet connection is needed. Please, active data or connect to a Wifi network";
+
+"badPetitionAlertTitle" = "Error";
+"badPetitionAlertMessage" = "There was an error in communication with SWAD. Check your configuration data.";
 
 "Send" = "Send";
 "sentMessageAlertTitle" = "Message successfully sent to";
@@ -66,3 +69,12 @@
 
 "noReceiversTitle" = "Incorrect recipients";
 "noReceiversMessage" = "Check the recipients list. Give at least one nick.";
+
+"testConfigErrorAlertTitle" = "Error";
+"testConfigErrorAlertMessage" = "An error has occurred while test config download. Try it again and if ther error continues notify it to administrator.";
+
+"testErrorAlertTitle" = "Error";
+"testErrorAlertMessage" = "An error has occurred while test download. Try it again and if ther error continues notify it to administrator.";
+
+"Reply" = "Reply";
+"Close" = "Close";

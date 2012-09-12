@@ -19,7 +19,7 @@
 	if(doc == nil) {
 		return [[[SoapFault alloc] init] autorelease];
 	}
-	return [SoapFault faultWithXMLDocument: doc];
+	return [[SoapFault faultWithXMLDocument: doc] autorelease];
 }
 
 + (SoapFault*) faultWithXMLDocument: (CXMLDocument*) document {

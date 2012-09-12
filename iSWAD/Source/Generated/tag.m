@@ -22,7 +22,7 @@
 	+ (tag*) newWithNode: (CXMLNode*) node
 	{
 		if(node == nil) { return nil; }
-		return (tag*)[[[tag alloc] initWithNode: node] autorelease];
+		return (tag*)[[tag alloc] initWithNode: node] ;
 	}
 
 	- (id) initWithNode: (CXMLNode*) node {

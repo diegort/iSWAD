@@ -23,7 +23,7 @@
 +(NSString *) userSurname1;
 +(NSString *) userSurname2;
 +(NSString *) userFirstname;
-+(BOOL) loged;
++(BOOL) logged;
 +(time_t) loginTime;
 
 /*Setters*/
@@ -34,6 +34,6 @@
 +(void) setUserSurname1:(NSString *) value;
 +(void) setUserSurname2:(NSString *) value;
 +(void) setUserFirstname:(NSString *) value;
-+(void) setLoged:(BOOL) value;
++(void) setLogged:(BOOL) value;
 +(void) setLoginTime: (time_t) value;
 @end

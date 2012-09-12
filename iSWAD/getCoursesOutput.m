@@ -17,7 +17,7 @@
 + (getCoursesOutput*) newWithNode: (CXMLNode*) node
 {
     if(node == nil) { return nil; }
-    return (getCoursesOutput*)[[[getCoursesOutput alloc] initWithNode: node] autorelease];
+    return (getCoursesOutput*)[[getCoursesOutput alloc] initWithNode: node];
 }
 
 - (id) initWithNode: (CXMLNode*) node {

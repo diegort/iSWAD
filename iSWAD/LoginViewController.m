@@ -10,6 +10,7 @@
 
 #import "LoginViewController.h"
 #import "UIView+FormScroll.h"
+#import "Literals.h"
 
 UITextField * activeField;
 
@@ -59,8 +60,8 @@ UITextField * activeField;
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    txtUser.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"user"];
-    txtPass.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"pass"];
+    txtUser.text = [[NSUserDefaults standardUserDefaults] stringForKey:UserKey];
+    txtPass.text = [[NSUserDefaults standardUserDefaults] stringForKey:PassKey];
     //[self registerForKeyboardNotifications];
 }
 
@@ -103,8 +104,8 @@ UITextField * activeField;
 - (IBAction)btnSave_Click:(id)sender {
     //[txtUser resignFirstResponder];
     [txtPass resignFirstResponder];
-    [[NSUserDefaults standardUserDefaults] setValue:txtUser.text forKey:@"user"];
-    [[NSUserDefaults standardUserDefaults] setValue:txtPass.text forKey:@"pass"];
+    [[NSUserDefaults standardUserDefaults] setValue:txtUser.text forKey:UserKey];
+    [[NSUserDefaults standardUserDefaults] setValue:txtPass.text forKey:PassKey];
     
     [UIView beginAnimations:@"View Flip" context:nil];
     [UIView setAnimationDuration:0.65];

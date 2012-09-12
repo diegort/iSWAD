@@ -37,6 +37,7 @@
     NSMutableString *tmp = [[NSMutableString alloc] initWithString:NSLocalizedString(@"Version", nil)];
     [tmp appendString:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]];
      lblVersion.text = tmp;
+	[tmp release];
 }
 
 - (void)viewDidUnload

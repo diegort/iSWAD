@@ -12,6 +12,7 @@
 #import "User.h"
 #import "sendMessageOutput.h"
 #import "WebCommunication.h"
+#import "Literals.h"
 
 UIResponder *activeTextBox;
 
@@ -37,8 +38,8 @@ UIResponder *activeTextBox;
         
         app = [UIApplication sharedApplication];
         
-		[[NSNotificationCenter defaultCenter] removeObserver:self name:@"messageSent" object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendMessageDone:) name:@"messageSent" object:nil];
+		[[NSNotificationCenter defaultCenter] removeObserver:self name:MessageSent object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendMessageDone:) name:MessageSent object:nil];
     }
     return self;
 }
@@ -72,7 +73,7 @@ UIResponder *activeTextBox;
         [msg appendString:[[[[[u.userFirstname stringByAppendingString: @" "] stringByAppendingString: u.userSurname1] stringByAppendingString: @" ("] stringByAppendingString: u.userNickname] stringByAppendingString: @")\n"]];
     }
     UIAlertView *alert = [[UIAlertView alloc]
-                          initWithTitle: NSLocalizedString(@"sentMessageAlertTitle", nil)
+                          initWithTitle: NSLocalizedString(@"sentMessageAlertTitle",nil)
                           message: msg
                           delegate: nil
                           cancelButtonTitle:NSLocalizedString(@"Accept", nil)
@@ -140,6 +141,7 @@ UIResponder *activeTextBox;
         
 			WebCommunication *myWB = [[WebCommunication alloc] init];
 			[myWB sendMessage:body subject:subject to:receivers code:_messageCode];
+			[myWB release];
 		}
 	}
 }

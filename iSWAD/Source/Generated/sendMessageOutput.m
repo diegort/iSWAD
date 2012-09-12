@@ -17,7 +17,7 @@
 + (sendMessageOutput*) newWithNode: (CXMLNode*) node
 {
     if(node == nil) { return nil; }
-    return (sendMessageOutput*)[[[sendMessageOutput alloc] initWithNode: node] autorelease];
+    return (sendMessageOutput*)[[sendMessageOutput alloc] initWithNode: node];
 }
 
 - (id) initWithNode: (CXMLNode*) node {
@@ -49,6 +49,8 @@
 - (NSMutableString*) serializeElements
 {
     NSMutableString* s = [super serializeElements];
+	[s appendFormat: @"<numUsers>%i</numUsers>", _numUsers];
+	[s appendString:[_users serialize]];
     /*[s appendFormat: @"<userCode>%@</userCode>", [NSString stringWithFormat: @"%i", self.userCode]];
     [s appendFormat: @"<userTypeCode>%@</userTypeCode>", [NSString stringWithFormat: @"%i", self.userTypeCode]];
     

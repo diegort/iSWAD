@@ -23,7 +23,7 @@
 + (loginByUserPasswordKeyOutput*) newWithNode: (CXMLNode*) node
 {
     if(node == nil) { return nil; }
-    return (loginByUserPasswordKeyOutput*)[[[loginByUserPasswordKeyOutput alloc] initWithNode: node] autorelease];
+    return (loginByUserPasswordKeyOutput*)[[loginByUserPasswordKeyOutput alloc] initWithNode: node];
 }
 
 - (id) initWithNode: (CXMLNode*) node {

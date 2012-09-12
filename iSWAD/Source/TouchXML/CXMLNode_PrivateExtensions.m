@@ -26,7 +26,7 @@ return(self);
 {
 // TODO more checking.
 if (inLibXMLNode->_private)
-	return(inLibXMLNode->_private);
+	return (inLibXMLNode->_private);
 
 Class theClass = [CXMLNode class];
 switch (inLibXMLNode->type)

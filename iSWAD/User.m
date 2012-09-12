@@ -7,6 +7,7 @@
 //
 
 #import "User.h"
+#import "Literals.h"
 
 static int _userCode;
 static int _userTypeCode;
@@ -16,7 +17,7 @@ static NSString *_userSurname1;
 static NSString *_userSurname2;
 static NSString *_userFirstname;
 //static NSString *_userTypeName;
-static BOOL _loged;
+static BOOL _logged;
 static time_t _loginTime;
 
 @implementation User
@@ -29,11 +30,11 @@ static time_t _loginTime;
     _userSurname2 = value.userSurname2;
     _userFirstname = value.userFirstname;
     //_userTypeName = value.userTypeName;
-    _loged = YES;
+    _logged = YES;
     _loginTime = tValue;
     
     NSNumber *tmp = [[NSNumber alloc] initWithInt:_userTypeCode];
-    [[NSUserDefaults standardUserDefaults] setValue:tmp forKey:@"userType"];
+    [[NSUserDefaults standardUserDefaults] setValue:tmp forKey:UserTypeKey];
     [tmp release];
 }
 
@@ -47,9 +48,10 @@ static time_t _loginTime;
     _userSurname2 = userSurname2;
     _userFirstname = userFirstname;
     //_userTypeName = userTypeName;
+	_logged = YES;
     
     NSNumber *tmp = [[NSNumber alloc] initWithInt:_userTypeCode];
-    [[NSUserDefaults standardUserDefaults] setValue:tmp forKey:@"userType"];
+    [[NSUserDefaults standardUserDefaults] setValue:tmp forKey:UserTypeKey];
     [tmp release];
 }
 
@@ -86,8 +88,8 @@ static time_t _loginTime;
     return _userTypeName;
 }*/
 
-+(BOOL) loged{
-    return  _loged;
++(BOOL) logged{
+    return  _logged;
 }
 
 +(time_t) loginTime{
@@ -126,6 +128,14 @@ static time_t _loginTime;
 /*+(void) setUserTypeName:(NSString *) value{
     _userTypeName = value;
 }*/
+
++(void) setLogged:(BOOL) value{
+	_logged = value;
+}
+
++(void) setLoginTime: (time_t) value{
+	_loginTime = value;
+}
 
 
 @end

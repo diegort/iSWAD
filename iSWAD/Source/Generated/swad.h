@@ -61,12 +61,12 @@
 	- (SoapRequest*) getTests: (id) target action: (SEL) action wsKey: (NSString*) wsKey courseCode: (int) courseCode beginTime: (long) beginTime;
 
 	/* Returns int. Service definition of function swad__sendMessage */
-	- (SoapRequest*) sendMessage: (id <SoapDelegate>) handler wsKey: (NSString*) wsKey messageCode: (long) messageCode to: (NSString*) to subject: (NSString*) subject body: (NSString*) body;
+	- (SoapRequest*) sendMessage: (id <SoapDelegate>) handler wsKey: (NSString*) wsKey messageCode: (int) messageCode to: (NSString*) to subject: (NSString*) subject body: (NSString*) body;
 	- (SoapRequest*) sendMessage: (id) target action: (SEL) action wsKey: (NSString*) wsKey messageCode: (long) messageCode to: (NSString*) to subject: (NSString*) subject body: (NSString*) body;
 
 	/* Returns int. Service definition of function swad__sendNotice */
-	- (SoapRequest*) sendNotice: (id <SoapDelegate>) handler wsKey: (NSString*) wsKey courseCode: (long) courseCode body: (NSString*) body;
-	- (SoapRequest*) sendNotice: (id) target action: (SEL) action wsKey: (NSString*) wsKey courseCode: (long) courseCode body: (NSString*) body;
+	- (SoapRequest*) sendNotice: (id <SoapDelegate>) handler wsKey: (NSString*) wsKey courseCode: (int) courseCode body: (NSString*) body;
+	- (SoapRequest*) sendNotice: (id) target action: (SEL) action wsKey: (NSString*) wsKey courseCode: (int) courseCode body: (NSString*) body;
 
 		
 	+ (swad*) service;

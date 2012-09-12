@@ -38,7 +38,7 @@
 	+ (notification*) newWithNode: (CXMLNode*) node
 	{
 		if(node == nil) { return nil; }
-		return (notification*)[[[notification alloc] initWithNode: node] autorelease];
+		return (notification*)[[notification alloc] initWithNode: node];
 	}
 
 	- (id) initWithNode: (CXMLNode*) node {
@@ -114,14 +114,14 @@
 	
 	- (void) dealloc
 	{
-		if(self.eventType != nil) { [self.eventType release]; }
-		if(self.userNickname != nil) { [self.userNickname release]; }
-		if(self.userSurname1 != nil) { [self.userSurname1 release]; }
-		if(self.userSurname2 != nil) { [self.userSurname2 release]; }
-		if(self.userFirstname != nil) { [self.userFirstname release]; }
-		if(self.location != nil) { [self.location release]; }
-		if(self.summary != nil) { [self.summary release]; }
-		if(self.content != nil) { [self.content release]; }
+		if(self.eventType != nil) { [_eventType release]; }
+		if(self.userNickname != nil) { [_userNickname release]; }
+		if(self.userSurname1 != nil) { [_userSurname1 release]; }
+		if(self.userSurname2 != nil) { [_userSurname2 release]; }
+		if(self.userFirstname != nil) { [_userFirstname release]; }
+		if(self.location != nil) { [_location release]; }
+		if(self.summary != nil) { [_summary release]; }
+		if(self.content != nil) { [_content release]; }
 		[super dealloc];
 	}
 

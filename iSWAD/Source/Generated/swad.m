@@ -26,6 +26,8 @@
 #import "loginByUPOut.h"
 #import "getNotificationsOutput.h"
 #import "getCoursesOutput.h"
+#import "getTestConfigOutput.h"
+#import "getTestOutput.h"
 
 /* Implementation of the service */
 				
@@ -198,7 +200,7 @@
 		[_params addObject: [[[SoapParameter alloc] initWithValue: wsKey forName: @"wsKey"] autorelease]];
 		[_params addObject: [[[SoapParameter alloc] initWithValue: [NSNumber numberWithInt: courseCode] forName: @"courseCode"] autorelease]];
 		NSString* _envelope = [Soap createEnvelope: @"getTestConfig" forNamespace: self.namespace withParameters: _params withHeaders: self.headers];
-		SoapRequest* _request = [SoapRequest create: _target action: _action service: self soapAction: @"" postData: _envelope deserializeTo: @"int"];
+		SoapRequest* _request = [SoapRequest create: _target action: _action service: self soapAction: @"" postData: _envelope deserializeTo: [[getTestConfigOutput alloc] autorelease]];
 		[_request send];
 		return _request;
 	}
@@ -217,13 +219,13 @@
 		[_params addObject: [[[SoapParameter alloc] initWithValue: [NSNumber numberWithInt: courseCode] forName: @"courseCode"] autorelease]];
 		[_params addObject: [[[SoapParameter alloc] initWithValue: [NSNumber numberWithLong: beginTime] forName: @"beginTime"] autorelease]];
 		NSString* _envelope = [Soap createEnvelope: @"getTests" forNamespace: self.namespace withParameters: _params withHeaders: self.headers];
-		SoapRequest* _request = [SoapRequest create: _target action: _action service: self soapAction: @"" postData: _envelope deserializeTo: [[tagsArray alloc] autorelease]];
+		SoapRequest* _request = [SoapRequest create: _target action: _action service: self soapAction: @"" postData: _envelope deserializeTo: [[getTestOutput alloc] autorelease]];
 		[_request send];
 		return _request;
 	}
 
 	/* Returns int. Service definition of function swad__sendMessage */
-	- (SoapRequest*) sendMessage: (id <SoapDelegate>) handler wsKey: (NSString*) wsKey messageCode: (long) messageCode to: (NSString*) to subject: (NSString*) subject body: (NSString*) body
+	- (SoapRequest*) sendMessage: (id <SoapDelegate>) handler wsKey: (NSString*) wsKey messageCode: (int) messageCode to: (NSString*) to subject: (NSString*) subject body: (NSString*) body
 	{
 		return [self sendMessage: handler action: nil wsKey: wsKey messageCode: messageCode to: to subject: subject body: body];
 	}
@@ -238,17 +240,16 @@
 		[_params addObject: [[[SoapParameter alloc] initWithValue: subject forName: @"subject"] autorelease]];
 		[_params addObject: [[[SoapParameter alloc] initWithValue: body forName: @"body"] autorelease]];
 		NSString* _envelope = [Soap createEnvelope: @"sendMessage" forNamespace: self.namespace withParameters: _params withHeaders: self.headers];
-		//SoapRequest* _request = [SoapRequest create: _target action: _action service: self soapAction: @"" postData: _envelope deserializeTo: @"int"];
         SoapRequest* _request = [SoapRequest create: _target action: _action service: self soapAction: @"" postData: _envelope deserializeTo: [[sendMessageOutput alloc] autorelease]];
 		[_request send];
 		return _request;
 	}
 
-	- (SoapRequest*) sendNotice:(id<SoapDelegate>)handler wsKey:(NSString *)wsKey courseCode:(long)courseCode body:(NSString *)body{
+	- (SoapRequest*) sendNotice:(id<SoapDelegate>)handler wsKey:(NSString *)wsKey courseCode:(int)courseCode body:(NSString *)body{
 		return [self sendNotice:handler action:nil wsKey:wsKey courseCode:courseCode body:body];
 	}
 	
-	- (SoapRequest*) sendNotice:(id)_target action:(SEL)_action wsKey:(NSString *)wsKey courseCode:(long)courseCode body:(NSString *)body{
+	- (SoapRequest*) sendNotice:(id)_target action:(SEL)_action wsKey:(NSString *)wsKey courseCode:(int)courseCode body:(NSString *)body{
 		NSMutableArray* _params = [NSMutableArray array];
 		
 		[_params addObject: [[[SoapParameter alloc] initWithValue: wsKey forName: @"wsKey"] autorelease]];

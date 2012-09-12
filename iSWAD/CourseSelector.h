@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface CourseSelector : NSObject{
+@interface CourseSelector : NSObject <UIPickerViewDataSource, UIPickerViewDelegate>{
 	UIApplication* app;
 	
 	id target;
