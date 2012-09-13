@@ -28,18 +28,35 @@ UIResponder *activeTextBox;
         // Custom initialization
         //self.navigationController.navigationBarHidden = YES;
         
-        UIBarButtonItem *rigthBtn = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Send",nil) style:UIBarButtonItemStyleDone target:self action:@selector(sendMessage)];
+		UIBarButtonItem *rigthBtn = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Send",nil) style:UIBarButtonItemStyleDone target:self action:@selector(sendMessage)];
         float r,g,b;
         r = 153./255;
         g = 204./255;
         b = 102./255;
-        rigthBtn.tintColor = [UIColor colorWithRed:r green:g blue:b alpha:1];
+		
+		if ([rigthBtn respondsToSelector:@selector(setTintColor:)])
+			rigthBtn.tintColor = [UIColor colorWithRed:r green:g blue:b alpha:1];
+		
         self.navigationItem.rightBarButtonItem = rigthBtn;
-        
+        [rigthBtn release];
         app = [UIApplication sharedApplication];
         
 		[[NSNotificationCenter defaultCenter] removeObserver:self name:MessageSent object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendMessageDone:) name:MessageSent object:nil];
+		
+		activityIndicatorView = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 80.0f, 80.0f)];
+		[activityIndicatorView setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleWhiteLarge];
+		
+		activityIndicatorView.alpha = 0.7;
+		activityIndicatorView.backgroundColor = [UIColor lightGrayColor];
+		activityIndicatorView.center = CGPointMake(160, 180);
+		//activityIndicatorView.center = self.view.center;
+		activityIndicatorView.hidesWhenStopped = YES;
+		activityIndicatorView.layer.cornerRadius = 10.0;		
+		activityIndicatorView.layer.masksToBounds = YES;
+		
+		[self.view addSubview:activityIndicatorView];
+		[activityIndicatorView release];
     }
     return self;
 }
@@ -60,11 +77,12 @@ UIResponder *activeTextBox;
         //[textField resignFirstResponder];
         return YES;
     }
-     // We do not want UITextField to insert line-breaks.
+	// We do not want UITextField to insert line-breaks.
 }
 
 -(void) sendMessageDone: (NSNotification *) notification{
     app.networkActivityIndicatorVisible = NO;
+	[activityIndicatorView stopAnimating];
     
     sendMessageOutput *tmp = (sendMessageOutput *)[notification object] ;
     NSMutableString *msg = [[NSMutableString alloc] initWithString:@""];
@@ -138,7 +156,7 @@ UIResponder *activeTextBox;
 			[alert release];
 		}else{
 			app.networkActivityIndicatorVisible = YES;
-        
+			[activityIndicatorView startAnimating];
 			WebCommunication *myWB = [[WebCommunication alloc] init];
 			[myWB sendMessage:body subject:subject to:receivers code:_messageCode];
 			[myWB release];

@@ -15,6 +15,8 @@
 	int _courseCode;
 	
     UIApplication* app;
+	UIActivityIndicatorView* activityIndicatorView;
+	
 	CourseSelector *cs;
 }
 

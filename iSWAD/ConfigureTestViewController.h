@@ -7,11 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CourseSelector.h"
 
 @interface ConfigureTestViewController : UIViewController{
-	int _courseCode;
-	CourseSelector *cs;
+
 }
 
 @end

@@ -25,14 +25,28 @@
         r = 153./255;
         g = 204./255;
         b = 102./255;
-        rigthBtn.tintColor = [UIColor colorWithRed:r green:g blue:b alpha:1];
+		if ([rigthBtn respondsToSelector:@selector(setTintColor:)])
+			rigthBtn.tintColor = [UIColor colorWithRed:r green:g blue:b alpha:1];
 		
         self.navigationItem.rightBarButtonItem = rigthBtn;
-        
-        app = [UIApplication sharedApplication];
 		
         [[NSNotificationCenter defaultCenter] removeObserver:self name:NoticePosted object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendNoticeDone) name:NoticePosted object:nil];
+		
+		app = [UIApplication sharedApplication];
+		activityIndicatorView = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 80.0f, 80.0f)];
+		[activityIndicatorView setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleWhiteLarge];
+		
+		activityIndicatorView.alpha = 0.7;
+		activityIndicatorView.backgroundColor = [UIColor lightGrayColor];
+		activityIndicatorView.center = CGPointMake(160, 180);
+		//activityIndicatorView.center = self.view.center;
+		activityIndicatorView.hidesWhenStopped = YES;
+		activityIndicatorView.layer.cornerRadius = 10.0;		
+		activityIndicatorView.layer.masksToBounds = YES;
+		
+		[self.view addSubview:activityIndicatorView];
+		[activityIndicatorView release];
 		
 		_courseCode = -1;
     }
@@ -42,7 +56,7 @@
 
 -(void) sendNoticeDone {
     app.networkActivityIndicatorVisible = NO;
-    
+    [activityIndicatorView stopAnimating];
 	NSString *msg = [NSLocalizedString(@"sentNoticeAlertMessage", nil) stringByAppendingString:_courseName];	
 	
     UIAlertView *alert = [[UIAlertView alloc]
@@ -72,7 +86,7 @@
 		[alert release];
 	}else{
 		app.networkActivityIndicatorVisible = YES;
-        
+        [activityIndicatorView startAnimating];
 		WebCommunication *myWB = [[WebCommunication alloc] init];
 		[myWB sendNotice:body courseCode:_courseCode];
 		[self.view scrollToY:0];

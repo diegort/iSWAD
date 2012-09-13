@@ -5,7 +5,7 @@
 #import "AboutViewController.h"
 #import "NotificationsViewController.h"
 #import "NoticesViewController.h"
-#import "ConfigureTestViewController.h"
+#import "TestsViewController.h"
 #import "Literals.h"
 #import "User.h"
 
@@ -282,6 +282,7 @@ titleForHeaderInSection:(NSInteger)section {
     cell.textLabel.font = [UIFont boldSystemFontOfSize:20.0];
 
     UIImage *theImage = [UIImage imageNamed:[tmp objectForKey:@"icon"]];
+	
     
     cell.imageView.image = theImage;
     
@@ -301,7 +302,7 @@ titleForHeaderInSection:(NSInteger)section {
     } else if([key isEqualToString:NoticesKey]){
         view = [[NoticesViewController alloc] initWithNibName: [NoticesViewController description] bundle:nil];
     } else if([key isEqualToString:TestsKey]){
-		view = [[ConfigureTestViewController alloc] initWithNibName: [ConfigureTestViewController description] bundle:nil];
+		view = [[TestsViewController alloc] initWithNibName: [TestsViewController description] bundle:nil];
 	}
     
     if (view != NULL) {

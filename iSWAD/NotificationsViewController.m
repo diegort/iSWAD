@@ -17,8 +17,6 @@
 #import "WebCommunication.h"
 #import "Literals.h"
 
-#import <QuartzCore/QuartzCore.h>
-
 #define TITLELABEL_TAG  2
 #define DETAILTEXT_TAG  3
 #define IMGTYPE_TAG     0

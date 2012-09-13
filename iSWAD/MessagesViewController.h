@@ -13,6 +13,7 @@
     long _messageCode;
     NSString *_subject;
     UIApplication* app;
+	UIActivityIndicatorView* activityIndicatorView;
 }
 
 @property (retain, nonatomic) IBOutlet CustomUITextView *txtMessage;

@@ -272,6 +272,8 @@
 		456D3B5A145476E70051D404 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		4578A35115FD341800336C47 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/NoticesViewController.xib; sourceTree = "<group>"; };
 		4578A35315FD343300336C47 /* es */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = es; path = es.lproj/NoticesViewController.xib; sourceTree = "<group>"; };
+		457EC09916027DE5003B7FA0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RootViewController.xib; sourceTree = "<group>"; };
+		457EC09A16027DF1003B7FA0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4584131814391E41007637AF /* iSWAD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iSWAD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4584131C14391E41007637AF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4584131E14391E41007637AF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -306,8 +308,6 @@
 		45AD737014668436009533FC /* es */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = es; path = iSWAD/es.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		45AD737214668436009533FC /* es */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = es; path = iSWAD/es.lproj/RootViewController.xib; sourceTree = "<group>"; };
 		45AD7381146686E2009533FC /* es */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = es; path = es.lproj/LoginViewController.xib; sourceTree = "<group>"; };
-		45AD739E14669622009533FC /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = /Users/dmontesinos/Sources/iSWAD/en.lproj/RootViewController.xib; sourceTree = "<absolute>"; };
-		45AD739F14669622009533FC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = /Users/dmontesinos/Sources/iSWAD/en.lproj/InfoPlist.strings; sourceTree = "<absolute>"; };
 		45AD73A41466968C009533FC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		45AD73A614669694009533FC /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		45AD73B81466A961009533FC /* iSWAD-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iSWAD-Info.plist"; sourceTree = "<group>"; };
@@ -976,7 +976,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				45AD736E14668436009533FC /* es */,
-				45AD739F14669622009533FC /* en */,
+				457EC09A16027DF1003B7FA0 /* en */,
 			);
 			name = InfoPlist.strings;
 			path = ..;
@@ -996,7 +996,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				45AD737214668436009533FC /* es */,
-				45AD739E14669622009533FC /* en */,
+				457EC09916027DE5003B7FA0 /* en */,
 			);
 			name = RootViewController.xib;
 			path = ..;

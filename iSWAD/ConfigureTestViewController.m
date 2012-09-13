@@ -16,20 +16,10 @@
     return self;
 }
 
-- (void) courseSelectorCallback{
-	_courseCode = [cs getSelectedCode];
-	
-	WebCommunication * wc =[[WebCommunication alloc] init];
-	[wc getTestConfig:_courseCode];
-	[wc release];
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-	cs = [[CourseSelector alloc] initWithTarget:self selector:@selector(courseSelectorCallback)];
-	[cs showSelector];
 }
 
 - (void)viewDidUnload
