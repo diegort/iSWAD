@@ -76,5 +76,12 @@
 "testErrorAlertTitle" = "Error";
 "testErrorAlertMessage" = "Se ha producido un error al descargar los tests de la asignatura. Inténtelo de nuevo y si persiste el error póngase en contacto con el administrador.";
 
+"noDownloadAlertTitle" = "No se pueden descargar las preguntas";
+"noDownloadAlertMessage" = "La configuración de test de esta asignatura no permite la descarga de sus preguntas.";
+
+"testDownloadedAlertTitle" = "Información descarga";
+"testDownloadedAlertMessage" = "La información se ha descargado con éxito.";
+
 "Reply" = "Responder";
 "Close" = "Cerrar";
+"courseSelect" = "Seleccione asignatura";

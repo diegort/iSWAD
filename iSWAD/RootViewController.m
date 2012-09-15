@@ -21,32 +21,41 @@ bool showError;
 
 -(void) loadMenu{
     int userType = [[NSUserDefaults standardUserDefaults] integerForKey:UserTypeKey];
+	elementsList = [NSMutableArray arrayWithObjects:
+					[NSDictionary dictionaryWithObjectsAndKeys:
+					 NotificationsKey,@"key",
+					 @"notif.png",@"icon",
+					 nil],
+					[NSDictionary dictionaryWithObjectsAndKeys:
+					 TestsKey,@"key",
+					 @"test.png",@"icon",
+					 nil],
+					nil];
     if (userType > 2){
-        elementsList = [NSArray arrayWithObjects:
+		
+		[elementsList addObject:
+						[NSDictionary dictionaryWithObjectsAndKeys:
+						 NoticesKey,@"key",
+						 @"note.png",@"icon",
+						 nil]
+						];
+		
+        /*elementsList = [NSArray arrayWithObjects:
                         [NSDictionary dictionaryWithObjectsAndKeys:
                          NotificationsKey,@"key",
                          @"notif.png",@"icon",
                          nil],
-                        /*[NSDictionary dictionaryWithObjectsAndKeys:
+                        [NSDictionary dictionaryWithObjectsAndKeys:
                          TestsKey,@"key",
                          @"test.png",@"icon",
-                         nil],*/
+                         nil],
                         [NSDictionary dictionaryWithObjectsAndKeys:
                          NoticesKey,@"key",
                          @"note.png",@"icon",
                          nil],
-                        nil];
+                        nil];*/
     }else{
-        elementsList = [NSArray arrayWithObjects:
-                        [NSDictionary dictionaryWithObjectsAndKeys:
-                         NotificationsKey,@"key",
-                         @"notif.png",@"icon",
-                         nil],
-                        /*[NSDictionary dictionaryWithObjectsAndKeys:
-                         TestsKey,@"key",
-                         @"test.png",@"icon",
-                         nil],*/
-                        nil];
+        
     }
     [elementsList retain];
 }

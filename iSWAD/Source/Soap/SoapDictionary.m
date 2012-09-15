@@ -123,7 +123,7 @@
 		isKey = YES;
 		value = firstObject;
 		va_start(argumentList, firstObject);
-		while (eachObject = va_arg(argumentList, id)) {
+		while ((eachObject = va_arg(argumentList, id))) {
 			if(isKey) {
 				key = eachObject;
 				[d.items setObject:value forKey:key];
@@ -162,7 +162,7 @@
 			value = firstObject;
 			isKey = YES;
 			va_start(argumentList, firstObject);
-			while (eachObject = va_arg(argumentList, id)) {
+			while ((eachObject = va_arg(argumentList, id))) {
 				if(isKey) {
 					key = eachObject;
 					[self.items setObject:value forKey:key];

@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class getTestConfigOutput, tagsArray, questionsArray;
 @interface ConfigureTestViewController : UIViewController{
 
 }
+
+@property int courseCode;
+@property (retain, nonatomic) getTestConfigOutput* config;
 
 @end

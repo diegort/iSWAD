@@ -41,6 +41,9 @@ UIResponder *activeTextBox;
         [rigthBtn release];
         app = [UIApplication sharedApplication];
         
+		[[NSNotificationCenter defaultCenter] removeObserver:self name:Common object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendMessageDone:) name:Common object:nil];
+		
 		[[NSNotificationCenter defaultCenter] removeObserver:self name:MessageSent object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendMessageDone:) name:MessageSent object:nil];
 		
@@ -84,25 +87,61 @@ UIResponder *activeTextBox;
     app.networkActivityIndicatorVisible = NO;
 	[activityIndicatorView stopAnimating];
     
-    sendMessageOutput *tmp = (sendMessageOutput *)[notification object] ;
-    NSMutableString *msg = [[NSMutableString alloc] initWithString:@""];
+	
+	if ([[notification object] isKindOfClass:[sendMessageOutput class]]) {
+		sendMessageOutput *tmp = (sendMessageOutput *)[notification object] ;
+		NSMutableString *msg = [[NSMutableString alloc] initWithString:@""];
+		
+		for (user *u in tmp.users){
+			[msg appendString:[[[[[u.userFirstname stringByAppendingString: @" "] stringByAppendingString: u.userSurname1] stringByAppendingString: @" ("] stringByAppendingString: u.userNickname] stringByAppendingString: @")\n"]];
+		}
+		UIAlertView *alert = [[UIAlertView alloc]
+							  initWithTitle: NSLocalizedString(@"sentMessageAlertTitle",nil)
+							  message: msg
+							  delegate: nil
+							  cancelButtonTitle:NSLocalizedString(@"Accept", nil)
+							  otherButtonTitles:nil];
+		[alert show];
+		[alert release];
+		[msg release];
+		
+		//usersArray *uA = (usersArray *)value;
+		txtTo.text = @"";
+		txtSubject.text = @"";
+		txtMessage.text = @"";
+	}else{
+		NSNumber * res = [notification object];
+		
+		switch ([res intValue]) {
+			case -1:
+			{
+				UIAlertView *alert = [[UIAlertView alloc]
+									  initWithTitle: NSLocalizedString(@"sendMessageErrorAlertTitle", nil)
+									  message: NSLocalizedString(@"sendMessageErrorAlertMessage", nil)
+									  delegate: nil
+									  cancelButtonTitle:NSLocalizedString(@"Accept", nil)
+									  otherButtonTitles:nil];
+				[alert show];
+				[alert release];
+			}
+				break;
+			case 400:
+			{
+				UIAlertView *alert = [[UIAlertView alloc]
+									  initWithTitle: NSLocalizedString(@"noConnectionAlertTitle", nil)
+									  message: NSLocalizedString(@"noConnectionAlertMessage", nil)
+									  delegate: nil
+									  cancelButtonTitle:NSLocalizedString(@"Accept", nil)
+									  otherButtonTitles:nil];
+				[alert show];
+				[alert release];
+			}
+				break;
+			default:
+				break;
+		}
+	}
     
-    for (user *u in tmp.users){
-        [msg appendString:[[[[[u.userFirstname stringByAppendingString: @" "] stringByAppendingString: u.userSurname1] stringByAppendingString: @" ("] stringByAppendingString: u.userNickname] stringByAppendingString: @")\n"]];
-    }
-    UIAlertView *alert = [[UIAlertView alloc]
-                          initWithTitle: NSLocalizedString(@"sentMessageAlertTitle",nil)
-                          message: msg
-                          delegate: nil
-                          cancelButtonTitle:NSLocalizedString(@"Accept", nil)
-                          otherButtonTitles:nil];
-    [alert show];
-    [alert release];
-    
-    //usersArray *uA = (usersArray *)value;
-    txtTo.text = @"";
-    txtSubject.text = @"";
-    txtMessage.text = @"";
 }
 
 - (void) setSubject:(NSString *) subject messageCode:(long)code{

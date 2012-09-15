@@ -8,7 +8,6 @@
 
 #import "NoticesViewController.h"
 #import "UIView+FormScroll.h"
-#import "WebCommunication.h"
 #import "Literals.h"
 
 @implementation NoticesViewController
@@ -29,9 +28,7 @@
 			rigthBtn.tintColor = [UIColor colorWithRed:r green:g blue:b alpha:1];
 		
         self.navigationItem.rightBarButtonItem = rigthBtn;
-		
-        [[NSNotificationCenter defaultCenter] removeObserver:self name:NoticePosted object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendNoticeDone) name:NoticePosted object:nil];
+		[rigthBtn release];
 		
 		app = [UIApplication sharedApplication];
 		activityIndicatorView = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 80.0f, 80.0f)];
@@ -49,27 +46,70 @@
 		[activityIndicatorView release];
 		
 		_courseCode = -1;
+		
+		[[NSNotificationCenter defaultCenter] removeObserver:self name:Common object:nil];
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendNoticeDone:) name:Common object:nil];
+		
+		[[NSNotificationCenter defaultCenter] removeObserver:self name:NoticePosted object:nil];
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendNoticeDone:) name:NoticePosted object:nil];
+		
+		cs = [[CourseSelector alloc] initWithTarget:self selector:@selector(courseSelectorCallback:)];
+		myWB = [[WebCommunication alloc] init];
     }
 	
     return self;
 }
 
--(void) sendNoticeDone {
+-(void) sendNoticeDone:(NSNotification *)notif {
     app.networkActivityIndicatorVisible = NO;
     [activityIndicatorView stopAnimating];
-	NSString *msg = [NSLocalizedString(@"sentNoticeAlertMessage", nil) stringByAppendingString:_courseName];	
+	NSNumber * res = [notif object];
 	
-    UIAlertView *alert = [[UIAlertView alloc]
-                          initWithTitle: NSLocalizedString(@"sentNoticeAlertTitle", nil)
-                          message: msg
-                          delegate: nil
-                          cancelButtonTitle:NSLocalizedString(@"Accept", nil)
-                          otherButtonTitles:nil];
-    [alert show];
-    [alert release];
-    
-    txtCourse.text = @"";
-    txtMessage.text = @"";
+	switch ([res intValue]) {
+		case 0:
+		{
+			NSString *msg = [NSLocalizedString(@"sentNoticeAlertMessage", nil) stringByAppendingString:_courseName];
+			
+			UIAlertView *alert = [[UIAlertView alloc]
+								  initWithTitle: NSLocalizedString(@"sentNoticeAlertTitle", nil)
+								  message: msg
+								  delegate: nil
+								  cancelButtonTitle:NSLocalizedString(@"Accept", nil)
+								  otherButtonTitles:nil];
+			[alert show];
+			[alert release];
+			
+			txtCourse.text = @"";
+			txtMessage.text = @"";
+		}
+			break;
+		case -1:
+		{
+			UIAlertView *alert = [[UIAlertView alloc]
+                                  initWithTitle: NSLocalizedString(@"sendNoticeErrorAlertTitle", nil)
+                                  message: NSLocalizedString(@"sendNoticeErrorAlertMessage", nil)
+                                  delegate: nil
+                                  cancelButtonTitle:NSLocalizedString(@"Accept", nil)
+                                  otherButtonTitles:nil];
+            [alert show];
+            [alert release];
+		}
+			break;
+		case 400:
+		{
+			UIAlertView *alert = [[UIAlertView alloc]
+                                  initWithTitle: NSLocalizedString(@"noConnectionAlertTitle", nil)
+                                  message: NSLocalizedString(@"noConnectionAlertMessage", nil)
+                                  delegate: nil
+                                  cancelButtonTitle:NSLocalizedString(@"Accept", nil)
+                                  otherButtonTitles:nil];
+            [alert show];
+            [alert release];
+		}
+			break;
+		default:
+			break;
+	}
 }
 
 -(void) sendNotice{
@@ -85,9 +125,10 @@
 		[alert show];
 		[alert release];
 	}else{
+
 		app.networkActivityIndicatorVisible = YES;
         [activityIndicatorView startAnimating];
-		WebCommunication *myWB = [[WebCommunication alloc] init];
+		
 		[myWB sendNotice:body courseCode:_courseCode];
 		[self.view scrollToY:0];
 		
@@ -96,21 +137,23 @@
 	}
 }
 
-- (void) courseSelectorCallback{
-	_courseCode = [cs getSelectedCode];
-	_courseName = [cs getSelectedName];
-	
-	txtCourse.text = _courseName;
-	
-	[txtMessage becomeFirstResponder];
+- (void) courseSelectorCallback:(NSNumber*) status{
 	txtCourse.userInteractionEnabled = YES;
+	if([status intValue] == 0){
+		_courseCode = [cs getSelectedCode];
+		_courseName = [cs getSelectedName];
+		txtCourse.text = _courseName;
+	
+		[txtMessage becomeFirstResponder];
+	}
+
+	
 }
 
 - (IBAction)txtEditingDidBegin:(UITextField *)sender {
     //[self.view scrollToView:sender];
 	sender.userInteractionEnabled = NO;
 	[sender resignFirstResponder];
-	cs = [[CourseSelector alloc] initWithTarget:self selector:@selector(courseSelectorCallback)];
 	
 	[cs showSelector:3];
 }
@@ -135,6 +178,12 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (void)dealloc {
+	[cs release];
+	[myWB release];
+	[super dealloc];
 }
 
 @end

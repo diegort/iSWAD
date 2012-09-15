@@ -30,7 +30,7 @@
 }
 
 + (NSMutableString*) serialize: (NSArray*) array {
-	return [Soap serialize:array];
+	return [[NSMutableString alloc] initWithString:[Soap serialize:array]];
 }
 
 - (id) object {
@@ -253,7 +253,7 @@
 	if (firstObj) {
 		[a.items addObject: firstObj];
 		va_start(argumentList, firstObj);
-		while (eachObject = va_arg(argumentList, id)) {
+		while ((eachObject = va_arg(argumentList, id))) {
 			[a.items addObject: eachObject];
 		}
 		va_end(argumentList);
@@ -268,7 +268,7 @@
 		if (firstObj) {
 			[self.items addObject: firstObj];
 			va_start(argumentList, firstObj);
-			while (eachObject = va_arg(argumentList, id)) {
+			while ((eachObject = va_arg(argumentList, id))) {
 				[self.items addObject: eachObject];
 			}
 			va_end(argumentList);

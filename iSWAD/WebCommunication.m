@@ -14,6 +14,7 @@
 #import "getNotificationsOutput.h"
 #import "getCoursesOutput.h"
 #import "Literals.h"
+#import "DBManager.h"
 
 @implementation WebCommunication
 
@@ -48,6 +49,7 @@ SEL act;
     if (self) {
         myDB = [[DBManager alloc] init];
 		app = [UIApplication sharedApplication];
+		//service = [swad service];
     }
     return self;
 }
@@ -171,7 +173,6 @@ SEL act;
 										  otherButtonTitles:nil];
 					[alert show];
 					[alert release];
-					app.networkActivityIndicatorVisible = NO;
 				}
 					break;
 				case 1:
@@ -184,13 +185,12 @@ SEL act;
 										  otherButtonTitles:nil];
 					[alert show];
 					[alert release];
-					app.networkActivityIndicatorVisible = NO;
 				}
 					break;
 				default:
 					break;
 			}
-            
+			[[NSNotificationCenter defaultCenter] postNotificationName:Common object:[[[NSNumber alloc] initWithInt:-2] autorelease]];
         } else if([value isKindOfClass:[SoapFault class]]) { // Handle faults
             SoapFault *err = (SoapFault *) value;
             
@@ -202,9 +202,9 @@ SEL act;
                                       cancelButtonTitle:NSLocalizedString(@"Accept", nil)
                                       otherButtonTitles:nil];
                 [alert show];
-                [alert release];
-                app.networkActivityIndicatorVisible = NO;
+                [alert release];                
             }
+			[[NSNotificationCenter defaultCenter] postNotificationName:Common object:[[[NSNumber alloc] initWithInt:-2] autorelease]];
         } else if ([value isKindOfClass:[loginByUserPasswordKeyOutput class]]){ //All went OK
             loginByUserPasswordKeyOutput* tmp = (loginByUserPasswordKeyOutput*)value;
             NSDate *now = [[NSDate alloc] initWithTimeIntervalSinceNow:0];
@@ -224,10 +224,11 @@ SEL act;
 - (void) sendMessageHandler: (id) value { 
 	if(showMessageError){
         showMessageError = NO;
+		id res;
         if ([value isKindOfClass:[NSError class]]) { // Handle errors
             //NSLog(@"%@", value);
-            //NSError *err = (NSError *) value;
-            UIAlertView *alert = [[UIAlertView alloc]
+            NSError *err = (NSError *) value;
+            /*UIAlertView *alert = [[UIAlertView alloc]
                                   initWithTitle: NSLocalizedString(@"noConnectionAlertTitle", nil)
                                   message: NSLocalizedString(@"noConnectionAlertMessage", nil)
                                   delegate: nil
@@ -235,9 +236,10 @@ SEL act;
                                   otherButtonTitles:nil];
             [alert show];
             [alert release];
-			app.networkActivityIndicatorVisible = NO;
+			app.networkActivityIndicatorVisible = NO;*/
+			res = [[[NSNumber alloc] initWithInt:[err code]] autorelease];;
         } else if([value isKindOfClass:[SoapFault class]]) { // Handle faults
-            UIAlertView *alert = [[UIAlertView alloc]
+            /*UIAlertView *alert = [[UIAlertView alloc]
                                   initWithTitle: NSLocalizedString(@"sendMessageErrorAlertTitle", nil)
                                   message: NSLocalizedString(@"sendMessageErrorAlertMessage", nil)
                                   delegate: nil
@@ -245,18 +247,18 @@ SEL act;
                                   otherButtonTitles:nil];
             [alert show];
             [alert release];
-			app.networkActivityIndicatorVisible = NO;
+			app.networkActivityIndicatorVisible = NO;*/
+			res = [[[NSNumber alloc] initWithInt:-1] autorelease];
         } else if ([value isKindOfClass:[sendMessageOutput class]]){ //All went OK
-			
-            [[NSNotificationCenter defaultCenter] postNotificationName:MessageSent object:value];                                
+			res = value;
         }
-        
+        [[NSNotificationCenter defaultCenter] postNotificationName:MessageSent object:res];
     }
 }
 
 
 -(void) sendMessageToUsers{
-    swad* service = [swad service];
+    service = [swad service];
     
     showMessageError = YES;
     [service sendMessage:self action:@selector(sendMessageHandler:) wsKey:User.wsKey messageCode:_messageCode to:_messageReceivers subject:_messageSubject body:_messageBody];
@@ -334,7 +336,7 @@ SEL act;
 }
 
 - (void) getNotifs{
-    swad* service = [swad service];
+    service = [swad service];
     
     NSNumber *tmp = [[NSUserDefaults standardUserDefaults] objectForKey:NotifUpdateTimeKey];
     long beginTime = [tmp longValue];
@@ -363,11 +365,12 @@ SEL act;
 -(void) getSubjectsHandler: (id) value{
 	if(showCoursesError){
         showCoursesError = NO;
+		id res;
         if ([value isKindOfClass:[NSError class]]) { // Handle errors
             //NSLog(@"%@", value);
-            //NSError *err = (NSError *) value;
+            NSError *err = (NSError *) value;
             
-            UIAlertView *alert = [[UIAlertView alloc]
+            /*UIAlertView *alert = [[UIAlertView alloc]
                                   initWithTitle: NSLocalizedString(@"noConnectionAlertTitle", nil)
                                   message: NSLocalizedString(@"noConnectionAlertMessage", nil)
                                   delegate: nil
@@ -375,27 +378,28 @@ SEL act;
                                   otherButtonTitles:nil];
             [alert show];
             [alert release];
-			app.networkActivityIndicatorVisible = NO;
+			app.networkActivityIndicatorVisible = NO;*/
+			res = [[[NSNumber alloc] initWithInt:[err code]] autorelease];
         } else if([value isKindOfClass:[SoapFault class]]) { // Handle faults
-            UIAlertView *alert = [[UIAlertView alloc]
+            /*UIAlertView *alert = [[UIAlertView alloc]
                                   initWithTitle: NSLocalizedString(@"getCoursesErrorAlertTitle", nil)
                                   message: NSLocalizedString(@"getCoursesErrorAlertMessage", nil)
                                   delegate: nil
                                   cancelButtonTitle:NSLocalizedString(@"Accept", nil)
                                   otherButtonTitles:nil];
             [alert show];
-            [alert release];
-			app.networkActivityIndicatorVisible = NO;
+            [alert release];*/
+			//app.networkActivityIndicatorVisible = NO;
+			res = [[[NSNumber alloc] initWithInt:-1] autorelease];
         } else if ([value isKindOfClass:[getCoursesOutput class]]){ //All went OK
-            getCoursesOutput* tmp = (getCoursesOutput*)value;
-            //NSLog(@"%@",[tmp serialize]);
-			[[NSNotificationCenter defaultCenter] postNotificationName:CoursesListReady object:tmp];            
+            res = value;
         }
+		[[NSNotificationCenter defaultCenter] postNotificationName:CoursesListReady object:res];
     }
 }
 
 -(void) getCoursesList{
-	swad* service = [swad service];
+	service = [swad service];
     
     showCoursesError = YES;
     [service getCourses:self action:@selector(getSubjectsHandler:) wsKey:User.wsKey];
@@ -415,10 +419,11 @@ SEL act;
 - (void) sendNoticeHandler: (id) value { 
 	if(showNoticeError){
         showNoticeError = NO;
+		NSNumber* res;
         if ([value isKindOfClass:[NSError class]]) { // Handle errors
             //NSLog(@"%@", value);
-            //NSError *err = (NSError *) value;
-            UIAlertView *alert = [[UIAlertView alloc]
+            NSError *err = (NSError *) value;
+            /*UIAlertView *alert = [[UIAlertView alloc]
                                   initWithTitle: NSLocalizedString(@"noConnectionAlertTitle", nil)
                                   message: NSLocalizedString(@"noConnectionAlertMessage", nil)
                                   delegate: nil
@@ -426,9 +431,10 @@ SEL act;
                                   otherButtonTitles:nil];
             [alert show];
             [alert release];
-			app.networkActivityIndicatorVisible = NO;
+			app.networkActivityIndicatorVisible = NO;*/
+			res = [[[NSNumber alloc] initWithInt:[err code]] autorelease];
         } else if([value isKindOfClass:[SoapFault class]]) { // Handle faults
-            UIAlertView *alert = [[UIAlertView alloc]
+            /*UIAlertView *alert = [[UIAlertView alloc]
                                   initWithTitle: NSLocalizedString(@"sendNoticeErrorAlertTitle", nil)
                                   message: NSLocalizedString(@"sendNoticeErrorAlertMessage", nil)
                                   delegate: nil
@@ -436,16 +442,18 @@ SEL act;
                                   otherButtonTitles:nil];
             [alert show];
             [alert release];
-			app.networkActivityIndicatorVisible = NO;
+			app.networkActivityIndicatorVisible = NO;*/
+			res = [[[NSNumber alloc] initWithInt:-1] autorelease];
         } else { //All went OK
-            [[NSNotificationCenter defaultCenter] postNotificationName:NoticePosted object:nil];                                
-        }        
+			res = [[[NSNumber alloc] initWithInt:0] autorelease];
+        }
+        [[NSNotificationCenter defaultCenter] postNotificationName:NoticePosted object:res];
     }
 }
 
 
 -(void) postNotice{
-    swad* service = [swad service];
+    service = [swad service];
     
     showNoticeError = YES;
 	[service sendNotice:self action:@selector(sendNoticeHandler:) wsKey:User.wsKey courseCode:_courseCode body:_noticeBody];
@@ -470,10 +478,11 @@ SEL act;
 - (void) testConfigHandler: (id) value { 
 	if(showTestConfigError){
         showTestConfigError = NO;
+		id res;
         if ([value isKindOfClass:[NSError class]]) { // Handle errors
             //NSLog(@"%@", value);
-            //NSError *err = (NSError *) value;
-            UIAlertView *alert = [[UIAlertView alloc]
+            NSError *err = (NSError *) value;
+            /*UIAlertView *alert = [[UIAlertView alloc]
                                   initWithTitle: NSLocalizedString(@"noConnectionAlertTitle", nil)
                                   message: NSLocalizedString(@"noConnectionAlertMessage", nil)
                                   delegate: nil
@@ -481,9 +490,10 @@ SEL act;
                                   otherButtonTitles:nil];
             [alert show];
             [alert release];
-			app.networkActivityIndicatorVisible = NO;
+			app.networkActivityIndicatorVisible = NO;*/
+			res = [[[NSNumber alloc] initWithInt:[err code]] autorelease];
         } else if([value isKindOfClass:[SoapFault class]]) { // Handle faults
-            UIAlertView *alert = [[UIAlertView alloc]
+            /*UIAlertView *alert = [[UIAlertView alloc]
                                   initWithTitle: NSLocalizedString(@"testConfigErrorAlertTitle", nil)
                                   message: NSLocalizedString(@"testConfigErrorAlertMessage", nil)
                                   delegate: nil
@@ -491,16 +501,19 @@ SEL act;
                                   otherButtonTitles:nil];
             [alert show];
             [alert release];
-			app.networkActivityIndicatorVisible = NO;
+			app.networkActivityIndicatorVisible = NO;*/
+			res = [[[NSNumber alloc] initWithInt:-1] autorelease];
         } else if ([value isKindOfClass:[getTestConfigOutput class]]){ //All went OK
-            [myDB saveTestConfig:(getTestConfigOutput *) value courseCode:_courseCode];
-			[[NSNotificationCenter defaultCenter] postNotificationName:TestConfigReady object:nil];
-        }        
+			getTestConfigOutput* tmp = (getTestConfigOutput *) value;
+            [myDB saveTestConfig:tmp courseCode:_courseCode];
+			res = value;
+        }
+		[[NSNotificationCenter defaultCenter] postNotificationName:TestConfigReady object:res];
     }
 }
 
 -(void) getTestConfig{
-    swad* service = [swad service];
+    service = [swad service];
     
     showTestConfigError = YES;
 	[service getTestConfig:self action:@selector(testConfigHandler:) wsKey:User.wsKey courseCode:_courseCode];
@@ -519,10 +532,11 @@ SEL act;
 - (void) testsHandler: (id) value { 
 	if(showTestError){
         showTestError = NO;
+		NSNumber* res;
         if ([value isKindOfClass:[NSError class]]) { // Handle errors
             //NSLog(@"%@", value);
-            //NSError *err = (NSError *) value;
-            UIAlertView *alert = [[UIAlertView alloc]
+            NSError *err = (NSError *) value;
+            /*UIAlertView *alert = [[UIAlertView alloc]
                                   initWithTitle: NSLocalizedString(@"noConnectionAlertTitle", nil)
                                   message: NSLocalizedString(@"noConnectionAlertMessage", nil)
                                   delegate: nil
@@ -530,9 +544,10 @@ SEL act;
                                   otherButtonTitles:nil];
             [alert show];
             [alert release];
-			app.networkActivityIndicatorVisible = NO;
+			app.networkActivityIndicatorVisible = NO;*/
+			res = [[[NSNumber alloc] initWithInt:[err code]] autorelease];
         } else if([value isKindOfClass:[SoapFault class]]) { // Handle faults
-            UIAlertView *alert = [[UIAlertView alloc]
+            /*UIAlertView *alert = [[UIAlertView alloc]
                                   initWithTitle: NSLocalizedString(@"sendNoticeErrorAlertTitle", nil)
                                   message: NSLocalizedString(@"sendNoticeErrorAlertMessage", nil)
                                   delegate: nil
@@ -540,17 +555,21 @@ SEL act;
                                   otherButtonTitles:nil];
             [alert show];
             [alert release];
-			app.networkActivityIndicatorVisible = NO;
+			app.networkActivityIndicatorVisible = NO;*/
+			res = [[[NSNumber alloc] initWithInt:-1] autorelease];
         } else if ([value isKindOfClass:[getTestOutput class]]){ //All went OK
             //[myDB insertTestConfig:(getTestOutput *) value courseCode:_courseCode];
 			//[[NSNotificationCenter defaultCenter] postNotificationName:@"testConfigReady" object:nil];
-			getTestOutput* tmp = (getTestOutput*) value;
-        }        
+			//getTestOutput* tmp = (getTestOutput*) value;
+			[myDB saveTest:(getTestOutput *)value courseCode:_courseCode];
+			res = [[[NSNumber alloc] initWithInt:0] autorelease];
+        }
+        [[NSNotificationCenter defaultCenter] postNotificationName:TestReady object:res];
     }
 }
 
 -(void) getTests{
-    swad* service = [swad service];
+    service = [swad service];
     
     showTestError = YES;
 	[service getTests:self action:@selector(testsHandler:) wsKey:User.wsKey courseCode:_courseCode beginTime:_beginTime];
@@ -565,6 +584,11 @@ SEL act;
     } else {
         [self getTests];
     }
+}
+
+- (void)dealloc{
+	[myDB release];
+	[super dealloc];
 }
 
 @end

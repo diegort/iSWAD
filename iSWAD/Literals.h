@@ -14,11 +14,13 @@
 /*
  NSNotification Names
  */
+#define Common				@"CommonNotif"
 #define MessageSent			@"MessageSent"
 #define NotificationsDone	@"NotificationsDone"
 #define NoticePosted		@"NoticePosted"
 #define CoursesListReady	@"CoursesListReady"
 #define TestConfigReady		@"TestConfigReady"
+#define TestReady			@"TestReady"
 
 /*
  NSUserDefault keys

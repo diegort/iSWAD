@@ -13,6 +13,4 @@
     UIActivityIndicatorView *activityIndicatorView;
 }
 
-//- (void) loadMenu;
-//-(void) loginHandler:(id)value;
 @end

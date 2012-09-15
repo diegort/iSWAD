@@ -32,15 +32,54 @@ static coursesArray* courses;
 		act = sel;
 		
 		app = [UIApplication sharedApplication];
+		
+		[[NSNotificationCenter defaultCenter] removeObserver:self name:Common object:nil];
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(coursesListDone:) name:Common object:nil];
+		
+		[[NSNotificationCenter defaultCenter] removeObserver:self name:CoursesListReady object:nil];
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(coursesListDone:) name:CoursesListReady object:nil];
     }
     return self;
 }
 
 - (void) coursesListDone: (NSNotification *) n{
 	//getCoursesOutput *tmp = (getCoursesOutput *) [n object];
-	courses = [(getCoursesOutput *)[n object] courses];
 	app.networkActivityIndicatorVisible = NO;
-	[self showSelector:userLevel];
+	if ([[n object] isKindOfClass:[getCoursesOutput class]]) {
+		courses = [(getCoursesOutput *)[n object] courses];		
+		[self showSelector:userLevel];
+	}else{
+		NSNumber* res = [n object];
+		switch ([res intValue]) {
+			case -1:
+			{
+				UIAlertView *alert = [[UIAlertView alloc]
+									  initWithTitle: NSLocalizedString(@"getCoursesErrorAlertTitle", nil)
+									  message: NSLocalizedString(@"getCoursesErrorAlertMessage", nil)
+									  delegate: nil
+									  cancelButtonTitle:NSLocalizedString(@"Accept", nil)
+									  otherButtonTitles:nil];
+				[alert show];
+				[alert release];
+			}
+				break;
+			case 400:
+			{
+				UIAlertView *alert = [[UIAlertView alloc]
+									  initWithTitle: NSLocalizedString(@"noConnectionAlertTitle", nil)
+									  message: NSLocalizedString(@"noConnectionAlertMessage", nil)
+									  delegate: nil
+									  cancelButtonTitle:NSLocalizedString(@"Accept", nil)
+									  otherButtonTitles:nil];
+				[alert show];
+				[alert release];
+			}
+			default:
+				break;
+		}
+		[target performSelector:act withObject:[[[NSNumber alloc] initWithInt:-1] autorelease]];
+	}
+	
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
@@ -74,7 +113,8 @@ static coursesArray* courses;
 
 	[tmpAS dismissWithClickedButtonIndex:0 animated:YES];
 	
-	[target performSelector:act];
+	[target performSelector:act withObject:[[[NSNumber alloc] initWithInt:0] autorelease]];
+
 }
 
 - (void) filterCourses{
@@ -97,7 +137,7 @@ static coursesArray* courses;
 	userLevel = level;
 	if (courses) {
 		[self filterCourses];
-		UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil 
+		UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"courseSelect",nil)
 																 delegate:nil
 														cancelButtonTitle:nil
 												   destructiveButtonTitle:nil
@@ -132,8 +172,6 @@ static coursesArray* courses;
 	}else{
 		app.networkActivityIndicatorVisible = YES;
 		
-		[[NSNotificationCenter defaultCenter] removeObserver:self name:CoursesListReady object:nil];
-		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(coursesListDone:) name:CoursesListReady object:nil];
 		WebCommunication * myWb = [[WebCommunication alloc] init];
 		[myWb getSubjects];
 		[myWb release];

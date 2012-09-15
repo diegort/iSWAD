@@ -56,6 +56,9 @@ BOOL showError;
             self.tableView.bounces = NO;
         }
 		
+		[[NSNotificationCenter defaultCenter] removeObserver:self name:Common object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateNotificationsDone:) name:Common object:nil];
+		
         [[NSNotificationCenter defaultCenter] removeObserver:self name:NotificationsDone object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateNotificationsDone:) name:NotificationsDone object:nil];
 		
@@ -102,6 +105,18 @@ BOOL showError;
 			UIAlertView *alert = [[UIAlertView alloc]
                                   initWithTitle: NSLocalizedString(@"getNotificationsErrorAlertTitle", nil)
                                   message: NSLocalizedString(@"getNotificationsErrorAlertMessage", nil)
+                                  delegate: nil
+                                  cancelButtonTitle:NSLocalizedString(@"Accept", nil)
+                                  otherButtonTitles:nil];
+            [alert show];
+            [alert release];
+		}
+			break;
+		case 400:
+		{
+			UIAlertView *alert = [[UIAlertView alloc]
+                                  initWithTitle: NSLocalizedString(@"noConnectionAlertTitle", nil)
+                                  message: NSLocalizedString(@"noConnectionAlertMessage", nil)
                                   delegate: nil
                                   cancelButtonTitle:NSLocalizedString(@"Accept", nil)
                                   otherButtonTitles:nil];
@@ -178,6 +193,7 @@ BOOL showError;
      b = 102./255;
      rigthBtn.tintColor = [UIColor colorWithRed:r green:g blue:b alpha:1];*/
     self.navigationItem.rightBarButtonItem = rigthBtn;
+	[rigthBtn release];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -283,7 +299,7 @@ titleForHeaderInSection:(NSInteger)section {
         aux = [content substringFromIndex:9];
         aux = [aux substringToIndex:aux.length - 3];
     }
-	[aux retain];
+	//[aux retain];
     return aux;
 }
 
@@ -305,7 +321,7 @@ titleForHeaderInSection:(NSInteger)section {
     notif.Subject = tmp.summary;
     [self.navigationController pushViewController:notif animated:YES];
     [notif.wvDetails loadHTMLString:text baseURL:nil];
-    //[notif release];
+    [notif release];
 }
 
 - (void)dealloc {

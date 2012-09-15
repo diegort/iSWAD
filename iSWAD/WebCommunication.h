@@ -7,11 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "DBManager.h"
 
+@class swad, DBManager;
 @interface WebCommunication : NSObject{
     DBManager *myDB;
 	UIApplication* app;
+	swad* service;
 }
 
 - (void) login;

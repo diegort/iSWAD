@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CustomUITextView.h"
 #import "CourseSelector.h"
+#import "WebCommunication.h"
 
 @interface NoticesViewController : UIViewController<UITextViewDelegate>{
     NSString *_courseName;
@@ -18,6 +19,7 @@
 	UIActivityIndicatorView* activityIndicatorView;
 	
 	CourseSelector *cs;
+	WebCommunication *myWB;
 }
 
 @property (retain, nonatomic) IBOutlet CustomUITextView *txtMessage;

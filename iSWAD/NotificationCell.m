@@ -49,10 +49,10 @@
     
     NSString *sender = @"";
     
-    sender = [[[sender stringByAppendingFormat:data.userFirstname] stringByAppendingFormat:@" "] stringByAppendingFormat:data.userSurname1];
+    sender = [[[sender stringByAppendingString:data.userFirstname] stringByAppendingString:@" "] stringByAppendingString:data.userSurname1];
     
     if (data.userSurname2 != nil) {
-        sender = [[sender stringByAppendingFormat:@" "] stringByAppendingFormat:data.userSurname2];
+        sender = [[sender stringByAppendingString:@" "] stringByAppendingString:data.userSurname2];
     }
     
     senderLabel.text = sender;
@@ -70,11 +70,11 @@
     NSString *theDate = [dateFormat stringFromDate:date];
     NSString *theTime = [timeFormat stringFromDate:date];
     
-    NSString *dateString = [[theDate stringByAppendingFormat:@"\n"] stringByAppendingFormat:theTime];
+    NSString *dateString = [[theDate stringByAppendingString:@"\n"] stringByAppendingString:theTime];
     
     dateLabel.text = dateString;
-    //[dateFormat release];
-    //[timeFormat release];
+    [dateFormat release];
+    [timeFormat release];
     //[date release];
     
     NSString *imageTypePath;
@@ -127,7 +127,8 @@
         DBManager *myDB = [[DBManager alloc] init];
         if ([myDB markNotificationAsRead:data.notificationCode]){
             data.status |= 0b100;
-        }        
+        }
+		[myDB release];
     }
     /*if ([data.eventType isEqualToString:@"marksFile"]) {
         //Mostrar WebView

@@ -30,7 +30,7 @@
  ***********************/
 
 -(NSArray *) getNotifications{
-    NSError *error;
+    NSError *error = nil;
     NSFetchRequest *fetchRequest;
     fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription 
@@ -70,32 +70,48 @@
     [data release];
     //[result retain];
 	[sort release];
+	
+	if (error!=nil)
+		[error release];
     return  result;
 }
 
 -(BOOL) saveNotifications:(NSArray *)notifcations{
     if (notifcations.count > 0){
         NSManagedObject *notif;
-    
+		NSEntityDescription* entity = [NSEntityDescription entityForName:@"Notifications" inManagedObjectContext:context];
+        NSError *error = nil;
         for (notification *n in notifcations){
-            notif = [NSEntityDescription insertNewObjectForEntityForName:@"Notifications" inManagedObjectContext:context];
-            [notif setValue:[NSNumber numberWithInt:n.notificationCode] forKey:@"notificationCode"];
-            [notif setValue:n.eventType forKey:@"eventType"];
-            [notif setValue:[NSNumber numberWithLong:n.eventTime] forKey:@"eventTime"];
-            [notif setValue:n.userNickname forKey:@"userNickname"];
-            [notif setValue:n.userSurname1 forKey:@"userSurname1"];
-            [notif setValue:n.userSurname2 forKey:@"userSurname2"];
-            [notif setValue:n.userFirstname forKey:@"userFirstname"];
-            [notif setValue:n.location forKey:@"location"];
-            [notif setValue:[NSNumber numberWithInt:n.status] forKey:@"status"];
-            [notif setValue:n.content forKey:@"content"];
-            [notif setValue:n.summary forKey:@"summary"];
+			NSFetchRequest *request = [[NSFetchRequest alloc] init];
+			[request setEntity:entity];
+			[request setPredicate:[NSPredicate predicateWithFormat:@"notificationCode == %d", n.notificationCode]];
+
+			NSArray *objects = [context executeFetchRequest:request error:&error];
+			
+			[request release];
+			
+			if ([objects count] == 0){
+				notif = [NSEntityDescription insertNewObjectForEntityForName:@"Notifications" inManagedObjectContext:context];
+				[notif setValue:[NSNumber numberWithInt:n.notificationCode] forKey:@"notificationCode"];
+				[notif setValue:n.eventType forKey:@"eventType"];
+				[notif setValue:[NSNumber numberWithLong:n.eventTime] forKey:@"eventTime"];
+				[notif setValue:n.userNickname forKey:@"userNickname"];
+				[notif setValue:n.userSurname1 forKey:@"userSurname1"];
+				[notif setValue:n.userSurname2 forKey:@"userSurname2"];
+				[notif setValue:n.userFirstname forKey:@"userFirstname"];
+				[notif setValue:n.location forKey:@"location"];
+				[notif setValue:[NSNumber numberWithInt:n.status] forKey:@"status"];
+				[notif setValue:n.content forKey:@"content"];
+				[notif setValue:n.summary forKey:@"summary"];
+			}
         }
-        NSError *error;
         if (![context save:&error]) {
             NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
             return NO;
         }
+		
+		if (error!=nil)
+			[error release];
     }
     return YES;
 }
@@ -114,13 +130,16 @@
     NSInteger value = [[entity valueForKey:@"status"] integerValue];
     value += 4;
     [entity setValue:[NSNumber numberWithInteger:value] forKey:@"status"];
-
+	
+	
+	[request release];
+	
     if (![context save:&error]) {
         NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
         return NO;
     }
-	
-	[request release];
+	if (error!=nil)
+		[error release];
 	//[objects release];
     return YES;
 }
@@ -154,13 +173,14 @@
     
     [fetchRequest release];
 	//[fetchedObjects release];
-
+	if (error!=nil)
+		[error release];
     //[config retain];
     return  config;
 }
 
 - (BOOL)saveTestConfig:(getTestConfigOutput *)config courseCode:(int)courseCode{
-	NSError *error;
+	NSError *error = nil;
     NSFetchRequest *fetchRequest;
 	NSManagedObject *tc;
     fetchRequest = [[NSFetchRequest alloc] init];
@@ -188,12 +208,13 @@
 	[tc setValue:[NSNumber numberWithInt:0] forKey:@"beginTime"];
 	[tc setValue:config.feedback forKey:@"feedback"];
 	
+	[fetchRequest release];
 	if (![context save:&error]) {
 		NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
 		return NO;
 	}
-	[error release];
-	[fetchRequest release];
+	if (error!=nil)
+		[error release];
 	//[fetchedObjects release];
     return YES;
 }
@@ -212,7 +233,10 @@
     long time = 0;
 	
 	time = [(NSString *)[entity valueForKey:@"beginTime"] intValue];
-				 
+	[request release];
+	//[entity release];
+	if (error!=nil)
+		[error release];
 	//[objects release];
     return time;
 }
@@ -229,19 +253,20 @@
     id entity = [objects lastObject];
 	
     [entity setValue:[NSNumber numberWithLong:beginTime] forKey:@"beginTime"];
-	
+	[request release];
     if (![context save:&error]) {
         NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
         return NO;
     }
 	
-	[request release];
+	if (error!=nil)
+		[error release];
 	//[objects release];
     return YES;
 }
 
 - (BOOL) saveQuestions:(questionsArray *) questions courseCode:(int)courseCode{
-	NSError *error;
+	NSError *error = nil;
     NSFetchRequest *fetchRequest, *tagsRequest, *answersRequest;
 	NSArray *fetchedObjects, *fetchedAnswers, *fetchedTags;
 	NSEntityDescription *entity = [NSEntityDescription entityForName:@"Questions" inManagedObjectContext:context];
@@ -281,7 +306,7 @@
 			}
 			
 			tagsRequest = [[NSFetchRequest alloc] init];
-			[tagsRequest setEntity:[NSEntityDescription entityForName:@"Tags" inManagedObjectContext:context]];
+			[tagsRequest setEntity:[NSEntityDescription entityForName:@"QuestionTags" inManagedObjectContext:context]];
 			[tagsRequest setPredicate:[NSPredicate predicateWithFormat:@"questionCode == %d", q.questionCode]];
 			
 			fetchedTags = [context executeFetchRequest:tagsRequest error:&error];
@@ -303,12 +328,13 @@
 		NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
 		return NO;
 	}
-	
+	if (error!=nil)
+		[error release];
     return YES;
 }
 
 - (BOOL) saveTags:(tagsArray *) tags courseCode:(int)courseCode{
-	NSError *error;
+	NSError *error = nil;
     NSFetchRequest *fetchRequest;
 	NSArray *fetchedObjects;
 	NSEntityDescription *entity = [NSEntityDescription entityForName:@"Tags" inManagedObjectContext:context];
@@ -343,12 +369,13 @@
 		NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
 		return NO;
 	}
-	
+	if (error!=nil)
+		[error release];
     return YES;
 }
 
 - (BOOL) saveAnswers:(answersArray *) answers{
-	NSError *error;
+	NSError *error = nil;
     NSFetchRequest *fetchRequest;
 	NSArray *fetchedObjects;
 	NSEntityDescription *entity = [NSEntityDescription entityForName:@"Answers" inManagedObjectContext:context];
@@ -373,7 +400,7 @@
 				[tmp setValue:[NSNumber numberWithInt:a.answerIndex] forKey:@"answerIndex"];
 			}
 			
-			[tmp setValue:a.answerText forKey:@"tagText"];
+			[tmp setValue:a.answerText forKey:@"answerText"];
 			[tmp setValue:[NSNumber numberWithInt:a.correct] forKey:@"correct"];
 			
 			[fetchRequest release];
@@ -384,12 +411,13 @@
 		NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
 		return NO;
 	}
-	
+	if (error!=nil)
+		[error release];
     return YES;
 }
 
 - (BOOL) saveQuestionTags:(questionTagsArray *) qts{
-	NSError *error;
+	NSError *error = nil;
     NSFetchRequest *fetchRequest;
 	NSArray *fetchedObjects;
 	NSEntityDescription *entity = [NSEntityDescription entityForName:@"QuestionTags" inManagedObjectContext:context];
@@ -423,7 +451,8 @@
 		NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
 		return NO;
 	}
-	
+	if (error!=nil)
+		[error release];
     return YES;
 }
 
@@ -432,11 +461,14 @@
 	
 	result &= [self saveQuestions:test.questions courseCode:courseCode];
 	
-	result &= [self saveTags:test.tags courseCode:courseCode];
+	if (result)
+		result &= [self saveTags:test.tags courseCode:courseCode];
 	
-	result &= [self saveAnswers:test.answers];
+	if (result)
+		result &= [self saveAnswers:test.answers];
 	
-	result &= [self saveQuestionTags:test.questionTags];
+	if (result)
+		result &= [self saveQuestionTags:test.questionTags];
 	
 	return result;
 }

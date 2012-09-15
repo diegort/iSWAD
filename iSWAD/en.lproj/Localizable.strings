@@ -71,10 +71,20 @@
 "noReceiversMessage" = "Check the recipients list. Give at least one nick.";
 
 "testConfigErrorAlertTitle" = "Error";
-"testConfigErrorAlertMessage" = "An error has occurred while test config download. Try it again and if ther error continues notify it to administrator.";
+"testConfigErrorAlertMessage" = "An error has occurred while test config download. Try it again and if the error continues notify it to administrator.";
 
 "testErrorAlertTitle" = "Error";
 "testErrorAlertMessage" = "An error has occurred while test download. Try it again and if ther error continues notify it to administrator.";
 
+"noDownloadAlertTitle" = "Can't download questions";
+"noDownloadAlertMessage" = "The test config of this course doesn't allow to download questions.";
+
+"testDownloadedAlertTitle" = "Information downloaded";
+"testDownloadedAlertMessage" = "All informaticon was successfully downloaded";
+
+"testDownloadErrorAlertTitle" = "Error";
+"testDownloadErrorAlertMessage" = "An error was occurred while test download. Try it again and if the error continues notify it to administrator.";
+
 "Reply" = "Reply";
 "Close" = "Close";
+"courseSelect" = "Select course";
