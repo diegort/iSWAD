@@ -12,6 +12,7 @@
 #import "tag.h"
 #import "answer.h"
 #import "questionTag.h"
+#import "tag.h"
 
 @implementation DBManager
 
@@ -149,7 +150,7 @@
  ************************/
 
 - (getTestConfigOutput *)getTestConfig:(int)courseCode{
-	NSError *error;
+	NSError *error = nil;
     NSFetchRequest *fetchRequest;
     fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription 
@@ -471,6 +472,42 @@
 		result &= [self saveQuestionTags:test.questionTags];
 	
 	return result;
+}
+
+- (tagsArray*) courseTags:(int)courseCode{
+	NSError *error = nil;
+    NSFetchRequest *fetchRequest;
+    fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription
+                                   entityForName:@"Tags" inManagedObjectContext:context];
+    [fetchRequest setEntity:entity];
+    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"courseCode == %d", courseCode]];
+    
+    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
+    NSMutableArray *data = [[NSMutableArray alloc] init];
+    tag *t;
+    for (NSManagedObject *info in fetchedObjects) {
+        
+        t = [[tag alloc] init];
+		t.tagCode = [(NSString *)[info valueForKey:@"tagCode"] intValue];
+		t.tagText = [info valueForKey:@"tagText"];
+		
+        [data addObject:t];
+        [t release];
+    }
+    
+    [fetchRequest release];
+	//[fetchedObjects release];
+    
+    NSArray *result = [[NSArray alloc] initWithArray:data];
+    [data release];
+    //[result retain];
+	//[sort release];
+	
+	if (error!=nil)
+		[error release];
+	
+    return  (tagsArray*)result;
 }
 
 @end

@@ -10,6 +10,7 @@
 #import "iSWADAppDelegate.h"
 #import "getTestConfigOutput.h"
 #import "getTestOutput.h"
+#import "tagsArray.h"
 
 @interface DBManager : NSObject{
     iSWADAppDelegate *app;
@@ -26,5 +27,7 @@
 - (BOOL) setLastTestDownload: (int) courseCode time: (long)beginTime;
 
 - (BOOL) saveTest: (getTestOutput *) test courseCode: (int)courseCode;
+
+- (tagsArray*) courseTags:(int)courseCode;
 
 @end

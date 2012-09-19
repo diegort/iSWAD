@@ -32,6 +32,15 @@
 #define AppVersionKEy		@"appVersion"
 
 /*
+ Error codes
+ */
+#define OK					0
+#define SoapError			-1
+#define ConnectivityError	400
+#define DBError				-5
+#define LoginError			-2
+
+/*
  Call types
  */
 enum CallType {

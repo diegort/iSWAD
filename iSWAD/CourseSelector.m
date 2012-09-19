@@ -24,13 +24,23 @@ coursesArray *filtered;
 static coursesArray* courses;
 
 @implementation CourseSelector
+@synthesize target = _target;
+@synthesize act = _act;
 
 - (id) initWithTarget:(id)tg selector:(SEL)sel{
 	self = [super init];
     if (self) {
-        target = tg;
-		act = sel;
+        _target = tg;
+		_act = sel;
 		
+		[self init];
+    }
+    return self;
+}
+
+- (id) init{
+	self = [super init];
+    if (self) {		
 		app = [UIApplication sharedApplication];
 		
 		[[NSNotificationCenter defaultCenter] removeObserver:self name:Common object:nil];
@@ -77,7 +87,7 @@ static coursesArray* courses;
 			default:
 				break;
 		}
-		[target performSelector:act withObject:[[[NSNumber alloc] initWithInt:-1] autorelease]];
+		[_target performSelector:_act withObject:[[[NSNumber alloc] initWithInt:-1] autorelease]];
 	}
 	
 }
@@ -101,9 +111,9 @@ static coursesArray* courses;
 	_courseCode = ((course *) [courses objectAtIndex:row]).courseCode;
 	_courseName = ((course *) [courses objectAtIndex:row]).courseName;
 	
-	if (_courseCode == tmpCode){
+	/*if (_courseCode == tmpCode){
 		[tmpAS dismissWithClickedButtonIndex:0 animated:YES];
-	}
+	}*/
 }
 
 - (void) dismissActionSheet:(id) sender{
@@ -113,7 +123,7 @@ static coursesArray* courses;
 
 	[tmpAS dismissWithClickedButtonIndex:0 animated:YES];
 	
-	[target performSelector:act withObject:[[[NSNumber alloc] initWithInt:0] autorelease]];
+	[_target performSelector:_act withObject:[[[NSNumber alloc] initWithInt:0] autorelease]];
 
 }
 

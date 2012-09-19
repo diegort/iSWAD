@@ -3,6 +3,7 @@
 #import "CourseSelector.h"
 #import "WebCommunication.h"
 #import "DBManager.h"
+#import "ConfigureTestViewController.h"
 
 @implementation TestsViewController
 
@@ -20,7 +21,8 @@
 		[[NSNotificationCenter defaultCenter] removeObserver:self name:TestReady object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(testConfigDownloaded:) name:TestReady object:nil];
 		
-		cs = [[CourseSelector alloc] initWithTarget:self selector:@selector(courseCallback:)];
+		//cs = [[CourseSelector alloc] initWithTarget:self selector:@selector(courseCallback:)];
+		cs = [[CourseSelector alloc] init];
 		wc = [[WebCommunication alloc] init];
 		myDB = [[DBManager alloc] init];
 		
@@ -47,7 +49,7 @@
 	[activityIndicatorView stopAnimating];
 	NSNumber* res=[n object];
 	switch ([res intValue]) {
-		case 0:
+		case OK:
 		{
 			UIAlertView *alert = [[UIAlertView alloc]
                                   initWithTitle: NSLocalizedString(@"testDownloadedAlertTitle", nil)
@@ -59,7 +61,7 @@
             [alert release];
 		}
 			break;
-		case -1:
+		case SoapError:
 		{
 			UIAlertView *alert = [[UIAlertView alloc]
                                   initWithTitle: NSLocalizedString(@"testDownloadErrorAlertTitle", nil)
@@ -71,7 +73,18 @@
             [alert release];
 		}
 			break;
-			
+		case DBError:
+		{
+			UIAlertView *alert = [[UIAlertView alloc]
+                                  initWithTitle: NSLocalizedString(@"testDownloadDBErrorAlertTitle", nil)
+                                  message: NSLocalizedString(@"testDownloadDBErrorAlertMessage", nil)
+                                  delegate: nil
+                                  cancelButtonTitle:NSLocalizedString(@"Accept", nil)
+                                  otherButtonTitles:nil];
+            [alert show];
+            [alert release];
+		}
+			break;
 		default:
 			break;
 	}
@@ -102,7 +115,7 @@
 		[activityIndicatorView stopAnimating];
 		NSNumber* res=[n object];
 		switch ([res intValue]) {
-			case 400:
+			case ConnectivityError:
 			{
 				UIAlertView *alert = [[UIAlertView alloc]
 									  initWithTitle: NSLocalizedString(@"noConnectionAlertTitle", nil)
@@ -114,7 +127,7 @@
 				[alert release];
 			}
 				break;
-			case -1:
+			case SoapError:
 			{
 				UIAlertView *alert = [[UIAlertView alloc]
 									  initWithTitle: NSLocalizedString(@"testConfigErrorAlertTitle", nil)
@@ -126,7 +139,18 @@
 				[alert release];
 			}
 				break;
-				
+			case DBError:
+			{
+				UIAlertView *alert = [[UIAlertView alloc]
+									  initWithTitle: NSLocalizedString(@"testConfigDBErrorAlertTitle", nil)
+									  message: NSLocalizedString(@"testConfigErrorDBAlertMessage", nil)
+									  delegate: nil
+									  cancelButtonTitle:NSLocalizedString(@"Accept", nil)
+									  otherButtonTitles:nil];
+				[alert show];
+				[alert release];
+			}
+				break;
 			default:
 				break;
 		}
@@ -162,19 +186,41 @@
 		[activityIndicatorView startAnimating];
 		[wc getTestConfig:_courseCode];		
 	}else{
-		[activityIndicatorView stopAnimating];
+		//[activityIndicatorView stopAnimating];
 	}
 }
 
 - (IBAction)btnDownload_clic:(id)sender {
 	self.btnDownload.userInteractionEnabled = false;
 	self.btnMake.userInteractionEnabled = false;
+	cs.target = self;
+	cs.act = @selector(courseCallback:);
 	
 	[cs showSelector:2];
 }
 
-- (IBAction)btnMake_clic:(id)sender {
+- (void)courseTestsCallback:(NSNumber*) status{
+	self.btnDownload.userInteractionEnabled = true;
+	self.btnMake.userInteractionEnabled = true;
+	
+	if ([status intValue] == 0){
+		_courseCode = [cs getSelectedCode];
+		ConfigureTestViewController *view = [[ConfigureTestViewController alloc] initWithNibName: [ConfigureTestViewController description] bundle:nil courseCode:_courseCode];
+	
+		[self.navigationController pushViewController:view animated:YES];
+		[view release];
+	}
 }
+
+- (IBAction)btnMake_clic:(id)sender {
+	self.btnDownload.userInteractionEnabled = false;
+	self.btnMake.userInteractionEnabled = false;
+	cs.target = self;
+	cs.act = @selector(courseTestsCallback:);
+	
+	[cs showSelector:2];
+}
+
 - (void)dealloc {
 	[_btnDownload release];
 	[_btnMake release];

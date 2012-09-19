@@ -113,7 +113,7 @@ UIResponder *activeTextBox;
 		NSNumber * res = [notification object];
 		
 		switch ([res intValue]) {
-			case -1:
+			case SoapError:
 			{
 				UIAlertView *alert = [[UIAlertView alloc]
 									  initWithTitle: NSLocalizedString(@"sendMessageErrorAlertTitle", nil)
@@ -125,7 +125,7 @@ UIResponder *activeTextBox;
 				[alert release];
 			}
 				break;
-			case 400:
+			case ConnectivityError:
 			{
 				UIAlertView *alert = [[UIAlertView alloc]
 									  initWithTitle: NSLocalizedString(@"noConnectionAlertTitle", nil)

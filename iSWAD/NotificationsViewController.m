@@ -9,24 +9,24 @@
 #import "NotificationsViewController.h"
 #import "NotificationDetailViewController.h"
 #import "NotificationCell.h"
-#import "swad.h"
+/*#import "swad.h"
 #import "loginByUPOut.h"
 #import "getNotificationsOutput.h"
 #import "User.h"
-#import "Login.h"
+#import "Login.h"*/
 #import "WebCommunication.h"
 #import "Literals.h"
 
-#define TITLELABEL_TAG  2
+/*#define TITLELABEL_TAG  2
 #define DETAILTEXT_TAG  3
 #define IMGTYPE_TAG     0
-#define IMGACTION_TAG   1
+#define IMGACTION_TAG   1*/
 
-#define COMMENT_LABEL_WIDTH 240
-#define COMMENT_LABEL_MIN_HEIGHT 50
-#define CELL_PADDING 2
+#define COMMENT_LABEL_WIDTH			240
+#define COMMENT_LABEL_MIN_HEIGHT	50
+#define CELL_PADDING				2
 
-#define NOTIFICATION_CELL_HEIGHT 130
+#define NOTIFICATION_CELL_HEIGHT	130
 
 BOOL showLoginError;
 BOOL showError;
@@ -82,10 +82,12 @@ BOOL showError;
 }
 
 -(void) updateNotificationsDone: (NSNotification *) value{
-    
+    app.networkActivityIndicatorVisible = NO;
+	[activityIndicatorView stopAnimating];
+	
     NSNumber* result = [value object];
 	switch ([result intValue]) {
-		case 0:
+		case OK:
 			[notifications release];
 			notifications = nil;
 			notifications = [myDB getNotifications];
@@ -100,7 +102,7 @@ BOOL showError;
 			
 			[self.tableView reloadData];
 			break;
-		case -1:
+		case SoapError:
 		{
 			UIAlertView *alert = [[UIAlertView alloc]
                                   initWithTitle: NSLocalizedString(@"getNotificationsErrorAlertTitle", nil)
@@ -112,7 +114,7 @@ BOOL showError;
             [alert release];
 		}
 			break;
-		case 400:
+		case ConnectivityError:
 		{
 			UIAlertView *alert = [[UIAlertView alloc]
                                   initWithTitle: NSLocalizedString(@"noConnectionAlertTitle", nil)
@@ -125,12 +127,22 @@ BOOL showError;
 		}
 			break;
 			
+		case DBError:
+		{
+			UIAlertView *alert = [[UIAlertView alloc]
+                                  initWithTitle: NSLocalizedString(@"getNotificationsDBErrorAlertTitle", nil)
+                                  message: NSLocalizedString(@"getNotificationsDBErrorAlertMessage", nil)
+                                  delegate: nil
+                                  cancelButtonTitle:NSLocalizedString(@"Accept", nil)
+                                  otherButtonTitles:nil];
+            [alert show];
+            [alert release];
+		}
+			break;
+			
 		default:
 			break;
 	}
-    
-	app.networkActivityIndicatorVisible = NO;
-	[activityIndicatorView stopAnimating];
 }
 
 -(void) reloadNotifications{

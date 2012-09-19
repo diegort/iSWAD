@@ -11,9 +11,12 @@
 @interface CourseSelector : NSObject <UIPickerViewDataSource, UIPickerViewDelegate>{
 	UIApplication* app;
 	
-	id target;
-	SEL act;
+	id _target;
+	SEL _act;
 }
+
+@property (retain, nonatomic) id target;
+@property (nonatomic) SEL act;
 
 - (id) initWithTarget:(id) tg selector: (SEL) sel;
 

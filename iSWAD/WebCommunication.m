@@ -190,7 +190,7 @@ SEL act;
 				default:
 					break;
 			}
-			[[NSNotificationCenter defaultCenter] postNotificationName:Common object:[[[NSNumber alloc] initWithInt:-2] autorelease]];
+			[[NSNotificationCenter defaultCenter] postNotificationName:Common object:[[[NSNumber alloc] initWithInt:LoginError] autorelease]];
         } else if([value isKindOfClass:[SoapFault class]]) { // Handle faults
             SoapFault *err = (SoapFault *) value;
             
@@ -204,7 +204,7 @@ SEL act;
                 [alert show];
                 [alert release];                
             }
-			[[NSNotificationCenter defaultCenter] postNotificationName:Common object:[[[NSNumber alloc] initWithInt:-2] autorelease]];
+			[[NSNotificationCenter defaultCenter] postNotificationName:Common object:[[[NSNumber alloc] initWithInt:LoginError] autorelease]];
         } else if ([value isKindOfClass:[loginByUserPasswordKeyOutput class]]){ //All went OK
             loginByUserPasswordKeyOutput* tmp = (loginByUserPasswordKeyOutput*)value;
             NSDate *now = [[NSDate alloc] initWithTimeIntervalSinceNow:0];
@@ -248,7 +248,7 @@ SEL act;
             [alert show];
             [alert release];
 			app.networkActivityIndicatorVisible = NO;*/
-			res = [[[NSNumber alloc] initWithInt:-1] autorelease];
+			res = [[[NSNumber alloc] initWithInt:SoapError] autorelease];
         } else if ([value isKindOfClass:[sendMessageOutput class]]){ //All went OK
 			res = value;
         }
@@ -318,18 +318,20 @@ SEL act;
             [alert show];
             [alert release];
 			app.networkActivityIndicatorVisible = NO;*/
-			result = [NSNumber numberWithInt:-1];
+			result = [NSNumber numberWithInt:SoapError];
         } else if ([value isKindOfClass:[getNotificationsOutput class]]){ //All went OK
             getNotificationsOutput* tmp = (getNotificationsOutput*)value;
             
             if ([myDB saveNotifications:tmp.notifications.items]){
                 NSNumber *temp = [NSNumber numberWithLong:currentTime];
                 [[NSUserDefaults standardUserDefaults] setObject:temp forKey:NotifUpdateTimeKey];
+				result = [NSNumber numberWithInt:OK];
             }else{
                 //Error
+				result = [NSNumber numberWithInt:DBError];
             }
             //sleep(2000);
-			result = [NSNumber numberWithInt:0];
+			
         }
 		[[NSNotificationCenter defaultCenter] postNotificationName:NotificationsDone object:result];  
     }
@@ -390,7 +392,7 @@ SEL act;
             [alert show];
             [alert release];*/
 			//app.networkActivityIndicatorVisible = NO;
-			res = [[[NSNumber alloc] initWithInt:-1] autorelease];
+			res = [[[NSNumber alloc] initWithInt:SoapError] autorelease];
         } else if ([value isKindOfClass:[getCoursesOutput class]]){ //All went OK
             res = value;
         }
@@ -443,9 +445,9 @@ SEL act;
             [alert show];
             [alert release];
 			app.networkActivityIndicatorVisible = NO;*/
-			res = [[[NSNumber alloc] initWithInt:-1] autorelease];
+			res = [[[NSNumber alloc] initWithInt:SoapError] autorelease];
         } else { //All went OK
-			res = [[[NSNumber alloc] initWithInt:0] autorelease];
+			res = [[[NSNumber alloc] initWithInt:OK] autorelease];
         }
         [[NSNotificationCenter defaultCenter] postNotificationName:NoticePosted object:res];
     }
@@ -502,11 +504,16 @@ SEL act;
             [alert show];
             [alert release];
 			app.networkActivityIndicatorVisible = NO;*/
-			res = [[[NSNumber alloc] initWithInt:-1] autorelease];
+			res = [[[NSNumber alloc] initWithInt:SoapError] autorelease];
         } else if ([value isKindOfClass:[getTestConfigOutput class]]){ //All went OK
-			getTestConfigOutput* tmp = (getTestConfigOutput *) value;
-            [myDB saveTestConfig:tmp courseCode:_courseCode];
-			res = value;
+			//getTestConfigOutput* tmp =
+            BOOL tmp = [myDB saveTestConfig:(getTestConfigOutput *) value courseCode:_courseCode];
+			if (tmp) {
+				res = value;
+			}else{
+				res = [[[NSNumber alloc] initWithInt:DBError] autorelease];
+			}
+			
         }
 		[[NSNotificationCenter defaultCenter] postNotificationName:TestConfigReady object:res];
     }
@@ -556,13 +563,19 @@ SEL act;
             [alert show];
             [alert release];
 			app.networkActivityIndicatorVisible = NO;*/
-			res = [[[NSNumber alloc] initWithInt:-1] autorelease];
+			res = [[[NSNumber alloc] initWithInt:SoapError] autorelease];
         } else if ([value isKindOfClass:[getTestOutput class]]){ //All went OK
             //[myDB insertTestConfig:(getTestOutput *) value courseCode:_courseCode];
 			//[[NSNotificationCenter defaultCenter] postNotificationName:@"testConfigReady" object:nil];
-			//getTestOutput* tmp = (getTestOutput*) value;
-			[myDB saveTest:(getTestOutput *)value courseCode:_courseCode];
-			res = [[[NSNumber alloc] initWithInt:0] autorelease];
+			//getTestOutput* tmp = (getTestOutput*) value;			
+			[myDB setLastTestDownload:_courseCode time:currentTime];
+			BOOL tmp = [myDB saveTest:(getTestOutput *)value courseCode:_courseCode];
+			
+			if (tmp) {
+				res = [[[NSNumber alloc] initWithInt:OK] autorelease];
+			}else{
+				res = [[[NSNumber alloc] initWithInt:DBError] autorelease];
+			}			
         }
         [[NSNotificationCenter defaultCenter] postNotificationName:TestReady object:res];
     }
@@ -570,7 +583,11 @@ SEL act;
 
 -(void) getTests{
     service = [swad service];
-    
+	
+    NSDate *now = [[NSDate alloc] initWithTimeIntervalSinceNow:0];
+    currentTime = (time_t) [now timeIntervalSince1970];
+    [now release];
+	
     showTestError = YES;
 	[service getTests:self action:@selector(testsHandler:) wsKey:User.wsKey courseCode:_courseCode beginTime:_beginTime];
 }

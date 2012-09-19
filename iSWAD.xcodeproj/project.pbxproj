@@ -306,7 +306,6 @@
 		45AD736E14668436009533FC /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = iSWAD/es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		45AD737214668436009533FC /* es */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = es; path = iSWAD/es.lproj/RootViewController.xib; sourceTree = "<group>"; };
 		45AD7381146686E2009533FC /* es */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = es; path = es.lproj/LoginViewController.xib; sourceTree = "<group>"; };
-		45AD73A41466968C009533FC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		45AD73A614669694009533FC /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		45AD73B81466A961009533FC /* iSWAD-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iSWAD-Info.plist"; sourceTree = "<group>"; };
 		45AD73C314670CB3009533FC /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
@@ -334,6 +333,7 @@
 		45F0A26B1485A39900066BEA /* iSWAD.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iSWAD.xcdatamodel; sourceTree = "<group>"; };
 		45F34F631542A2C30099D27A /* WebCommunication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebCommunication.h; sourceTree = "<group>"; };
 		45F34F641542A2C30099D27A /* WebCommunication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebCommunication.m; sourceTree = "<group>"; wrapsLines = 1; };
+		45F6CDA81605D0220051B075 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		45F9D90614898ED100FEE0C3 /* NotificationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationCell.h; sourceTree = "<group>"; };
 		45F9D90714898ED100FEE0C3 /* NotificationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationCell.m; sourceTree = "<group>"; };
 		45F9D90814898ED100FEE0C3 /* NotificationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationCell.xib; sourceTree = "<group>"; };
@@ -1013,8 +1013,8 @@
 		45AD73A51466968C009533FC /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				45AD73A41466968C009533FC /* en */,
 				45AD73A614669694009533FC /* es */,
+				45F6CDA81605D0220051B075 /* en */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

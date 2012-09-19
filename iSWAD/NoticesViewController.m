@@ -66,7 +66,7 @@
 	NSNumber * res = [notif object];
 	
 	switch ([res intValue]) {
-		case 0:
+		case OK:
 		{
 			NSString *msg = [NSLocalizedString(@"sentNoticeAlertMessage", nil) stringByAppendingString:_courseName];
 			
@@ -83,7 +83,7 @@
 			txtMessage.text = @"";
 		}
 			break;
-		case -1:
+		case SoapError:
 		{
 			UIAlertView *alert = [[UIAlertView alloc]
                                   initWithTitle: NSLocalizedString(@"sendNoticeErrorAlertTitle", nil)
@@ -95,7 +95,7 @@
             [alert release];
 		}
 			break;
-		case 400:
+		case ConnectivityError:
 		{
 			UIAlertView *alert = [[UIAlertView alloc]
                                   initWithTitle: NSLocalizedString(@"noConnectionAlertTitle", nil)
