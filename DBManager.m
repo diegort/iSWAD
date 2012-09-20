@@ -94,17 +94,20 @@
 			if ([objects count] == 0){
 				notif = [NSEntityDescription insertNewObjectForEntityForName:@"Notifications" inManagedObjectContext:context];
 				[notif setValue:[NSNumber numberWithInt:n.notificationCode] forKey:@"notificationCode"];
-				[notif setValue:n.eventType forKey:@"eventType"];
-				[notif setValue:[NSNumber numberWithLong:n.eventTime] forKey:@"eventTime"];
-				[notif setValue:n.userNickname forKey:@"userNickname"];
-				[notif setValue:n.userSurname1 forKey:@"userSurname1"];
-				[notif setValue:n.userSurname2 forKey:@"userSurname2"];
-				[notif setValue:n.userFirstname forKey:@"userFirstname"];
-				[notif setValue:n.location forKey:@"location"];
-				[notif setValue:[NSNumber numberWithInt:n.status] forKey:@"status"];
-				[notif setValue:n.content forKey:@"content"];
-				[notif setValue:n.summary forKey:@"summary"];
+				
+			}else{
+				notif = [objects objectAtIndex:0];
 			}
+			[notif setValue:n.eventType forKey:@"eventType"];
+			[notif setValue:[NSNumber numberWithLong:n.eventTime] forKey:@"eventTime"];
+			[notif setValue:n.userNickname forKey:@"userNickname"];
+			[notif setValue:n.userSurname1 forKey:@"userSurname1"];
+			[notif setValue:n.userSurname2 forKey:@"userSurname2"];
+			[notif setValue:n.userFirstname forKey:@"userFirstname"];
+			[notif setValue:n.location forKey:@"location"];
+			[notif setValue:[NSNumber numberWithInt:n.status] forKey:@"status"];
+			[notif setValue:n.content forKey:@"content"];
+			[notif setValue:n.summary forKey:@"summary"];
         }
         if (![context save:&error]) {
             NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
